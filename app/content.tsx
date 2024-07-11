@@ -12,7 +12,6 @@ import { useState, useContext, useEffect } from "react";
 
 // Import components
 import { LocaleContext } from "./locale-provider";
-import { Hero } from "pswd-design-system";
 import ServiceRow from "@/components/service-row";
 
 const blockByType = (block: any) => {
@@ -20,15 +19,6 @@ const blockByType = (block: any) => {
   const contentType = block.sys.contentType.sys.id;
 
   switch (contentType) {
-    case "heroBlock":
-      return (
-        <Hero
-          heading={block.fields.heading}
-          subheading={block.fields.subHeading}
-          buttonText={block.fields.buttonText}
-          buttonLink={block.fields.buttonLink}
-        />
-      );
 
     case "serviceRowBlock":
       return (

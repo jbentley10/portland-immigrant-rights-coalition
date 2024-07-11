@@ -13,8 +13,6 @@ import { Inter } from "next/font/google";
 // Import components and utils
 import FloatingActionButton from "../components/floating-action-button";
 import { LocaleContext } from "./locale-provider";
-import { Navigation } from "pswd-design-system";
-import { Footer } from "pswd-design-system";
 import { ThemeProvider } from "@/components/theme-provider";
 
 // Declare fonts
@@ -37,9 +35,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
-            <Navigation />
             {children}
-            <Footer />
             <FloatingActionButton />
           </LocaleContext.Provider>
         </ThemeProvider>
