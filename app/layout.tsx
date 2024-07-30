@@ -13,7 +13,7 @@ import { Inter } from "next/font/google";
 // Import components and utils
 import FloatingActionButton from "../components/floating-action-button";
 import { LocaleContext } from "./locale-provider";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Navigation } from "@/components/navigation";
 
 // Declare fonts
 const inter = Inter({ subsets: ["latin"] });
@@ -26,19 +26,13 @@ export default function RootLayout({
   const [isEnglish, setIsEnglish] = useState(true);
 
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={`${inter.className}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
-            {children}
-            <FloatingActionButton />
-          </LocaleContext.Provider>
-        </ThemeProvider>
+        <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
+          <Navigation />
+          {children}
+          <FloatingActionButton />
+        </LocaleContext.Provider>
       </body>
     </html>
   );

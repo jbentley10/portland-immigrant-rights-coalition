@@ -12,23 +12,20 @@ import { useState, useContext, useEffect } from "react";
 
 // Import components
 import { LocaleContext } from "./locale-provider";
-import ServiceRow from "@/components/service-row";
+import Hero from "@/components/hero";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
   const contentType = block.sys.contentType.sys.id;
 
   switch (contentType) {
-
-    case "serviceRowBlock":
+    case "heroBlock":
       return (
-        <ServiceRow
-          heading1={block.fields.heading1}
-          subheading1={block.fields.subheading1}
-          heading2={block.fields.heading2}
-          subheading2={block.fields.subheading2}
-          heading3={block.fields.heading3}
-          subheading3={block.fields.subheading3}
+        <Hero
+          heading={block.fields.heading}
+          subheading={block.fields.subHeading}
+          buttonLink={block.fields.buttonLink}
+          buttonText={block.fields.buttonText}
         />
       );
 
@@ -43,7 +40,10 @@ interface ContentProps {
 }
 
 // Component recieves a single array of block objects
-export default function Content({ englishBlocks, spanishBlocks }: ContentProps) {
+export default function Content({
+  englishBlocks,
+  spanishBlocks,
+}: ContentProps) {
   const isEnglish = useContext(LocaleContext);
   const [translatedBlocks, setTranslatedBlocks] = useState(englishBlocks);
 
