@@ -34,12 +34,12 @@ export default function RootLayout({
         h2,
         h3,
         h4,
-        a,
         button {
           font-family: ${antonio.style.fontFamily};
         }
 
-        p {
+        p,
+        a {
           font-family: ${inter.style.fontFamily};
         }
       `}</style>
