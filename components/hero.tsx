@@ -14,7 +14,7 @@ export default function Hero(props: {
   buttonText: string;
 }) {
   return (
-    <section className='mt-0 pt-16 component-container bg-primary relative w-full flex'>
+    <section className='mt-0 lg:pt-14 xl:pt-16 component-container bg-primary relative w-full flex'>
       <div className='w-1/2'>
         <Image
           src='/hero-image.png'
@@ -25,7 +25,7 @@ export default function Hero(props: {
       </div>
       <div className='w-1/2 relative z-10 text-left'>
         <div className='mb-16'>
-          <h1 className='text-white font-bold tracking-tight'>
+          <h1 className='pb-7 lg:leading-tight xl:leading-5 lg:text-5xl xl:text-7xl text-white font-bold tracking-tight'>
             {props.heading}
           </h1>
           <p className='text-lg text-white'>{props.subheading}</p>

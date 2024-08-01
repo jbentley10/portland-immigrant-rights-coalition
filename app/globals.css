@@ -76,13 +76,6 @@
     @apply bg-background text-foreground;
   }
 
-  h1 {
-    font-weight: bold;
-    font-size: 72px;
-    line-height: 1.25;
-    padding-bottom: 28px;
-  }
-
   .component-container {
     padding: 0 88px;
     margin: 124px 0;

@@ -31,7 +31,7 @@ export const Navigation = () => {
         {linkList.map((link, index) => (
           <Link
             key={index}
-            className='hover:opacity-50 md:mr-6 sm:mr-4 xs:mr-2 font-light text-white lg:text-base sm:text-xs xs:text-xs'
+            className='hover:opacity-50 lg:mr-5 xl:mr-6 font-light text-white lg:text-sm xl:text-base'
             href={link.url}
           >
             {link.name}
@@ -50,7 +50,7 @@ export const Navigation = () => {
         className='w-1/2 flex flex-row justify-start'
         id='links-and-phone'
       >
-        <div className='xs:mr-2 sm:mr-11 lg:mr-28' id='links'>
+        <div className='' id='links'>
           <Links />
         </div>
       </section>
