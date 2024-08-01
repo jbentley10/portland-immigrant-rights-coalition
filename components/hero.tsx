@@ -17,15 +17,16 @@ export default function Hero(props: {
     <section className='h-dvh md:h-auto mt-0 sm:pt-10 md:pt-11 lg:pt-14 xl:pt-16 component-container bg-primary relative w-full flex'>
       <div className='hidden md:inline w-0 md:w-1/2'>
         <Image
-          src='/hero-image.png'
+          src='/hero-image.webp'
           width={1201}
           height={1321}
           alt='A monotone red image of a man addressing a crowd'
+          loading='eager'
         />
       </div>
       <div className='w-full md:w-1/2 relative z-10 text-left'>
         <div className='mb-16'>
-          <h1 className='pb-7 leading-tight sm:leading-snug lg:leading-tight xl:leading-snug text-7xl sm:text-4xl lg:text-5xl xl:text-7xl text-white font-bold tracking-tight'>
+          <h1 className='pb-7 text-white font-bold tracking-tight'>
             {props.heading}
           </h1>
           <p className='text-lg text-white'>{props.subheading}</p>

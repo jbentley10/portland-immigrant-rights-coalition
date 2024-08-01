@@ -82,15 +82,44 @@
 }
 
 /* XS */
-@media (max-width: 640px) {
+@media (max-width: 639) {
+  h1 {
+    line-height: 1.25;
+    font-size: 4.5rem;
+  }
+
   .component-container {
     padding: 0 12px;
   }
 }
 
+/* SM */
+@media (min-width: 640px) {
+  h1 {
+    line-height: 1.375;
+    font-size: 2.25rem;
+  }
+}
+
 /* MD */
-@media (max-width: 1023px) {
+@media (min-width: 768px) {
   .component-container {
     padding: 0 24px;
+  }
+}
+
+/* LG */
+@media (min-width: 1024px) {
+  h1 {
+    line-height: 1.25;
+    font-size: 3rem;
+  }
+}
+
+/* XL */
+@media (min-width: 1536px) {
+  h1 {
+    line-height: 1.375;
+    font-size: 4.5rem;
   }
 }
