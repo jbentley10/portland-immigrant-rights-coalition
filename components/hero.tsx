@@ -5,6 +5,7 @@
  */
 import Link from "next/link";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 export default function Hero(props: {
   heading: string;
@@ -13,13 +14,23 @@ export default function Hero(props: {
   buttonText: string;
 }) {
   return (
-    <section className='bg-background relative w-full flex items-center justify-center'>
-      <div className='relative z-10 text-center space-y-4 px-4 md:px-6'>
-        <h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
-          {props.heading}
-        </h1>
-        <p className='text-lg md:text-xl max-w-4xl'>{props.subheading}</p>
-        <Button className='mr-6'>
+    <section className='mt-0 pt-16 component-container bg-primary relative w-full flex'>
+      <div className='w-1/2'>
+        <Image
+          src='/hero-image.png'
+          width={1201}
+          height={1321}
+          alt='A monotone red image of a man addressing a crowd'
+        />
+      </div>
+      <div className='w-1/2 relative z-10 text-left'>
+        <div className='mb-16'>
+          <h1 className='text-white font-bold tracking-tight'>
+            {props.heading}
+          </h1>
+          <p className='text-lg text-white'>{props.subheading}</p>
+        </div>
+        <Button size={`lg`} className='mr-6'>
           <Link href={props.buttonLink} prefetch={false}>
             {props.buttonText}
           </Link>

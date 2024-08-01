@@ -38,6 +38,10 @@ export default function RootLayout({
           font-family: ${antonio.style.fontFamily};
         }
 
+        button > a {
+          font-family: ${antonio.style.fontFamily};
+        }
+
         p,
         a {
           font-family: ${inter.style.fontFamily};

@@ -4,7 +4,7 @@
 "use client";
 
 // Import dependencies
-import React from 'react';
+import React from "react";
 import { useLocale } from "../app/locale-provider";
 import { GrLanguage } from "react-icons/gr";
 import { Button } from "./ui/button";
@@ -19,8 +19,10 @@ const FloatingActionButton: React.FC = () => {
       }
     >
       <Button
-        aria-label="toggle language"
+        aria-label='toggle language'
         onClick={() => setIsEnglish((oldValue: boolean) => !oldValue)}
+        variant={"secondary"}
+        size={"sm"}
       >
         <GrLanguage className={"mr-2"} />
         {isEnglish ? "Leer en Español" : "Read in English"}
