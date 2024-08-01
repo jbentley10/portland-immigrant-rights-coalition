@@ -13,6 +13,7 @@ import { useState, useContext, useEffect } from "react";
 // Import components
 import { LocaleContext } from "./locale-provider";
 import Hero from "@/components/hero";
+import DividerText from "@/components/divider-text";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -28,6 +29,9 @@ const blockByType = (block: any) => {
           buttonText={block.fields.buttonText}
         />
       );
+
+    case "dividerTextBlock":
+      return <DividerText text={block.fields.text} />;
 
     default:
       return false;

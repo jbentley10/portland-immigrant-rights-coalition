@@ -81,6 +81,10 @@
   padding: 0 88px;
 }
 
+h3 {
+  font-weight: 500;
+}
+
 /* XS */
 @media (max-width: 639) {
   h1 {
@@ -113,6 +117,10 @@
   h1 {
     line-height: 1.25;
     font-size: 3rem;
+  }
+
+  .component-container {
+    padding: 0 88px;
   }
 }
 
