@@ -14,7 +14,7 @@ import { useState, useContext, useEffect } from "react";
 import { LocaleContext } from "./locale-provider";
 import Hero from "@/components/hero";
 import DividerText from "@/components/divider-text";
-import ImageGrid from "@/components/image-grid";
+import ImageGrid, { ContentfulImage } from "@/components/image-grid";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -38,7 +38,13 @@ const blockByType = (block: any) => {
       if (block.fields) {
         let fields = block.fields;
         let { image1, image2, image3, image4, image5 } = fields;
-        let images: Array<Object> = [image1, image2, image3, image4, image5];
+        let images: Array<ContentfulImage> = [
+          image1,
+          image2,
+          image3,
+          image4,
+          image5,
+        ];
 
         return <ImageGrid images={images} />;
       }
