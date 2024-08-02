@@ -47,7 +47,13 @@ const blockByType = (block: any) => {
           image5,
         ];
 
-        return <ImageGrid images={images} />;
+        return (
+          <ImageGrid
+            images={images}
+            textCallout={block.fields.textCallout}
+            subtext={block.fields.subtext}
+          />
+        );
       }
       return false;
 

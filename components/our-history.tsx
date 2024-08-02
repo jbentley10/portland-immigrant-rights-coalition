@@ -6,18 +6,12 @@ export interface HistoryMilestone {
 }
 
 function Timeline({ children }: { children: React.ReactNode }) {
-  return <div className={"flex mt-20"}>{children}</div>;
+  return <div className={"flex md:flex-row flex-col mt-20"}>{children}</div>;
 }
 
 function EllipseAndLine() {
   return (
-    <div
-      className={"mb-4"}
-      style={{
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+    <div className={"hidden md:flex items-center mb-4"}>
       <span
         className={"rounded-full"}
         style={{
@@ -44,7 +38,7 @@ function YearBlocks(props: { milestones: HistoryMilestone[] }) {
   return (
     <>
       {props.milestones.map((milestone) => (
-        <div key={milestone.year}>
+        <div className={"mb-8 md:mb-0"} key={milestone.year}>
           <h3 className={"text-primary text-3xl mb-4"}>{milestone.year}</h3>
           <EllipseAndLine />
           <p className={"text-primary"}>{milestone.info}</p>
@@ -62,7 +56,7 @@ export default function OurHistory(props: {
   return (
     <div className='component-container component-spacer'>
       <div className={"max-w-lg"}>
-        <h2 className={"text-primary"}>{props.heading}</h2>
+        <h2 className={"text-primary pb-6"}>{props.heading}</h2>
         <p className={"text-primary"}>{props.subheading}</p>
       </div>
       <Timeline>

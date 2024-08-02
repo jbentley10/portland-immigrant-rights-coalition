@@ -100,6 +100,11 @@ h3 {
     font-size: 4.5rem;
   }
 
+  h2 {
+    line-height: 1.375;
+    font-size: 4rem;
+  }
+
   .component-container,
   .atf-container {
     padding: 0 12px;
@@ -112,10 +117,20 @@ h3 {
     line-height: 1.375;
     font-size: 2.25rem;
   }
+
+  h2 {
+    line-height: 1.375;
+    font-size: 2rem;
+  }
 }
 
 /* MD */
 @media (min-width: 768px) {
+  h2 {
+    line-height: 1.375;
+    font-size: 2.5rem;
+  }
+
   .component-container,
   .atf-container {
     padding: 0 24px;
@@ -130,7 +145,7 @@ h3 {
   }
 
   h2 {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
 
   /* Creates padding for "Above the fold (ATF)" content and regular components */

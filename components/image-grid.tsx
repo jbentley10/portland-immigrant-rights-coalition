@@ -22,7 +22,11 @@ export interface ContentfulImage {
   };
 }
 
-function ImageGrid(props: { images: Array<ContentfulImage> }) {
+function ImageGrid(props: {
+  images: Array<ContentfulImage>;
+  textCallout?: string;
+  subtext?: string;
+}) {
   let modifiedImages = [];
 
   for (let i = 0; i < props.images.length; i++) {
@@ -92,10 +96,8 @@ function ImageGrid(props: { images: Array<ContentfulImage> }) {
               style={{ gridRow: "span 3", gridColumn: "span 3" }}
             />
             <div style={{ gridRow: "span 2", gridColumn: "span 8" }}>
-              <h1>
-                Heres an example of something compelling we could put here!
-              </h1>
-              <p>Gotta work with what you have.</p>
+              <h1 className={"text-primary"}>{props.textCallout}</h1>
+              <p>{props.subtext}</p>
             </div>
           </div>
         </div>
