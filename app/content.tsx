@@ -74,7 +74,13 @@ const blockByType = (block: any) => {
           },
         ];
 
-        return <OurHistory milestones={milestones} />;
+        return (
+          <OurHistory
+            heading={block.fields.heading}
+            subheading={block.fields.subheading}
+            milestones={milestones}
+          />
+        );
       }
 
     default:
