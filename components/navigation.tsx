@@ -42,7 +42,7 @@ export const Navigation = () => {
   }
 
   return (
-    <nav className='component-container sm:pt-10 md:pt-11 m-0 bg-nav drop-shadow flex flex-col md:flex-row items-center justify-between xs:justify-end'>
+    <nav className='atf-container sm:pt-10 md:pt-11 m-0 bg-nav drop-shadow flex flex-col md:flex-row items-center justify-between xs:justify-end'>
       <section className='w-full md:w-1/2' id='logo'>
         <Image src='/logo.svg' width='100' height='95' alt='logo' />
       </section>
