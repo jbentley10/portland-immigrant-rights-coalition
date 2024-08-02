@@ -1,43 +1,39 @@
 import React from "react";
 
-interface HistoryMilestone {
+export interface HistoryMilestone {
   year: number;
   info: string;
 }
 
-export default function OurHistory() {
-  let years: Array<HistoryMilestone> = [
-    {
-      year: 2005,
-      info: "Fart fart test",
-    },
-    {
-      year: 2006,
-      info: "Fart fart test",
-    },
-  ];
+function Timeline({ children }: { children: React.ReactNode }) {
+  return <div className={"flex"}>{children}</div>;
+}
 
-  function YearsBlock(milestones: Array<HistoryMilestone>) {
-    for (let i = 0; i < milestones.length; i++) {
-      let { year, info } = milestones[i];
-      return (
-        <div>
-          <h3>{year}</h3>
-          <p>{info}</p>
-        </div>
-      );
-    }
-  }
-
+function YearBlocks(props: { milestones: HistoryMilestone[] }) {
   return (
-    <div>
+    <>
+      {props.milestones.map((milestone) => (
+        <div key={milestone.year}>
+          <h3>{milestone.year}</h3>
+          <p>{milestone.info}</p>
+        </div>
+      ))}
+    </>
+  );
+}
+
+export default function OurHistory(props: { milestones: HistoryMilestone[] }) {
+  return (
+    <div className='component-container component-spacer'>
       <h2>Our History</h2>
       <p>
         Since 2005, the Portland Immigrant Rights Coalition (PIRC) has been
         defending the rights of immigrants in our community through education,
         rapid response, and legal support.
       </p>
-      <YearsBlock milestones={years} />
+      <Timeline>
+        <YearBlocks milestones={props.milestones} />
+      </Timeline>
     </div>
   );
 }

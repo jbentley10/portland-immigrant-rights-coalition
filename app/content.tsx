@@ -15,6 +15,7 @@ import { LocaleContext } from "./locale-provider";
 import Hero from "@/components/hero";
 import DividerText from "@/components/divider-text";
 import ImageGrid, { ContentfulImage } from "@/components/image-grid";
+import OurHistory, { HistoryMilestone } from "@/components/our-history";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -49,6 +50,32 @@ const blockByType = (block: any) => {
         return <ImageGrid images={images} />;
       }
       return false;
+
+    case "ourHistoryBlock":
+      if (block.fields) {
+        let { year1, text1, year2, text2, year3, text3, year4, text4 } =
+          block.fields;
+        let milestones: HistoryMilestone[] = [
+          {
+            year: year1,
+            info: text1,
+          },
+          {
+            year: year2,
+            info: text2,
+          },
+          {
+            year: year3,
+            info: text3,
+          },
+          {
+            year: year4,
+            info: text4,
+          },
+        ];
+
+        return <OurHistory milestones={milestones} />;
+      }
 
     default:
       return false;
