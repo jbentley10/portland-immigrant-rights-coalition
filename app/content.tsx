@@ -16,6 +16,7 @@ import Hero from "@/components/hero";
 import DividerText from "@/components/divider-text";
 import ImageGrid, { ContentfulImage } from "@/components/image-grid";
 import OurHistory, { HistoryMilestone } from "@/components/our-history";
+import DonationTiers, { Tier } from "@/components/donation-tiers";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -85,6 +86,37 @@ const blockByType = (block: any) => {
             heading={block.fields.heading}
             subheading={block.fields.subheading}
             milestones={milestones}
+          />
+        );
+      }
+
+    case "donationTiersBlock":
+      if (block.fields) {
+        let tiers: Tier[] = [
+          {
+            heading: block.fields.tier1Heading,
+            subheading: block.fields.tier1Subheading,
+            index: 0,
+          },
+          {
+            heading: block.fields.tier2Heading,
+            subheading: block.fields.tier2Subheading,
+            index: 1,
+          },
+          {
+            heading: block.fields.tier3Heading,
+            subheading: block.fields.tier3Subheading,
+            index: 2,
+          },
+        ];
+
+        return (
+          <DonationTiers
+            heading={block.fields.heading}
+            subheading={block.fields.subHeading}
+            tiers={tiers}
+            buttonText={block.fields.ctaText}
+            buttonLink={block.fields.ctaLink}
           />
         );
       }

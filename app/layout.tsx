@@ -34,7 +34,8 @@ export default function RootLayout({
         h2,
         h3,
         h4,
-        button {
+        button,
+        span {
           font-family: ${antonio.style.fontFamily};
         }
 
