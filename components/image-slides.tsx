@@ -18,8 +18,8 @@ function ImageSlide(props: { slide: SlideFields }) {
 
 function ImageSlides(props: { slides: SlideFields[] }) {
   return (
-    <div>
-      {props.slides.map((slide, index) => (
+    <div className={"component-container"}>
+      {props.slides.map((slide: SlideFields, index: number) => (
         <ImageSlide key={index} slide={slide} />
       ))}
     </div>
