@@ -17,6 +17,7 @@ import DividerText from "@/components/divider-text";
 import ImageGrid, { ContentfulImage } from "@/components/image-grid";
 import OurHistory, { HistoryMilestone } from "@/components/our-history";
 import DonationTiers, { Tier } from "@/components/donation-tiers";
+import ImageSlides, { SlideFields } from "@/components/image-slides";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -119,6 +120,21 @@ const blockByType = (block: any) => {
             buttonLink={block.fields.ctaLink}
           />
         );
+      }
+
+    case "imageSlidesBlock":
+      if (block.fields) {
+        let imageSlides = block.fields.imageSlide; // Create an easy-to-read variable for the imageSlide field
+        let slideFields: SlideFields[] = []; // Initialize an empty array to store the slides and their fields
+
+        // Map through each imageSlide in Contentful
+        imageSlides.forEach(function (slide: { fields: SlideFields }) {
+          let { fields } = slide;
+
+          slideFields.push(fields); // Push the fields object to a new array
+        });
+
+        return <ImageSlides slides={slideFields} />;
       }
 
     default:
