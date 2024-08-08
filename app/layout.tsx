@@ -15,6 +15,7 @@ import FloatingActionButton from "../components/floating-action-button";
 import { LocaleContext } from "./locale-provider";
 import { Navigation } from "@/components/navigation";
 import Head from "next/head";
+import Footer from "@/components/footer";
 
 // Declare fonts
 const antonio = Antonio({ subsets: ["latin"] });
@@ -35,7 +36,8 @@ export default function RootLayout({
         h3,
         h4,
         button,
-        span {
+        span,
+        .antonio {
           font-family: ${antonio.style.fontFamily};
         }
 
@@ -52,6 +54,7 @@ export default function RootLayout({
         <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
           <Navigation />
           {children}
+          <Footer />
           <FloatingActionButton />
         </LocaleContext.Provider>
       </body>

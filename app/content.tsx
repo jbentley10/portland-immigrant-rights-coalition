@@ -18,6 +18,7 @@ import ImageGrid, { ContentfulImage } from "@/components/image-grid";
 import OurHistory, { HistoryMilestone } from "@/components/our-history";
 import DonationTiers, { Tier } from "@/components/donation-tiers";
 import ImageSlides, { SlideFields } from "@/components/image-slides";
+import CallToAction from "@/components/call-to-action";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -136,6 +137,16 @@ const blockByType = (block: any) => {
 
         return <ImageSlides slides={slideFields} />;
       }
+
+    case "callToActionBlock":
+      return (
+        <CallToAction
+          heading={block.fields.heading}
+          subheading={block.fields.subheading}
+          buttonText={block.fields.buttonText}
+          buttonLink={block.fields.buttonLink}
+        />
+      );
 
     default:
       return false;
