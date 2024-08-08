@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
 import { Links } from "./navigation";
 
 export default function Footer() {
