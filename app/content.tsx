@@ -19,6 +19,11 @@ import OurHistory, { HistoryMilestone } from "@/components/our-history";
 import DonationTiers, { Tier } from "@/components/donation-tiers";
 import ImageSlides, { SlideFields } from "@/components/image-slides";
 import CallToAction from "@/components/call-to-action";
+import Heading from "@/components/heading";
+import QuickStatisticsBlock, {
+  StatBlock,
+} from "@/components/quick-statistics-block";
+import ImageTextBlock from "@/components/image-text-block";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -145,6 +150,44 @@ const blockByType = (block: any) => {
           subheading={block.fields.subheading}
           buttonText={block.fields.buttonText}
           buttonLink={block.fields.buttonLink}
+        />
+      );
+
+    case "heading":
+      return <Heading heading={block.fields.headingText} />;
+
+    case "quickStatisticsBlock":
+      const { statBlocks } = block.fields; // Destructure the array we want
+
+      let blocks: StatBlock[] = []; // Create an empty array to store formatted values
+
+      // Map through blocks and push to new formatted array
+      statBlocks.forEach(
+        (block: {
+          metadata: {};
+          sys: {};
+          fields: { stat: string; description: string };
+        }) => {
+          let formattedBlock = {
+            stat: block.fields.stat,
+            description: block.fields.description,
+          };
+
+          blocks.push(formattedBlock);
+        }
+      );
+
+      return (
+        <QuickStatisticsBlock heading={block.fields.heading} blocks={blocks} />
+      );
+
+    case "imageAndTextBlock":
+      console.log(block.fields);
+      return (
+        <ImageTextBlock
+          heading={block.fields.heading}
+          image={block.fields.image}
+          subtext={block.fields.descriptionRich}
         />
       );
 
