@@ -1,15 +1,37 @@
+import { renderDocument } from "@/lib/renderDocument";
 import Image from "next/image";
 import React from "react";
 
-function ImageTextBlock(props: { image: {}; heading: string; subtext: {} }) {
+function ImageTextBlock(props: {
+  image: {
+    title: string;
+    description: string;
+    file: {
+      url: string;
+      details: { image: { width: number; height: number } };
+    };
+  };
+  heading: string;
+  subtext: {};
+}) {
   return (
-    <div>
-      <Image src={} width={} height={} alt={} />
+    <section
+      className={
+        "component-container component-spacer flex flex-row items-center text-primary"
+      }
+    >
+      <Image
+        src={`https:${props.image.file.url}`}
+        width={props.image.file.details.image.width}
+        height={props.image.file.details.image.height}
+        alt={props.image.description}
+        className='mr-24'
+      />
       <div>
-        <h2></h2>
-        <p></p>
+        <h2 className={"pb-12"}>{props.heading}</h2>
+        <div>{renderDocument(props.subtext)}</div>
       </div>
-    </div>
+    </section>
   );
 }
 

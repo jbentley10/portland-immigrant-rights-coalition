@@ -182,11 +182,12 @@ const blockByType = (block: any) => {
       );
 
     case "imageAndTextBlock":
-      console.log(block.fields);
+      console.log(block.fields.image.fields.file);
+
       return (
         <ImageTextBlock
           heading={block.fields.heading}
-          image={block.fields.image}
+          image={block.fields.image.fields}
           subtext={block.fields.descriptionRich}
         />
       );

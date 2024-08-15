@@ -18,11 +18,16 @@ export const renderDocument = (document: any) => {
         />
       ),
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-        <p>{children}</p>
-      )
+        <>
+          <p>{children}</p>
+          <br />
+        </>
+      ),
     },
     renderText: (text: string) =>
-			text.split("\n").flatMap((text, i) => [i > 0 && <br key={Math.random()} />, text]),
+      text
+        .split("\n")
+        .flatMap((text, i) => [i > 0 && <br key={Math.random()} />, text]),
   };
 
   return documentToReactComponents(document, options);
