@@ -21,12 +21,20 @@ function Tier(tier: Tier) {
   let dollar: string = index == 0 ? "$" : index == 1 ? "$$" : "$$$";
 
   return (
-    <div className={"flex flex-col mr-12"}>
-      <span className={"text-primary text-7xl font-extrabold text-center pb-6"}>
+    <div
+      className={
+        "flex flex-col items-center md:items-start mb-12 md:mr-12 md:mb-0"
+      }
+    >
+      <span
+        className={
+          "text-primary text-5xl md:text-7xl font-extrabold text-center pb-6"
+        }
+      >
         {dollar}
       </span>
-      <h3 className={"lg:text-2xl text-primary pb-2"}>{heading}</h3>
-      <p className={"text-primary"}>{subheading}</p>
+      <h3 className={"text-2xl text-primary pb-2"}>{heading}</h3>
+      <p className={"text-primary text-center md:text-left"}>{subheading}</p>
     </div>
   );
 }
@@ -40,7 +48,7 @@ function DonationTiers(props: DonationTiersContent) {
         <h2 className={"text-primary"}>{heading}</h2>
         <p className={"text-primary"}>{subheading}</p>
       </div>
-      <div className={"flex flex-row justify-center mt-14"}>
+      <div className={"flex flex-col md:flex-row justify-center mt-14"}>
         {tiers.map((tier) => (
           <Tier
             index={tier.index}
