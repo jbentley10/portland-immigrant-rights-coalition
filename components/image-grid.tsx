@@ -96,7 +96,9 @@ function ImageGrid(props: {
               style={{ gridRow: "span 3", gridColumn: "span 3" }}
             />
             <div style={{ gridRow: "span 2", gridColumn: "span 8" }}>
-              <h1 className={"text-primary"}>{props.textCallout}</h1>
+              <h4 className={"text-primary text-3xl md:text-5xl"}>
+                {props.textCallout}
+              </h4>
               <p>{props.subtext}</p>
             </div>
           </div>

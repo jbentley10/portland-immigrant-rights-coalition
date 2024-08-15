@@ -93,6 +93,10 @@ h3 {
   font-weight: 500;
 }
 
+h4 {
+  font-weight: 300;
+}
+
 /* XS */
 @media (max-width: 639px) {
   h1 {
