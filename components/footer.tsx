@@ -1,14 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Links } from "./navigation";
+import { Links } from "./ui/links";
 
 export default function Footer() {
   return (
     <footer
-      className={"component-container bg-primary text-primary-foreground"}
+      className={
+        "footer component-container bg-primary text-primary-foreground"
+      }
     >
-      <div className={"flex flex-row "}>
-        <div className={"w-1/2 pt-14 pb-10"}>
+      <div className={"flex flex-col sm:flex-row"}>
+        <div className={"pl-16 sm:pl-0 sm:w-1/2 pt-14 pb-10"}>
           <Image
             src='/logo.svg'
             width='200'
@@ -16,13 +18,17 @@ export default function Footer() {
             alt='The logo for PIRC'
           />
         </div>
-        <div className={`w-1/2 pt-14`}>
-          <div className={"flex flex-row"}>
-            <div className={"links border-r-2 border-white pr-20"}>
+        <div className={`sm:w-1/2 pt-14`}>
+          <div className={"flex flex-col sm:flex-row"}>
+            <div
+              className={
+                "links sm:border-r-2 border-white pl-16 sm:pl-0 sm:pr-4 md:pr-20"
+              }
+            >
               <Links orientation='vertical' size={"large"} />
             </div>
 
-            <div className={"information pl-16"}>
+            <div className={"information sm:pl-4 pl-16"}>
               <p>Privacy Policy</p>
             </div>
           </div>
