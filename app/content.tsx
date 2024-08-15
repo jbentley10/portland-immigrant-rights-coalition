@@ -189,6 +189,7 @@ const blockByType = (block: any) => {
           heading={block.fields.heading}
           image={block.fields.image.fields}
           subtext={block.fields.descriptionRich}
+          imageOnLeft={block.fields.imageOnLeft}
         />
       );
 

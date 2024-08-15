@@ -13,19 +13,20 @@ function ImageTextBlock(props: {
   };
   heading: string;
   subtext: {};
+  imageOnLeft: boolean;
 }) {
   return (
     <section
-      className={
-        "component-container component-spacer flex flex-row items-center text-primary"
-      }
+      className={`component-container component-spacer flex ${
+        props.imageOnLeft === true ? "flex-row" : "flex-row-reverse"
+      } items-center text-primary`}
     >
       <Image
         src={`https:${props.image.file.url}`}
         width={props.image.file.details.image.width}
         height={props.image.file.details.image.height}
         alt={props.image.description}
-        className='mr-24'
+        className={`${props.imageOnLeft === true ? "mr-24" : "ml-24"}`}
       />
       <div>
         <h2 className={"pb-12"}>{props.heading}</h2>
