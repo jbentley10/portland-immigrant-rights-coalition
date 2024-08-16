@@ -50,6 +50,7 @@ export default function RootLayout({
           font-family: ${inter.style.fontFamily};
         }
       `}</style>
+      <head><link rel="icon" href="/favicon.ico" sizes="any" /></head>
       <body>
         <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
           <Navigation />
