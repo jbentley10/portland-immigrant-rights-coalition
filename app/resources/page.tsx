@@ -2,7 +2,7 @@
  * @file page.tsx
  */
 // Import components and utils
-import { fetchBlocksBySlug } from "../../lib/contentfulData";
+import { fetchAssets, fetchBlocksBySlug } from "../../lib/contentfulData";
 import Content from "../content";
 
 // Set metadata
@@ -11,7 +11,7 @@ export const metadata = {
   description: process.env.META_DESCRIPTION,
 };
 
-export default async function WhatWeDo() {
+export default async function Resources() {
   const blocksEnglish = await fetchBlocksBySlug("resources", "en-US");
   const blocksSpanish = await fetchBlocksBySlug("resources", "es");
 

@@ -24,6 +24,10 @@ import QuickStatisticsBlock, {
   StatBlock,
 } from "@/components/quick-statistics-block";
 import ImageTextBlock from "@/components/image-text-block";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import ResourcesBlock from "@/components/resources-block";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -188,6 +192,15 @@ const blockByType = (block: any) => {
           image={block.fields.image.fields}
           subtext={block.fields.descriptionRich}
           imageOnLeft={block.fields.imageOnLeft}
+        />
+      );
+
+    case "resourcesBlock":
+      return (
+        <ResourcesBlock
+          heading={block.fields.heading}
+          subheading={block.fields.subheading}
+          resourceBlocks={block.fields.resourceBlocks}
         />
       );
 
