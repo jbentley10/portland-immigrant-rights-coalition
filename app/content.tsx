@@ -182,8 +182,6 @@ const blockByType = (block: any) => {
       );
 
     case "imageAndTextBlock":
-      console.log(block.fields.image.fields.file);
-
       return (
         <ImageTextBlock
           heading={block.fields.heading}

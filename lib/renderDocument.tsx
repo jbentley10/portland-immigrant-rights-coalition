@@ -23,6 +23,9 @@ export const renderDocument = (document: any) => {
           <br />
         </>
       ),
+      [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => (
+        <ul>{children}</ul>
+      ),
     },
     renderText: (text: string) =>
       text
