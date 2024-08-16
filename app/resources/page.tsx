@@ -2,7 +2,7 @@
  * @file page.tsx
  */
 // Import components and utils
-import { fetchAssets, fetchBlocksBySlug } from "../../lib/contentfulData";
+import { fetchBlocksBySlug } from "../../lib/contentfulData";
 import Content from "../content";
 
 // Set metadata

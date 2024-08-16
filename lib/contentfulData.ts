@@ -1,13 +1,12 @@
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 const environment = process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT;
-import { Asset, createClient } from "contentful";
 import { notFound } from "next/navigation";
 
-const client = createClient({
-  space: space as string,
-  accessToken: accessToken as string,
-  environment: environment as string,
+const client = require("contentful").createClient({
+  space: space,
+  accessToken: accessToken,
+  environment: environment,
 });
 
 export async function fetchPage(id: string, locale: string) {
@@ -99,52 +98,3 @@ export async function fetchAsset(assetID: string) {
 
   console.log("Error getting asset.");
 }
-
-export const fetchAssets = async (tags: string[]) => {
-  try {
-    const query = `metadata.tags.sys.id[in]=${tags.join(",")}`;
-    console.log(query);
-    const response = await client.getAssets({
-      query: query,
-    });
-
-    return response.items;
-  } catch (error) {
-    console.error("Error fetching assets:", error);
-    return []; // Return an empty array in case of error
-  }
-};
-
-interface AssetTag {
-  sys: {
-    id: string;
-  };
-}
-
-const fetchPDFAssets = async (tags: string[]): Promise<Asset[]> => {
-  try {
-    const response = await client.getAssets({
-      limit: 1000,
-      "metadata.tags.sys.id[in]": tags, // Pass the array directly
-      "fields.file.contentType": "application/pdf",
-    });
-
-    console.log("Total PDF assets found:", response.total);
-
-    response.items.forEach((asset: Asset) => {
-      console.log("Asset ID:", asset.sys.id);
-      console.log("Asset Title:", asset.fields.title);
-      console.log("Asset URL:", asset.fields.file?.url);
-      console.log(
-        "Asset Tags:",
-        asset.metadata?.tags?.map((tag) => tag.sys.id)
-      );
-      console.log("---");
-    });
-
-    return response.items;
-  } catch (error) {
-    console.error("Error fetching PDF assets:", error);
-    return [];
-  }
-};
