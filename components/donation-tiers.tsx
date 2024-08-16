@@ -28,12 +28,12 @@ function Tier(tier: Tier) {
     >
       <span
         className={
-          "text-primary text-5xl md:text-7xl font-extrabold text-center pb-6"
+          "text-primary text-5xl md:text-7xl font-extrabold text-center pb-6 xl:pb-8 xl:pt-16"
         }
       >
         {dollar}
       </span>
-      <h3 className={"text-2xl text-primary pb-2"}>{heading}</h3>
+      <h3 className={"text-2xl xl:text-3xl text-primary pb-2"}>{heading}</h3>
       <p className={"text-primary text-center md:text-left"}>{subheading}</p>
     </div>
   );
@@ -59,10 +59,11 @@ function DonationTiers(props: DonationTiersContent) {
         ))}
       </div>
       <div className={"flex justify-center mt-14"}>
-        <Button size={"lg"} variant={"default"}>
-          <Link href={buttonLink} />
-          {buttonText}
-        </Button>
+        <Link href={buttonLink}>
+          <Button size={"lg"} variant={"default"}>
+            {buttonText}
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -122,13 +122,13 @@ ul {
 /* SM */
 @media (min-width: 640px) {
   h1 {
-    line-height: 1.375;
-    font-size: 2.25rem;
+    line-height: 1.25;
+    font-size: 4.5rem;
   }
 
   h2 {
-    line-height: 1.375;
-    font-size: 2rem;
+    line-height: 1.25;
+    font-size: 4rem;
   }
 }
 

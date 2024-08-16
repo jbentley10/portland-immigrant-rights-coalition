@@ -18,7 +18,9 @@ function ImageTextBlock(props: {
   return (
     <section
       className={`component-container component-spacer flex ${
-        props.imageOnLeft === true ? "flex-row" : "flex-row-reverse"
+        props.imageOnLeft === true
+          ? "flex-col md:flex-row"
+          : "flex-col-reverse md:flex-row-reverse"
       } items-center text-primary`}
     >
       <Image
@@ -26,9 +28,11 @@ function ImageTextBlock(props: {
         width={props.image.file.details.image.width}
         height={props.image.file.details.image.height}
         alt={props.image.description}
-        className={`${props.imageOnLeft === true ? "mr-24" : "ml-24"}`}
+        className={`${
+          props.imageOnLeft === true ? "md:mr-24 md:w-1/2" : "md:ml-24 md:w-1/2"
+        }`}
       />
-      <div>
+      <div className={"md:w-1/2"}>
         <h2 className={"pb-12"}>{props.heading}</h2>
         <div>{renderDocument(props.subtext)}</div>
       </div>
