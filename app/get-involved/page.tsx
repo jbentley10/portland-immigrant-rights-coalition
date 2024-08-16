@@ -12,8 +12,8 @@ export const metadata = {
 };
 
 export default async function WhatWeDo() {
-  const blocksEnglish = await fetchBlocksBySlug("get-invovled", "en-US");
-  const blocksSpanish = await fetchBlocksBySlug("get-invovled", "es");
+  const blocksEnglish = await fetchBlocksBySlug("get-involved", "en-US");
+  const blocksSpanish = await fetchBlocksBySlug("get-involved", "es");
 
   // Wait for the promises to resolve
   const [english, spanish] = await Promise.all([blocksEnglish, blocksSpanish]);
