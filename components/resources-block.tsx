@@ -13,14 +13,14 @@ function ResourceCard(props: {
   return (
     <div
       className={
-        "bg-background px-12 py-10 rounded-md shadow-lg border-primary border-2"
+        "bg-background px-12 py-10 rounded-md shadow-lg border-primary border-2 mr-4 mb-8"
       }
     >
       <h3 className={"text-3xl mb-8"}>{props.name}</h3>
       <Image
         src={`https:${props.imageUrl}`}
         width={150}
-        height={300}
+        height={194}
         alt={props.imageDescription}
         className={"mb-8"}
       />
@@ -44,7 +44,11 @@ function ResourcesBlock(props: {
         <h2 className={"pb-4"}>{props.heading}</h2>
         <p>{props.subheading}</p>
       </div>
-      <div className={"flex flex-row"}>
+      <div
+        className={
+          "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-rows-auto"
+        }
+      >
         {props.resourceBlocks.map(
           (
             block: {
