@@ -7,7 +7,6 @@ import { Button } from "./ui/button";
 function ResourceCard(props: {
   name: string;
   imageUrl: string;
-  imageDescription: string;
   resourceUrl: string;
 }) {
   return (
@@ -21,7 +20,7 @@ function ResourceCard(props: {
         src={`https:${props.imageUrl}`}
         width={150}
         height={194}
-        alt={props.imageDescription}
+        alt={`A preview image of the ${props.name} file`}
         className={"mb-8"}
       />
       <Link target='_blank' href={`https:${props.resourceUrl}`}>
@@ -68,7 +67,6 @@ function ResourcesBlock(props: {
               key={index}
               name={block.fields.name}
               imageUrl={block.fields.previewImage.fields.file.url}
-              imageDescription={block.fields.previewImage.fields.description}
               resourceUrl={block.fields.resource.fields.file.url}
             />
           )
