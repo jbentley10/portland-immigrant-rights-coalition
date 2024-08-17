@@ -37,7 +37,7 @@ export default function Footer() {
       <p className={"text-center mt-12 pb-10"}>
         Copyright 2024{" "}
         <Link
-          className={"text-accent"}
+          className={"font-bold"}
           href='https://palmspringswebdesign.net'
           target='_blank'
         >
