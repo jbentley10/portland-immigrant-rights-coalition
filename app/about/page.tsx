@@ -7,8 +7,9 @@ import Content from "../content";
 
 // Set metadata
 export const metadata = {
-  title: process.env.TITLE,
-  description: process.env.META_DESCRIPTION,
+  title: "About | Portland Immigrant Rights Coalition",
+  description:
+    "Learn about the Portland Immigrant Rights Coalition (PIRC), a grassroots organization dedicated to ending detention and deportation of immigrant families. Discover our mission, history, and commitment to immigrant and refugee rights in Portland.",
 };
 
 export default async function About() {

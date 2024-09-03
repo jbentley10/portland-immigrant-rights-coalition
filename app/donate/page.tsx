@@ -8,8 +8,9 @@ import Script from "next/script";
 
 // Set metadata
 export const metadata = {
-  title: process.env.TITLE,
-  description: process.env.META_DESCRIPTION,
+  title: "Donate | Portland Immigrant Rights Coalition",
+  description:
+    "Support the Portland Immigrant Rights Coalition (PIRC) in defending immigrant rights. Your donation helps us provide legal defense, maintain our community hotline, employ dedicated staff, and advocate for immigration justice in Portland.",
 };
 
 export default async function Donate() {
