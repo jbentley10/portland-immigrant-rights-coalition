@@ -4,8 +4,12 @@ import { Button } from "./ui/button";
 
 function ActBlueDonateForm(props: { heading: string; body: string }) {
   return (
-    <div className={"flex component-container component-spacer"}>
-      <div className={"copy w-1/2 text-primary"}>
+    <div
+      className={
+        "flex flex-col md:flex-row component-container component-spacer"
+      }
+    >
+      <div className={"copy w-full md:w-1/2 text-primary pb-8 md:pb-0"}>
         <h2>{props.heading}</h2>
         <p>{props.body}</p>
       </div>
@@ -13,7 +17,7 @@ function ActBlueDonateForm(props: { heading: string; body: string }) {
         data-ab-form
         data-ab-token='fQK9Xh3Faz9cA2XBqfBLKMaF'
         data-ab-height='auto'
-        className={"w-1/2"}
+        className={"w-full md:w-1/2"}
       >
         <Link
           target='_blank'
