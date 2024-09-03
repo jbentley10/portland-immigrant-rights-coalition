@@ -24,10 +24,8 @@ import QuickStatisticsBlock, {
   StatBlock,
 } from "@/components/quick-statistics-block";
 import ImageTextBlock from "@/components/image-text-block";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import ResourcesBlock from "@/components/resources-block";
+import ActBlueDonateForm from "@/components/act-blue-donate-form";
 
 const blockByType = (block: any) => {
   // Get the content type from the block content properties
@@ -201,6 +199,14 @@ const blockByType = (block: any) => {
           heading={block.fields.heading}
           subheading={block.fields.subheading}
           resourceBlocks={block.fields.resourceBlocks}
+        />
+      );
+
+    case "actBlueDonateForm":
+      return (
+        <ActBlueDonateForm
+          heading={block.fields.heading}
+          body={block.fields.body}
         />
       );
 

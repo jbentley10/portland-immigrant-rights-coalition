@@ -14,9 +14,7 @@ import { Antonio, Inter } from "next/font/google";
 import FloatingActionButton from "../components/floating-action-button";
 import { LocaleContext } from "./locale-provider";
 import { Navigation } from "@/components/navigation";
-import Head from "next/head";
 import Footer from "@/components/footer";
-import Script from "next/script";
 
 // Declare fonts
 const antonio = Antonio({ subsets: ["latin"] });

@@ -2,7 +2,6 @@
  * @file page.tsx
  */
 // Import components and utils
-import ActBlueDonateForm from "@/components/act-blue-donate-form";
 import { fetchBlocksBySlug } from "../../lib/contentfulData";
 import Content from "../content";
 import Script from "next/script";
@@ -33,7 +32,6 @@ export default async function Donate() {
         englishBlocks={english}
         spanishBlocks={spanish}
       />
-      <ActBlueDonateForm />
     </main>
   );
 }
