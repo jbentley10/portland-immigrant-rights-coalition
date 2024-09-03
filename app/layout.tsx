@@ -16,6 +16,7 @@ import { LocaleContext } from "./locale-provider";
 import { Navigation } from "@/components/navigation";
 import Head from "next/head";
 import Footer from "@/components/footer";
+import Script from "next/script";
 
 // Declare fonts
 const antonio = Antonio({ subsets: ["latin"] });
@@ -50,7 +51,9 @@ export default function RootLayout({
           font-family: ${inter.style.fontFamily};
         }
       `}</style>
-      <head><link rel="icon" href="/favicon.ico" sizes="any" /></head>
+      <head>
+        <link rel='icon' href='/favicon.ico' sizes='any' />
+      </head>
       <body>
         <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
           <Navigation />
