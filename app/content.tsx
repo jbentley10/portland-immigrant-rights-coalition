@@ -216,7 +216,7 @@ const blockByType = (block: any) => {
         <div className={"text-center text-primary mt-12"}>
           <h2>{block.fields.topLine}</h2>
           <h2 className={"pb-12"}>{block.fields.bottomLine}</h2>
-        </div>
+        </div> 
       );
 
     default:
