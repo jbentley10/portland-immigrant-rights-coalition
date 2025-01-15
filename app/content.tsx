@@ -213,7 +213,7 @@ const blockByType = (block: any) => {
 
     case "hotlineBlock":
       return (
-        <div className={"text-center text-primary"}>
+        <div className={"text-center text-primary mt-12"}>
           <h2>{block.fields.topLine}</h2>
           <h2 className={"pb-12"}>{block.fields.bottomLine}</h2>
         </div>
