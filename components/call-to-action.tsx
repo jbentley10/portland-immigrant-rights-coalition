@@ -7,6 +7,7 @@ function CallToAction(props: {
   subheading: string;
   buttonText: string;
   buttonLink: string;
+  isPhone: boolean;
 }) {
   return (
     <div
@@ -18,11 +19,19 @@ function CallToAction(props: {
         <h2 className={"text-primary pb-7"}>{props.heading}</h2>
         <p className={"text-primary mb-20"}>{props.subheading}</p>
       </div>
-      <Link href={props.buttonLink}>
-        <Button size={"lg"} variant={"default"}>
-          {props.buttonText}
-        </Button>
-      </Link>
+      { props.isPhone ?
+        <a href={props.buttonLink}>
+          <Button size={"lg"} variant={"default"}>
+            {props.buttonText}
+          </Button>
+        </a>
+        :
+        <Link href={props.buttonLink}>
+          <Button size={"lg"} variant={"default"}>
+            {props.buttonText}
+          </Button>
+        </Link>
+      }
     </div>
   );
 }

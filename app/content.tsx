@@ -152,6 +152,7 @@ const blockByType = (block: any) => {
           subheading={block.fields.subheading}
           buttonText={block.fields.buttonText}
           buttonLink={block.fields.buttonLink}
+          isPhone={block.fields.isPhone}
         />
       );
 
