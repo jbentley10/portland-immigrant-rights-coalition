@@ -211,6 +211,14 @@ const blockByType = (block: any) => {
         />
       );
 
+    case "hotlineBlock":
+      return (
+        <div className={"text-center text-primary"}>
+          <h2>{block.fields.topLine}</h2>
+          <h2 className={"pb-12"}>{block.fields.bottomLine}</h2>
+        </div>
+      );
+
     default:
       return false;
   }
