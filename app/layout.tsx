@@ -9,6 +9,7 @@ import "./globals.css";
 // Import dependencies
 import React, { useState } from "react";
 import { Antonio, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react"
 
 // Import components and utils
 import FloatingActionButton from "../components/floating-action-button";
@@ -59,6 +60,7 @@ export default function RootLayout({
           <Footer />
           <FloatingActionButton />
         </LocaleContext.Provider>
+        <Analytics />
       </body>
     </html>
   );
