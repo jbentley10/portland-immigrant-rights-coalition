@@ -16,6 +16,7 @@ import FloatingActionButton from "../components/floating-action-button";
 import { LocaleContext } from "./locale-provider";
 import { Navigation } from "@/components/navigation";
 import Footer from "@/components/footer";
+import Script from "next/script";
 
 // Declare fonts
 const antonio = Antonio({ subsets: ["latin"] });
@@ -61,6 +62,21 @@ export default function RootLayout({
           <FloatingActionButton />
         </LocaleContext.Provider>
         <Analytics />
+        <Script
+          src='https://www.googletagmanager.com/gtag/js?id=G-E3RS2WG2NW'
+          strategy='beforeInteractive'
+        />
+        <Script id='gtag-script'>
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-E3RS2WG2NW');`}
+        </Script>
+        <Script
+          id='hs-script-loader'
+          strategy='lazyOnload'
+          src='https://js.hs-scripts.com/47099822.js'
+        />
       </body>
     </html>
   );
