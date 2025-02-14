@@ -53,6 +53,7 @@ export default function RootLayout({
       `}</style>
       <head>
         <link rel='icon' href='/favicon.ico' sizes='any' />
+        <meta name="google-site-verification" content="Pjo3rv4G1rYIbeMQGWrtsWDiB_c1eL5dbur-SKjBYwk" />
       </head>
       <body>
         <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
