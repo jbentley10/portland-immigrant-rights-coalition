@@ -188,7 +188,7 @@ const blockByType = (block: any) => {
       return (
         <ImageTextBlock
           heading={block.fields.heading}
-          image={block.fields.image.fields}
+          image={block.fields.image?.fields}
           subtext={block.fields.descriptionRich}
           imageOnLeft={block.fields.imageOnLeft}
           linkHref={block.fields.linkHref}

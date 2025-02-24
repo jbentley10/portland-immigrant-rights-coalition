@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 
 function ImageTextBlock(props: {
-  image: {
+  image?: {
     title: string;
     description: string;
     file: {
@@ -41,7 +41,7 @@ function ImageTextBlock(props: {
         />
       )}
 
-      <div className={"md:w-1/2"}>
+      <div className={props.image ? "md:w-1/2" : "w-full text-center"}>
         {props.heading && <h2 className={"pb-12"}>{props.heading}</h2>}
         <div>{renderDocument(props.subtext)}</div>
         {props && props.linkHref && props.linkText && (
