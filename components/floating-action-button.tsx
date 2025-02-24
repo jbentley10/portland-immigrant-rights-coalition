@@ -15,7 +15,7 @@ const FloatingActionButton: React.FC = () => {
   return (
     <div
       className={
-        "floating-action-button fixed lg:bottom-14 lg:right-14 xs:bottom-9 xs:right-9"
+        "floating-action-button fixed bottom-5 right-5 lg:bottom-14 lg:right-14 xs:bottom-9 xs:right-9"
       }
     >
       <Button
