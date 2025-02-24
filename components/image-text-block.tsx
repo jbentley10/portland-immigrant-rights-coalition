@@ -15,8 +15,8 @@ function ImageTextBlock(props: {
   };
   heading?: string;
   subtext: {};
-  linkHref: string;
-  linkText: string;
+  linkHref?: string;
+  linkText?: string;
   imageOnLeft: boolean;
 }) {
   return (
