@@ -45,7 +45,7 @@ function ImageTextBlock(props: {
         {props.heading && <h2 className={"pb-12"}>{props.heading}</h2>}
         <div>{renderDocument(props.subtext)}</div>
         {props && props.linkHref && props.linkText && (
-          <Link href={props.linkHref}>
+          <Link target="blank" href={props.linkHref}>
             <Button>{props.linkText}</Button>
           </Link>
         )}
