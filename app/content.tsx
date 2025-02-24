@@ -191,6 +191,8 @@ const blockByType = (block: any) => {
           image={block.fields.image.fields}
           subtext={block.fields.descriptionRich}
           imageOnLeft={block.fields.imageOnLeft}
+          linkHref={block.fields.linkHref}
+          linkText={block.fields.linkText}
         />
       );
 

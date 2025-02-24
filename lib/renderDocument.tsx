@@ -3,7 +3,7 @@
  */
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 
 export const renderDocument = (document: any) => {
@@ -23,8 +23,19 @@ export const renderDocument = (document: any) => {
           <br />
         </>
       ),
+
       [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => (
         <ul>{children}</ul>
+      ),
+      [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
+        <a
+          href={node.data.uri}
+          className="font-bold text-primary text-sky-400 hover:text-primary/80 transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {children}
+        </a>
       ),
     },
     renderText: (text: string) =>
