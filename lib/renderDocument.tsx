@@ -19,7 +19,7 @@ export const renderDocument = (document: any) => {
       ),
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
         <>
-          <p>{children}</p>
+          <p className={"text-left"}>{children}</p>
           <br />
         </>
       ),

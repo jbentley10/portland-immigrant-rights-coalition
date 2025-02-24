@@ -13,7 +13,7 @@ function ImageTextBlock(props: {
       details: { image: { width: number; height: number } };
     };
   };
-  heading: string;
+  heading?: string;
   subtext: {};
   linkHref: string;
   linkText: string;
@@ -35,8 +35,8 @@ function ImageTextBlock(props: {
           alt={props.image.description}
           className={`${
             props.imageOnLeft === true
-              ? "md:mr-24 md:w-1/2"
-              : "md:ml-24 md:w-1/2"
+              ? "pb-8 md:pb-0 md:mr-24 md:w-1/2"
+              : "pb-8 md:pb-0 md:ml-24 md:w-1/2"
           }`}
         />
       )}
