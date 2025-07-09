@@ -134,6 +134,11 @@ ul {
 
 /* MD */
 @media (min-width: 768px) {
+  h1 {
+    line-height: 1.25;
+    font-size: 2.5rem;
+  }
+
   h2 {
     line-height: 1.375;
     font-size: 2.5rem;
