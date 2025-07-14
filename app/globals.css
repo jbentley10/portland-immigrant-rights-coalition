@@ -115,7 +115,7 @@ ul {
 
   .component-container,
   .atf-container {
-    padding: 0 12px;
+    padding: 0 12px 64px 12px;
   }
 }
 
