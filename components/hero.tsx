@@ -14,7 +14,7 @@ export default function Hero(props: {
   buttonText: string;
 }) {
   return (
-    <section className='h-dvh md:h-auto mt-0 sm:pt-10 lg:pt-14 xl:pt-16 atf-container bg-primary relative w-full flex'>
+    <section className='h-auto mt-0 sm:pt-10 lg:pt-14 xl:pt-16 atf-container bg-primary relative w-full flex'>
       <div className='hidden md:inline w-0 md:w-1/2'>
         <Image
           src='/hero-image.webp'
@@ -24,7 +24,7 @@ export default function Hero(props: {
           loading='eager'
         />
       </div>
-      <div className='w-full md:w-1/2 relative z-10 text-left'>
+      <div className='w-full md:w-1/2 relative z-10 text-left pt-14 sm:pt-0'>
         <div className='mb-16 max-w-md'>
           <h1 className='pb-7 text-white font-bold tracking-tight'>
             {props.heading}

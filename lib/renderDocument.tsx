@@ -24,9 +24,8 @@ export const renderDocument = (document: any) => {
         </>
       ),
 
-      [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => (
-        <ul>{children}</ul>
-      ),
+      [BLOCKS.UL_LIST]: (node: any, children: any) => <ul className="list-disc ml-6 pl-14">{children}</ul>,
+      [BLOCKS.LIST_ITEM]: (node: any, children: any) => <li>{children}</li>,
       [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
         <a
           href={node.data.uri}

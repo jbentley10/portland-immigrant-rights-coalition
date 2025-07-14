@@ -10,7 +10,7 @@ function ActBlueDonateForm(props: { heading: string; body: string }) {
       }
     >
       <div className={"copy w-full md:w-1/2 text-primary pb-8 md:pb-0"}>
-        <h2>{props.heading}</h2>
+        <h2 className='pb-8'>{props.heading}</h2>
         <p>{props.body}</p>
       </div>
       <div
