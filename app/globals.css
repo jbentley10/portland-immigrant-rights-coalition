@@ -130,6 +130,11 @@ ul {
     line-height: 1.25;
     font-size: 4rem;
   }
+
+  .component-container,
+  .atf-container {
+    padding: 0 12px 64px 12px;
+  }
 }
 
 /* MD */
