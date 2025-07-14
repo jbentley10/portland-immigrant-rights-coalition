@@ -24,7 +24,7 @@ export default function Hero(props: {
           loading='eager'
         />
       </div>
-      <div className='w-full md:w-1/2 relative z-10 text-left'>
+      <div className='w-full md:w-1/2 relative z-10 text-left pt-14 sm:pt-0'>
         <div className='mb-16 max-w-md'>
           <h1 className='pb-7 text-white font-bold tracking-tight'>
             {props.heading}
