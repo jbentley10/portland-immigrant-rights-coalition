@@ -29,7 +29,12 @@ export default function Footer() {
             </div>
 
             <div className={"information sm:pl-4 pl-16"}>
-              <p>Privacy Policy</p>
+              <p>PIRC Tax ID 83-3179589</p>
+              <br />
+              <p>PO Box 13434</p>
+              <p>Portland, OR</p> 
+              <p>97213-0434</p>
+              <p>United States</p>
             </div>
           </div>
         </div>
