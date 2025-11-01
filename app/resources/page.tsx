@@ -3,7 +3,7 @@
  */
 // Import components and utils
 import { fetchBlocksBySlug } from "../../lib/contentfulData";
-import Content from "../content";
+import BilingualResourcesBlock from "../../components/bilingual-resources-block";
 
 // Set metadata
 export const metadata = {
@@ -19,13 +19,26 @@ export default async function Resources() {
   // Wait for the promises to resolve
   const [english, spanish] = await Promise.all([blocksEnglish, blocksSpanish]);
 
+  // Find the resources blocks from both languages
+  const englishResourcesBlock = english.find(
+    (block: any) => block.sys.contentType.sys.id === "resourcesBlock"
+  );
+  const spanishResourcesBlock = spanish.find(
+    (block: any) => block.sys.contentType.sys.id === "resourcesBlock"
+  );
+
   return (
     <main>
-      <Content
-        key={Math.random()}
-        englishBlocks={english}
-        spanishBlocks={spanish}
-      />
+      {englishResourcesBlock && spanishResourcesBlock && (
+        <BilingualResourcesBlock
+          englishHeading={englishResourcesBlock.fields.heading}
+          englishSubheading={englishResourcesBlock.fields.subheading}
+          englishResourceBlocks={englishResourcesBlock.fields.resourceBlocks}
+          spanishHeading={spanishResourcesBlock.fields.heading}
+          spanishSubheading={spanishResourcesBlock.fields.subheading}
+          spanishResourceBlocks={spanishResourcesBlock.fields.resourceBlocks}
+        />
+      )}
     </main>
   );
 }
