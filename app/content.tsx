@@ -19,6 +19,7 @@ import OurHistory, { HistoryMilestone } from "@/components/our-history";
 import DonationTiers, { Tier } from "@/components/donation-tiers";
 import ImageSlides, { SlideFields } from "@/components/image-slides";
 import CallToAction from "@/components/call-to-action";
+import HotlineBlock from "@/components/hotline-block";
 import Heading from "@/components/heading";
 import QuickStatisticsBlock, {
   StatBlock,
@@ -215,10 +216,12 @@ const blockByType = (block: any) => {
 
     case "hotlineBlock":
       return (
-        <div className={"text-center text-primary mt-12"}>
-          <h2>{block.fields.topLine}</h2>
-          <h2 className={"pb-12"}>{block.fields.bottomLine}</h2>
-        </div> 
+        <HotlineBlock
+          topLine={block.fields.topLine}
+          bottomLine={block.fields.bottomLine}
+          buttonText={block.fields.buttonText}
+          buttonLink={block.fields.buttonLink}
+        />
       );
 
     default:

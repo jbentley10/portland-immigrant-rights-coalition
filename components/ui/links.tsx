@@ -1,9 +1,18 @@
-import Link from "next/link";
+"use client";
+import { DesktopNavigationLink } from "./desktop-navigation-link";
+import { MobileNavigationLink } from "./mobile-navigation-link";
 
+// Link list structure with support for child pages
 let linkList = [
   {
     name: "About",
     url: "/about",
+    childPages: [
+      {
+        name: "Hotline",
+        url: "/about/hotline"
+      }
+    ]
   },
   {
     name: "What We Do",
@@ -26,6 +35,8 @@ let linkList = [
 export const Links = (props: {
   orientation: "horizontal" | "vertical";
   size: "large" | "small" | "mobile";
+  onLinkClick?: () => void;
+  showChildPages?: boolean;
 }) => {
   const getClassName = () => {
     if (props.size === "small") {
@@ -37,33 +48,54 @@ export const Links = (props: {
     }
   };
 
-  const containerClassName = props.orientation === "horizontal" 
-    ? "flex flex-row" 
-    : props.size === "mobile" 
-      ? "flex flex-col space-y-2" 
+  const containerClassName = props.orientation === "horizontal"
+    ? "flex flex-row items-center"
+    : props.size === "mobile"
+      ? "flex flex-col space-y-2"
       : "flex flex-row sm:flex-col";
+
+  const linkClassName = `
+    hover:opacity-50 text-white
+    ${props.size === "mobile" ? "" : "mr-2 sm:mr-4 lg:mr-5 xl:mr-6"}
+    ${getClassName()}
+  `;
+
+  // Use different navigation components based on size
+  const isMobile = props.size === "mobile";
 
   return (
     <div className={containerClassName}>
       {linkList.map((link, index) => (
-        <Link
-          key={index}
-          className={`
-            hover:opacity-50 text-white 
-            ${props.size === "mobile" ? "" : "mr-2 sm:mr-4 lg:mr-5 xl:mr-6"}
-            ${getClassName()}
-          `}
-          href={link.url}
-        >
-          {link.name}
-        </Link>
+        isMobile ? (
+          <MobileNavigationLink
+            key={index}
+            name={link.name}
+            url={link.url}
+            childPages={props.showChildPages !== false ? link.childPages : undefined}
+            className={linkClassName}
+            onLinkClick={props.onLinkClick}
+          />
+        ) : (
+          <DesktopNavigationLink
+            key={index}
+            name={link.name}
+            url={link.url}
+            childPages={props.showChildPages !== false ? link.childPages : undefined}
+            className={linkClassName}
+          />
+        )
       ))}
-      <a className={`
-          text-white 
-            ${props.size === "mobile" ? "" : "mr-2 sm:mr-4 lg:mr-5 xl:mr-6"}
-            ${getClassName()}
-          `} 
-        href={'tel:+18886221510'}>Hotline (888) 622-1510</a>
+      <a
+        className={`
+          text-white
+          ${props.size === "mobile" ? "" : "mr-2 sm:mr-4 lg:mr-5 xl:mr-6"}
+          ${getClassName()}
+        `}
+        href={'tel:+18886221510'}
+        onClick={props.onLinkClick}
+      >
+        Hotline (888) 622-1510
+      </a>
     </div>
   );
 };

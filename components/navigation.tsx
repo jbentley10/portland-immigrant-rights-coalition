@@ -14,7 +14,7 @@ export const Navigation = () => {
 
   return (
     <>
-    <nav className='atf-container sm:pt-10 md:pt-11 m-0 bg-nav drop-shadow flex flex-col md:flex-row items-center justify-between xs:justify-end'>
+    <nav className='atf-container sm:pt-10 md:pt-11 m-0 bg-nav drop-shadow flex flex-col md:flex-row items-center justify-between xs:justify-end' style={{ overflow: 'visible' }}>
       <section className='w-full md:w-1/2 flex items-center justify-between' id='logo'>
         <Link href={"/"}>
           <Image src='/logo.svg' width='100' height='95' alt='logo' />
@@ -36,9 +36,10 @@ export const Navigation = () => {
       <section
         className='hidden md:flex w-full pt-4 pb-8 md:py-0 md:w-1/2 flex-row justify-start'
         id='links-and-phone'
+        style={{ overflow: 'visible' }}
       >
-        <div className='' id='links'>
-          <Links orientation='horizontal' size='small' />
+        <div className='' id='links' style={{ overflow: 'visible' }}>
+          <Links orientation='horizontal' size='small' showChildPages={true} />
         </div>
       </section>
     </nav>

@@ -25,7 +25,7 @@ export default function Footer() {
                 "links sm:border-r-2 border-white pl-16 sm:pl-0 sm:pr-4 md:pr-20"
               }
             >
-              <Links orientation='vertical' size={"large"} />
+              <Links orientation='vertical' size={"large"} showChildPages={false} />
             </div>
 
             <div className={"information sm:pl-4 pl-16"}>

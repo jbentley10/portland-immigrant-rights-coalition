@@ -45,7 +45,7 @@ export const MobileNavPanel = ({ isOpen, onClose }: MobileNavPanelProps) => {
           {/* Navigation links */}
           <div className='flex-1 px-6 py-4' id='mobile-links'>
             <div className='flex flex-col'>
-              <Links orientation='vertical' size='mobile' />
+              <Links orientation='vertical' size='mobile' onLinkClick={onClose} showChildPages={true} />
             </div>
           </div>
         </div>
