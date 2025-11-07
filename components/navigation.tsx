@@ -39,7 +39,7 @@ export const Navigation = () => {
         style={{ overflow: 'visible' }}
       >
         <div className='' id='links' style={{ overflow: 'visible' }}>
-          <Links orientation='horizontal' size='small' showChildPages={true} />
+          <Links orientation='horizontal' size='small' showChildPages={false} />
         </div>
       </section>
     </nav>
