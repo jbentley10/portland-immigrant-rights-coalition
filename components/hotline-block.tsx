@@ -12,8 +12,8 @@ function HotlineBlock(props: {
     <div className={"text-center text-primary my-12"}>
       <h2>{props.topLine}</h2>
       <h2 className={"pb-12"}>{props.bottomLine}</h2>
-      <Link href="https://google.com">
-        <Button>Test!</Button>
+      <Link href={props.buttonLink}>
+        <Button>{props.buttonText}</Button>
       </Link>
     </div>
   );
