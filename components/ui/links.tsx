@@ -52,7 +52,7 @@ export const Links = (props: {
     ? "flex flex-row items-center"
     : props.size === "mobile"
       ? "flex flex-col space-y-2"
-      : "flex flex-col py-8";
+      : "flex flex-col pb-2";
 
   const linkClassName = `
     hover:opacity-50 text-white
