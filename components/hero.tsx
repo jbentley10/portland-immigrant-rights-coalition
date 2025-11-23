@@ -14,13 +14,14 @@ export default function Hero(props: {
   buttonText: string;
 }) {
   return (
-    <section className='h-auto mt-0 sm:pt-10 lg:pt-14 xl:pt-16 atf-container bg-primary relative w-full flex'>
+    <section className='h-auto mt-0 sm:pt-10 lg:pt-14 xl:pt-16 lg:pb-10 atf-container bg-primary relative w-full flex'>
       <div className='hidden md:inline w-0 md:w-1/2'>
         <Image
-          src='/hero-image.webp'
-          width={1201}
-          height={1321}
-          alt='A monotone red image of a man addressing a crowd'
+          src='/rose-black.webp'
+          className='w-3/4'
+          width={800}
+          height={920}
+          alt='A monotone image of a rose, with a heart that says "We keep us safe"'
           loading='eager'
         />
       </div>
