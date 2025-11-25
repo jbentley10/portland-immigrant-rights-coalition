@@ -75,6 +75,7 @@ function BilingualResourcesBlock(props: {
   spanishSubheading: string;
   spanishResourceBlocks: ResourceBlock[];
 }) {
+
   return (
     <section className="component-spacer component-container text-primary">
       <div className="block-heading mb-12">

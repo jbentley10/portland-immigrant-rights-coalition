@@ -16,6 +16,10 @@ import Hero from "@/components/hero";
 import DividerText from "@/components/divider-text";
 import ImageGrid, { ContentfulImage } from "@/components/image-grid";
 import OurHistory, { HistoryMilestone } from "@/components/our-history";
+import IconCalloutSection, {
+  CalloutItem,
+  SocialIcon,
+} from "@/components/icon-callout-section";
 import DonationTiers, { Tier } from "@/components/donation-tiers";
 import ImageSlides, { SlideFields } from "@/components/image-slides";
 import CallToAction from "@/components/call-to-action";
@@ -25,10 +29,15 @@ import QuickStatisticsBlock, {
   StatBlock,
 } from "@/components/quick-statistics-block";
 import ImageTextBlock from "@/components/image-text-block";
-import ResourcesBlock from "@/components/resources-block";
 import ActBlueDonateForm from "@/components/act-blue-donate-form";
+import BilingualResourcesBlock from "@/components/bilingual-resources-block";
 
-const blockByType = (block: any) => {
+const blockByType = (
+  block: any,
+  index: number,
+  englishBlocks: any[],
+  spanishBlocks: any[]
+) => {
   // Get the content type from the block content properties
   const contentType = block.sys.contentType.sys.id;
 
@@ -131,6 +140,43 @@ const blockByType = (block: any) => {
         );
       }
 
+    case "iconCalloutSection":
+      if (block.fields && block.fields.item) {
+        let items: CalloutItem[] = [];
+
+        // Map through each item in Contentful
+        block.fields.item.forEach(
+          (item: {
+            fields: {
+              icon: SocialIcon;
+              heading: string;
+              body: string;
+              buttonText?: string;
+              buttonLink?: string;
+            };
+          }) => {
+            items.push({
+              icon: item.fields.icon,
+              heading: item.fields.heading,
+              body: item.fields.body,
+              buttonText: item.fields.buttonText,
+              buttonLink: item.fields.buttonLink,
+            });
+          }
+        );
+
+        return (
+          <IconCalloutSection
+            heading={block.fields.heading}
+            subheading={block.fields.subheading}
+            items={items}
+            buttonText={block.fields.ctaText}
+            buttonLink={block.fields.ctaLink}
+          />
+        );
+      }
+      return null;
+
     case "imageSlidesBlock":
       if (block.fields) {
         let imageSlides = block.fields.imageSlide; // Create an easy-to-read variable for the imageSlide field
@@ -198,11 +244,18 @@ const blockByType = (block: any) => {
       );
 
     case "resourcesBlock":
+      // Get both English and Spanish versions of the block
+      const englishBlock = englishBlocks[index];
+      const spanishBlock = spanishBlocks[index];
+
       return (
-        <ResourcesBlock
-          heading={block.fields.heading}
-          subheading={block.fields.subheading}
-          resourceBlocks={block.fields.resourceBlocks}
+        <BilingualResourcesBlock
+          englishHeading={englishBlock.fields.heading}
+          englishSubheading={englishBlock.fields.subheading}
+          englishResourceBlocks={englishBlock.fields.resourceBlocks}
+          spanishHeading={spanishBlock.fields.heading}
+          spanishSubheading={spanishBlock.fields.subheading}
+          spanishResourceBlocks={spanishBlock.fields.resourceBlocks}
         />
       );
 
@@ -250,8 +303,8 @@ export default function Content({
 
   return (
     translatedBlocks &&
-    translatedBlocks.map((block: any) => {
-      return blockByType(block);
+    translatedBlocks.map((block: any, index: number) => {
+      return blockByType(block, index, englishBlocks, spanishBlocks);
     })
   );
 }

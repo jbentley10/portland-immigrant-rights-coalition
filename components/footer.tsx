@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Links } from "./ui/links";
+import { Facebook, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -29,12 +30,21 @@ export default function Footer() {
             </div>
 
             <div className={"information sm:pl-4 pl-4 md:pl-16"}>
-              <p>PIRC Tax ID 83-3179589</p>
+              <p>Email: <Link href="mailto:pircpdx@gmail.com">pircpdx@gmail.com</Link></p>
+              <br />
+              <p>Non-emergency voicemail line: <Link href="tel:971-940-9053">971-940-9053</Link></p>
+              <br />
+              <div className="flex row space-x-4">
+                <Link target="_blank" href="https://instagram.com/pirc_oregon"><Instagram /></Link>            
+                <Link target="_blank" href="https://facebook.com/pdximmigrantrights"><Facebook /></Link>
+              </div>
               <br />
               <p>PO Box 13434</p>
               <p>Portland, OR</p>
               <p>97213-0434</p>
               <p>United States</p>
+              <br />
+              <p>PIRC Tax ID 83-3179589</p>                          
             </div>
           </div>
         </div>
