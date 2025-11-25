@@ -39,7 +39,7 @@ function CalloutCard({
   return (
     <div
       className={
-        "flex flex-col items-center md:items-start mb-12 md:mr-12 md:mb-0"
+        "flex component-container flex-col items-center md:items-start mb-12 md:mr-12 md:mb-0"
       }
     >
       <div
