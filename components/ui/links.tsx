@@ -17,6 +17,12 @@ let linkList = [
   {
     name: "What We Do",
     url: "/what-we-do",
+    childPages: [
+      {
+        name: "Weekly Updates",
+        url: "/what-we-do/weekly-updates"
+      }
+    ]
   },
   {
     name: "Get Involved",
