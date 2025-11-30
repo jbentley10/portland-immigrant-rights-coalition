@@ -44,7 +44,11 @@ export default function Footer() {
               <p>97213-0434</p>
               <p>United States</p>
               <br />
-              <p>PIRC Tax ID 83-3179589</p>                          
+              <p>PIRC Tax ID 83-3179589</p>
+              <br />
+              <Link href="/privacy-policy"><strong>Privacy Policy</strong></Link>
+              <br />
+              <Link href="/terms-of-service"><strong>Terms of Service</strong></Link>                   
             </div>
           </div>
         </div>
