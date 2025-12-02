@@ -37,7 +37,7 @@ export default function RootLayout({
         h3,
         h4,
         button,
-        span,
+        span,        
         .antonio {
           font-family: ${antonio.style.fontFamily};
         }
@@ -47,6 +47,7 @@ export default function RootLayout({
         }
 
         p,
+        strong,
         a {
           font-family: ${inter.style.fontFamily};
         }
