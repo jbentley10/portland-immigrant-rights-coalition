@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { FacebookIcon, TwitterIcon, InstagramIcon } from "lucide-react";
+import { FacebookIcon, TwitterIcon, InstagramIcon, DollarSign, Mail, Share2 } from "lucide-react";
 
 interface IconCalloutSectionProps {
   heading: string;
@@ -25,6 +25,9 @@ const iconMap = {
   Facebook: FacebookIcon,
   Twitter: TwitterIcon,
   Instagram: InstagramIcon,
+  DollarSign: DollarSign,
+  Mail: Mail,
+  Share2: Share2
 };
 
 function CalloutCard({
@@ -68,7 +71,7 @@ function IconCalloutSection(props: IconCalloutSectionProps) {
   let { heading, subheading, items, buttonText, buttonLink } = props;
 
   return (
-    <div className={"component-container"}>
+    <div className={"component-container mt-16"}>
       <div className={"text-center"}>
         <h2 className={"text-primary"}>{heading}</h2>
         <p className={"text-primary"}>{subheading}</p>
