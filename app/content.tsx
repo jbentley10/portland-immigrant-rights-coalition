@@ -31,13 +31,19 @@ import QuickStatisticsBlock, {
 import ImageTextBlock from "@/components/image-text-block";
 import ActBlueDonateForm from "@/components/act-blue-donate-form";
 import BilingualResourcesBlock from "@/components/bilingual-resources-block";
+import UpdateBanner from "@/components/update-banner";
 
-const blockByType = (
-  block: any,
-  index: number,
-  englishBlocks: any[],
-  spanishBlocks: any[]
-) => {
+const BlockByType = ({
+  block,
+  index,
+  englishBlocks,
+  spanishBlocks,
+}: {
+  block: any;
+  index: number;
+  englishBlocks: any[];
+  spanishBlocks: any[];
+}) => {
   // Get the content type from the block content properties
   const contentType = block.sys.contentType.sys.id;
 
@@ -75,7 +81,7 @@ const blockByType = (
           />
         );
       }
-      return false;
+      return null;
 
     case "ourHistoryBlock":
       if (block.fields) {
@@ -277,8 +283,11 @@ const blockByType = (
         />
       );
 
+    case "updateBanner":
+      return <UpdateBanner {...block.fields} />;
+
     default:
-      return false;
+      return null;
   }
 };
 
@@ -304,7 +313,15 @@ export default function Content({
   return (
     translatedBlocks &&
     translatedBlocks.map((block: any, index: number) => {
-      return blockByType(block, index, englishBlocks, spanishBlocks);
+      return (
+        <BlockByType
+          key={block?.sys?.id || index}
+          block={block}
+          index={index}
+          englishBlocks={englishBlocks}
+          spanishBlocks={spanishBlocks}
+        />
+      );
     })
   );
 }
