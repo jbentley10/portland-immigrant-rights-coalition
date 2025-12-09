@@ -31,7 +31,6 @@ import QuickStatisticsBlock, {
 import ImageTextBlock from "@/components/image-text-block";
 import ActBlueDonateForm from "@/components/act-blue-donate-form";
 import BilingualResourcesBlock from "@/components/bilingual-resources-block";
-import UpdateBanner from "@/components/update-banner";
 
 const BlockByType = ({
   block,
@@ -282,9 +281,6 @@ const BlockByType = ({
           buttonLink={block.fields.buttonLink}
         />
       );
-
-    case "updateBanner":
-      return <UpdateBanner {...block.fields} />;
 
     default:
       return null;
