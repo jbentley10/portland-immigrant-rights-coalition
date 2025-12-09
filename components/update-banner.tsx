@@ -6,7 +6,7 @@ import type { Document } from "@contentful/rich-text-types";
 function UpdateBanner({ header, copy }: { header: string; copy?: Document }) {
   const [expanded, setExpanded] = useState(false);
   return (
-    <div className="bg-popover text-center p-4 sticky bottom-0 left-0 w-full z-50 transition-all duration-300 pb-14 lg:pb-24 xl:pb-4">
+    <div className="bg-primary text-white text-center p-4 sticky top-0 left-0 w-full z-50 transition-all duration-300 border-b-[1px] border-b-background">
       <button
         className="flex items-center justify-center w-full focus:outline-none"
         onClick={() => setExpanded((prev) => !prev)}
