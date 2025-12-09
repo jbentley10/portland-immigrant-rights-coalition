@@ -92,7 +92,8 @@ export async function fetchBlocksBySlug(slug: string, locale: string) {
   // There will only be one that matches the slug
   if (pages.items[0]) {
     const blocks = pages.items[0].fields.blocks;
-    return blocks;
+    // Filter out any undefined entries that might come from unpublished/deleted references
+    return blocks?.filter((block: any) => block !== undefined) || [];
   }
 }
 

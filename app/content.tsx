@@ -43,6 +43,11 @@ const BlockByType = ({
   englishBlocks: any[];
   spanishBlocks: any[];
 }) => {
+  // Safety check: if block is undefined, skip it
+  if (!block || !block.sys || !block.sys.contentType) {
+    return null;
+  }
+
   // Get the content type from the block content properties
   const contentType = block.sys.contentType.sys.id;
 
