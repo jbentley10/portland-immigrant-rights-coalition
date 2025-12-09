@@ -33,12 +33,17 @@ import ActBlueDonateForm from "@/components/act-blue-donate-form";
 import BilingualResourcesBlock from "@/components/bilingual-resources-block";
 import EventsBlock from "@/components/events";
 
-const blockByType = (
-  block: any,
-  index: number,
-  englishBlocks: any[],
-  spanishBlocks: any[]
-) => {
+const BlockByType = ({
+  block,
+  index,
+  englishBlocks,
+  spanishBlocks,
+}: {
+  block: any;
+  index: number;
+  englishBlocks: any[];
+  spanishBlocks: any[];
+}) => {
   // Safety check: if block is undefined, skip it
   if (!block || !block.sys || !block.sys.contentType) {
     return null;
@@ -81,7 +86,7 @@ const blockByType = (
           />
         );
       }
-      return false;
+      return null;
 
     case "ourHistoryBlock":
       if (block.fields) {
@@ -293,7 +298,7 @@ const blockByType = (
       );
 
     default:
-      return false;
+      return null;
   }
 };
 
@@ -319,7 +324,15 @@ export default function Content({
   return (
     translatedBlocks &&
     translatedBlocks.map((block: any, index: number) => {
-      return blockByType(block, index, englishBlocks, spanishBlocks);
+      return (
+        <BlockByType
+          key={block?.sys?.id || index}
+          block={block}
+          index={index}
+          englishBlocks={englishBlocks}
+          spanishBlocks={spanishBlocks}
+        />
+      );
     })
   );
 }

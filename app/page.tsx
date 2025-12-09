@@ -7,8 +7,9 @@ import Content from "./content";
 
 // Set metadata
 export const metadata = {
-  title: 'Home | Portland Immigrant Rights Coalition',
-  description: 'Portland Immigrant Rights Coalition (PIRC) support immigrant rights through direct assistance, education, legal support, advocacy, and community organizing.',
+  title: "Home | Portland Immigrant Rights Coalition",
+  description:
+    "Portland Immigrant Rights Coalition (PIRC) support immigrant rights through direct assistance, education, legal support, advocacy, and community organizing.",
 };
 
 export default async function Home() {
@@ -20,11 +21,7 @@ export default async function Home() {
 
   return (
     <main>
-      <Content
-        key={Math.random()}
-        englishBlocks={english}
-        spanishBlocks={spanish}
-      />
+      <Content englishBlocks={english} spanishBlocks={spanish} />
     </main>
   );
 }
