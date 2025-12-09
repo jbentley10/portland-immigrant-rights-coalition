@@ -31,6 +31,7 @@ import QuickStatisticsBlock, {
 import ImageTextBlock from "@/components/image-text-block";
 import ActBlueDonateForm from "@/components/act-blue-donate-form";
 import BilingualResourcesBlock from "@/components/bilingual-resources-block";
+import EventsBlock from "@/components/events";
 
 const blockByType = (
   block: any,
@@ -279,6 +280,15 @@ const blockByType = (
           bottomLine={block.fields.bottomLine}
           buttonText={block.fields.buttonText}
           buttonLink={block.fields.buttonLink}
+        />
+      );
+
+    case "events":
+      return (
+        <EventsBlock
+          title={block.fields.title}
+          description={block.fields.description}
+          events={block.fields.events}
         />
       );
 
