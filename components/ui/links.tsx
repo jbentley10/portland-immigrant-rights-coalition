@@ -13,33 +13,44 @@ let linkList = [
         url: "/about/hotline",
       },
       {
-        name: "Events",
-        url: "/about/events",
+        name: "What We Do",
+        url: "about/what-we-do",
+      },
+      {
+        name: "Resource Center",
+        url: "about/resource-center",
       },
     ],
   },
   {
-    name: "What We Do",
-    url: "/what-we-do",
+    name: "Data and Updates",
+    url: "/data-and-updates",
     childPages: [
       {
         name: "Weekly Updates",
-        url: "/what-we-do/weekly-updates",
+        url: "/data-and-updates/weekly-updates",
       },
     ],
   },
   {
     name: "Get Involved",
     url: "/get-involved",
+    childPages: [
+      {
+        name: "Events",
+        url: "/get-involved/events",
+      },
+    ],
+  },
+  {
+    name: "Store",
+    target: "_blank",
+    url: "https://www.bonfire.com/org/portland-immigrant-rights-coalition-833179589/",
   },
   {
     name: "Donate",
     url: "/donate",
-  },
-  {
-    name: "Resources",
-    url: "/resources",
-  },
+  }
 ];
 
 export const Links = (props: {
@@ -62,8 +73,8 @@ export const Links = (props: {
     props.orientation === "horizontal"
       ? "flex flex-row items-center"
       : props.size === "mobile"
-      ? "flex flex-col space-y-2"
-      : "flex flex-col pb-2";
+        ? "flex flex-col space-y-2"
+        : "flex flex-col pb-2";
 
   const linkClassName = `
     hover:opacity-50 text-white
@@ -82,6 +93,7 @@ export const Links = (props: {
             key={index}
             name={link.name}
             url={link.url}
+            target={link.target}
             childPages={
               props.showChildPages !== false ? link.childPages : undefined
             }
@@ -93,6 +105,7 @@ export const Links = (props: {
             key={index}
             name={link.name}
             url={link.url}
+            target={link.target}
             childPages={
               props.showChildPages !== false ? link.childPages : undefined
             }

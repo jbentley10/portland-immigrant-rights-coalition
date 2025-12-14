@@ -11,6 +11,7 @@ interface DesktopNavigationLinkProps {
   name: string;
   url: string;
   childPages?: ChildPage[];
+  target?: string;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const DesktopNavigationLink = ({
   name,
   url,
   childPages,
+  target,
   className = "",
 }: DesktopNavigationLinkProps) => {
   const popoverId = useId();
@@ -28,7 +30,7 @@ export const DesktopNavigationLink = ({
   // If no child pages, render a simple link
   if (!childPages || childPages.length === 0) {
     return (
-      <Link href={url} className={className}>
+      <Link href={url} className={className} target={target}>
         {name}
       </Link>
     );
