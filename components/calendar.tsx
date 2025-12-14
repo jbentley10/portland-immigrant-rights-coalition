@@ -2,17 +2,15 @@
 
 import type React from "react"
 import { useState, useCallback } from "react"
-import { ChevronLeft, ChevronRight, X } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
-import { renderDocument } from "@/lib/renderDocument"
 import type { Document } from "@contentful/rich-text-types"
 
 export type EventType = {
     id: string
     name: string
-    description: { json: Document }
+    description?: { json: Document }
     dateAndTime: string // ISO string
     link?: string
 }
@@ -49,59 +47,12 @@ const MonthSelector: React.FC<{
     )
 }
 
-const EventModal: React.FC<{
-    event: EventType | null
-    onClose: () => void
-}> = ({ event, onClose }) => {
-    if (!event) return null;
-
-    return (
-        <Dialog open={!!event} onOpenChange={onClose}>
-            <DialogContent className="sm:max-w-[425px]">
-                <Button className="absolute right-4 top-4" variant="ghost" size="icon" onClick={onClose}>
-                    <X className="h-4 w-4" />
-                </Button>
-                <DialogHeader>
-                    <DialogTitle>{event.name}</DialogTitle>
-                    <DialogDescription>
-                        <div className="max-h-[200px] overflow-y-auto pr-4 mt-2">
-                            {renderDocument(event.description.json)}
-                        </div>
-                        <p className="mt-4 font-semibold">
-                            Time:{" "}
-                            {new Date(event.dateAndTime).toLocaleString('en-US', {
-                                hour: '2-digit',
-                                minute: '2-digit',
-                                hour12: true,
-                                timeZone: 'UTC'
-                            })}
-                        </p>
-                        {event.link ? (
-                            <a
-                                href={event.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-500 hover:underline mt-2 inline-block"
-                            >
-                                Buy Tickets
-                            </a>
-                        ) : (
-                            <span className="mt-2 inline-block">Free Event</span>
-                        )}
-                    </DialogDescription>
-                </DialogHeader>
-            </DialogContent>
-        </Dialog>
-    )
-}
-
 interface CalendarProps {
     events?: EventType[]
 }
 
 export default function Calendar({ events = [] }: CalendarProps) {
     const [currentDate, setCurrentDate] = useState(new Date())
-    const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null)
 
     const handleMonthChange = useCallback((date: Date) => {
         setCurrentDate(date)
@@ -151,27 +102,42 @@ export default function Calendar({ events = [] }: CalendarProps) {
                     return (
                         <div key={index} className="h-24 border rounded-md p-2 overflow-y-auto">
                             <div className="font-semibold mb-1">{index + 1}</div>
-                            {dayEvents.map((event) => (
-                                <Badge
-                                    key={event.id}
-                                    variant="secondary"
-                                    className="mb-1 cursor-pointer block truncate"
-                                    onClick={() => setSelectedEvent(event)}
-                                >
-                                    {new Date(event.dateAndTime).toLocaleString('en-US', {
-                                        hour: '2-digit',
-                                        minute: '2-digit',
-                                        hour12: true,
-                                        timeZone: 'UTC'
-                                    })}{" "}
-                                    - {event.name}
-                                </Badge>
-                            ))}
+                            {dayEvents.map((event) => {
+                                const EventBadge = (
+                                    <Badge
+                                        variant="secondary"
+                                        className="mb-1 cursor-pointer block truncate w-full"
+                                    >
+                                        {new Date(event.dateAndTime).toLocaleString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            hour12: true,
+                                            timeZone: 'UTC'
+                                        })}{" "}
+                                        - {event.name}
+                                    </Badge>
+                                );
+
+                                return event.link ? (
+                                    <a
+                                        key={event.id}
+                                        href={event.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block w-full"
+                                    >
+                                        {EventBadge}
+                                    </a>
+                                ) : (
+                                    <div key={event.id}>
+                                        {EventBadge}
+                                    </div>
+                                )
+                            })}
                         </div>
                     )
                 })}
             </div>
-            <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
         </div>
     )
 }
