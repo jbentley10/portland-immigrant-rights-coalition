@@ -10,9 +10,13 @@ let linkList = [
     childPages: [
       {
         name: "Hotline",
-        url: "/about/hotline"
-      }
-    ]
+        url: "/about/hotline",
+      },
+      {
+        name: "Events",
+        url: "/about/events",
+      },
+    ],
   },
   {
     name: "What We Do",
@@ -20,9 +24,9 @@ let linkList = [
     childPages: [
       {
         name: "Weekly Updates",
-        url: "/what-we-do/weekly-updates"
-      }
-    ]
+        url: "/what-we-do/weekly-updates",
+      },
+    ],
   },
   {
     name: "Get Involved",
@@ -35,7 +39,7 @@ let linkList = [
   {
     name: "Resources",
     url: "/resources",
-  }
+  },
 ];
 
 export const Links = (props: {
@@ -54,9 +58,10 @@ export const Links = (props: {
     }
   };
 
-  const containerClassName = props.orientation === "horizontal"
-    ? "flex flex-row items-center"
-    : props.size === "mobile"
+  const containerClassName =
+    props.orientation === "horizontal"
+      ? "flex flex-row items-center"
+      : props.size === "mobile"
       ? "flex flex-col space-y-2"
       : "flex flex-col pb-2";
 
@@ -71,13 +76,15 @@ export const Links = (props: {
 
   return (
     <div className={containerClassName}>
-      {linkList.map((link, index) => (
+      {linkList.map((link, index) =>
         isMobile ? (
           <MobileNavigationLink
             key={index}
             name={link.name}
             url={link.url}
-            childPages={props.showChildPages !== false ? link.childPages : undefined}
+            childPages={
+              props.showChildPages !== false ? link.childPages : undefined
+            }
             className={linkClassName}
             onLinkClick={props.onLinkClick}
           />
@@ -86,18 +93,20 @@ export const Links = (props: {
             key={index}
             name={link.name}
             url={link.url}
-            childPages={props.showChildPages !== false ? link.childPages : undefined}
+            childPages={
+              props.showChildPages !== false ? link.childPages : undefined
+            }
             className={linkClassName}
           />
         )
-      ))}
+      )}
       <a
         className={`
           text-white
           ${props.size === "mobile" ? "" : "mr-2 sm:mr-4 lg:mr-5 xl:mr-6"}
           ${getClassName()}
         `}
-        href={'tel:+18886221510'}
+        href={"tel:+18886221510"}
         onClick={props.onLinkClick}
       >
         Hotline (888) 622-1510
