@@ -1,7 +1,11 @@
+import { notFound } from "next/navigation";
+
+import type { Document } from "@contentful/rich-text-types";
+import { EntrySkeletonType } from "contentful";
+
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 const environment = process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT;
-import { notFound } from "next/navigation";
 
 const client = require("contentful").createClient({
   space: space,
@@ -98,4 +102,27 @@ export async function fetchAsset(assetID: string) {
   if (asset) return asset;
 
   console.log("Error getting asset.");
+}
+
+type UpdateBanner = EntrySkeletonType<
+  { header: string; copy?: Document },
+  "updateBanner"
+>;
+
+type SiteSettings = {
+  banner: UpdateBanner | null;
+};
+
+export async function fetchSiteSettings(
+  locale: "en-US" | "es" = "en-US"
+): Promise<SiteSettings | null> {
+  const res = await client.getEntries({
+    content_type: "siteSettings", // ID of your content type
+    limit: 1,
+    locale,
+  });
+
+  if (!res.items.length) return null;
+
+  return res.items[0].fields as SiteSettings;
 }
