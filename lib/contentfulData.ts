@@ -113,10 +113,13 @@ type SiteSettings = {
   banner: UpdateBanner | null;
 };
 
-export async function fetchSiteSettings(): Promise<SiteSettings | null> {
+export async function fetchSiteSettings(
+  locale: "en-US" | "es" = "en-US"
+): Promise<SiteSettings | null> {
   const res = await client.getEntries({
     content_type: "siteSettings", // ID of your content type
     limit: 1,
+    locale,
   });
 
   if (!res.items.length) return null;

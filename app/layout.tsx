@@ -20,18 +20,19 @@ import Script from "next/script";
 import { fetchSiteSettings } from "@/lib/contentfulData";
 import UpdateBanner from "@/components/update-banner";
 
-export function useSiteSettings() {
+export function useSiteSettings(locale: "en-US" | "es" = "en-US") {
   const [siteSettings, setSiteSettings] = useState<Awaited<
     ReturnType<typeof fetchSiteSettings>
   > | null>(null);
 
   useEffect(() => {
     async function loadSiteSettings() {
-      const settings = await fetchSiteSettings();
+      const settings = await fetchSiteSettings(locale);
+      console.log("Fetched site settings:", settings);
       setSiteSettings(settings);
     }
     loadSiteSettings();
-  }, []);
+  }, [locale]);
 
   return siteSettings;
 }
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isEnglish, setIsEnglish] = useState(true);
-  const siteSettings = useSiteSettings();
+  const siteSettings = useSiteSettings(isEnglish ? "en-US" : "es");
 
   return (
     <html lang="en">
