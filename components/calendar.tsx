@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useCallback } from "react"
+import { useState, useCallback, useMemo } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -31,16 +31,23 @@ const MonthSelector: React.FC<{
 
     return (
         <div className="flex items-center justify-between mb-4">
-            <Button variant="outline" size="icon" onClick={prevMonth}>
+            <Button variant="outline" size="icon" onClick={prevMonth} aria-label="Go to previous month">
                 <ChevronLeft className="h-4 w-4" />
             </Button>
-            <h2 className="text-lg font-semibold">
+            <h2
+                className="text-lg font-semibold"
+                aria-live="polite"
+                aria-label={`Current month: ${currentDate.toLocaleString("default", {
+                    month: "long",
+                    year: "numeric",
+                })}`}
+            >
                 {currentDate.toLocaleString("default", {
                     month: "long",
                     year: "numeric",
                 })}
             </h2>
-            <Button variant="outline" size="icon" onClick={nextMonth}>
+            <Button variant="outline" size="icon" onClick={nextMonth} aria-label="Go to next month">
                 <ChevronRight className="h-4 w-4" />
             </Button>
         </div>
@@ -71,17 +78,21 @@ export default function Calendar({ events = [] }: CalendarProps) {
 
     const { daysInMonth, startingDay } = getDaysInMonth(currentDate)
 
-    const getEventsForDate = (date: Date) => {
-        return events.filter((event) => {
-            const eventDate = new Date(event.dateAndTime)
-            // Note: date comparison might be tricky with timezones. 
-            // Assuming local checks based on component state matches event date parts.
-            return (
-                eventDate.getDate() === date.getDate() &&
-                eventDate.getMonth() === date.getMonth() &&
-                eventDate.getFullYear() === date.getFullYear()
-            )
+    const eventsByDate = useMemo(() => {
+        const map = new Map<string, EventType[]>()
+        events.forEach((event) => {
+            const date = new Date(event.dateAndTime)
+            const key = date.toDateString()
+            if (!map.has(key)) {
+                map.set(key, [])
+            }
+            map.get(key)!.push(event)
         })
+        return map
+    }, [events])
+
+    const getEventsForDate = (date: Date) => {
+        return eventsByDate.get(date.toDateString()) || []
     }
 
     return (

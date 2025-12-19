@@ -1,3 +1,5 @@
+"use client"
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Document } from "@contentful/rich-text-types";
 import React, { useState } from "react";
@@ -49,16 +51,16 @@ function EventsBlock({ title, description, events }: EventsBlockProps) {
       <div className='mb-6 flex flex-row justify-start'>
         <RadioGroup onValueChange={handleViewChange} defaultValue='list' className="flex flex-row gap-4">
           <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='list' id='r1' />
+            <RadioGroupItem value='list' id='view-list' />
             <ListIcon className="h-4 w-4" />
-            <Label className={"font-hand cursor-pointer"} htmlFor='r1'>
+            <Label className={"font-hand cursor-pointer"} htmlFor='view-list'>
               List View
             </Label>
           </div>
           <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='calendar' id='r2' />
+            <RadioGroupItem value='calendar' id='view-calendar' />
             <CalendarIcon className="h-4 w-4" />
-            <Label className={"font-hand cursor-pointer"} htmlFor='r2'>
+            <Label className={"font-hand cursor-pointer"} htmlFor='view-calendar'>
               Calendar View
             </Label>
           </div>
