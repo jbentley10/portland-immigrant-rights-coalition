@@ -28,7 +28,6 @@ export function useSiteSettings(locale: "en-US" | "es" = "en-US") {
   useEffect(() => {
     async function loadSiteSettings() {
       const settings = await fetchSiteSettings(locale);
-      console.log("Fetched site settings:", settings);
       setSiteSettings(settings);
     }
     loadSiteSettings();

@@ -13,7 +13,7 @@ export default function Footer() {
       <div className={"flex flex-col sm:flex-row"}>
         <div
           className={
-            "pl-4 md:pl-16 sm:pl-0 sm:w-1/2 pt-8 md:pt-14 pb-2 md:pb-10"
+            "pl-4 sm:pl-0 sm:w-1/2 pt-8 md:pt-14 pb-2 md:pb-10"
           }
         >
           <Image
