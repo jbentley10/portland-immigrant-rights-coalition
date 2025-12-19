@@ -14,11 +14,11 @@ let linkList = [
       },
       {
         name: "What We Do",
-        url: "about/what-we-do",
+        url: "/about/what-we-do",
       },
       {
         name: "Resource Center",
-        url: "about/resource-center",
+        url: "/about/resource-center",
       },
     ],
   },
