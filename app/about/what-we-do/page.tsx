@@ -2,8 +2,8 @@
  * @file page.tsx
  */
 // Import components and utils
-import { fetchBlocksBySlug } from "../../lib/contentfulData";
-import Content from "../content";
+import { fetchBlocksBySlug } from "@/lib/contentfulData";
+import Content from "@/app/content";
 
 // Set metadata
 export const metadata = {
@@ -13,8 +13,8 @@ export const metadata = {
 };
 
 export default async function WhatWeDo() {
-  const blocksEnglish = await fetchBlocksBySlug("what-we-do", "en-US");
-  const blocksSpanish = await fetchBlocksBySlug("what-we-do", "es");
+  const blocksEnglish = await fetchBlocksBySlug("about/what-we-do", "en-US");
+  const blocksSpanish = await fetchBlocksBySlug("about/what-we-do", "es");
 
   // Wait for the promises to resolve
   const [english, spanish] = await Promise.all([blocksEnglish, blocksSpanish]);
