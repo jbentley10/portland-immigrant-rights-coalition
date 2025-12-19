@@ -12,6 +12,7 @@ interface MobileNavigationLinkProps {
   url: string;
   childPages?: ChildPage[];
   className?: string;
+  target?: string;
   onLinkClick?: () => void;
 }
 
@@ -19,6 +20,7 @@ export const MobileNavigationLink = ({
   name,
   url,
   childPages,
+  target,
   className = "",
   onLinkClick,
 }: MobileNavigationLinkProps) => {
@@ -37,7 +39,7 @@ export const MobileNavigationLink = ({
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between">
-        <Link href={url} className={className} onClick={onLinkClick}>
+        <Link href={url} className={className} onClick={onLinkClick} target={target}>
           {name}
         </Link>
         <button
@@ -58,6 +60,7 @@ export const MobileNavigationLink = ({
               href={childPage.url}
               className="block text-white text-lg py-2 hover:opacity-70"
               onClick={onLinkClick}
+              target={target}
             >
               {childPage.name}
             </Link>

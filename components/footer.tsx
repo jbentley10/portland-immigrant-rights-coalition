@@ -24,10 +24,10 @@ export default function Footer() {
           />
         </div>
         <div className={`sm:w-1/2 pt-14`}>
-          <div className={"flex flex-col sm:flex-row"}>
+          <div className={"flex flex-col lg:flex-row"}>
             <div
               className={
-                "links sm:border-r-2 border-white py-8 md:py-4 pl-4 md:pl-16 sm:pl-0 sm:pr-4 md:pr-20"
+                "links sm:border-r-2 border-white py-8 md:py-4 pl-4 sm:pl-0 sm:pr-4 md:pr-20"
               }
             >
               <Links
@@ -37,27 +37,27 @@ export default function Footer() {
               />
             </div>
 
-            <div className={"information sm:pl-4 pl-4 md:pl-16"}>
+            <div className={"information sm:pl-4 pl-4 lg:pl-16"}>
               <strong className="serif">Contact Us</strong>
-              <br />              
+              <br />
               <ul className="ml-4">
                 <li>
                   <p>
-                General Email:{" "}
-                <Link href="mailto:pircpdx@gmail.com">pircpdx@gmail.com</Link>
-              </p>
+                    General Email:{" "}
+                    <Link href="mailto:pircpdx@gmail.com">pircpdx@gmail.com</Link>
+                  </p>
                 </li>
                 <li>
                   <p>Volunteer Inquiries:{" "}
-                  <Link href="mailto:volunteers@pircoregon.org">
-                    volunteers@pircoregon.org
-                  </Link></p>
+                    <Link href="mailto:volunteers@pircoregon.org">
+                      volunteers@pircoregon.org
+                    </Link></p>
                 </li>
                 <li>
                   <p>Press Inquiries:{" "}
-                  <Link href="mailto:press@pircoregon.org">
-                    press@pircoregon.org
-                  </Link></p>
+                    <Link href="mailto:press@pircoregon.org">
+                      press@pircoregon.org
+                    </Link></p>
                 </li>
               </ul>
               <br />
@@ -78,20 +78,24 @@ export default function Footer() {
                 </Link>
               </div>
               <br />
-              <p>PO Box 13434</p>
-              <p>Portland, OR</p>
-              <p>97213-0434</p>
-              <p>United States</p>
-              <br />
-              <p>PIRC Tax ID 83-3179589</p>
-              <br />
-              <Link href="/privacy-policy">
-                <strong>Privacy Policy</strong>
-              </Link>
-              <br />
-              <Link href="/terms-of-service">
-                <strong>Terms of Service</strong>
-              </Link>
+            </div>
+            <div className={"flex flex-col sm:flex-row"}>
+              <div className={"information sm:pl-4 pl-4 lg:pl-16"}>
+                <p>PO Box 13434</p>
+                <p>Portland, OR</p>
+                <p>97213-0434</p>
+                <p>United States</p>
+                <br />
+                <p>PIRC Tax ID 83-3179589</p>
+                <br />
+                <Link href="/privacy-policy">
+                  <strong>Privacy Policy</strong>
+                </Link>
+                <br />
+                <Link href="/terms-of-service">
+                  <strong>Terms of Service</strong>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -106,6 +110,6 @@ export default function Footer() {
           Palm Springs Web Design
         </Link>
       </p>
-    </footer>
+    </footer >
   );
 }
