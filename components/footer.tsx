@@ -79,23 +79,6 @@ export default function Footer() {
               </div>
               <br />
             </div>
-<<<<<<< HEAD
-            <div className={"information sm:pl-4 pl-4 md:pl-16"}>
-              <p>PO Box 13434</p>
-              <p>Portland, OR</p>
-              <p>97213-0434</p>
-              <p>United States</p>
-              <br />
-              <p>PIRC Tax ID 83-3179589</p>
-              <br />
-              <Link href="/privacy-policy">
-                <strong>Privacy Policy</strong>
-              </Link>
-              <br />
-              <Link href="/terms-of-service">
-                <strong>Terms of Service</strong>
-              </Link>
-=======
             <div className={"flex flex-col sm:flex-row"}>
               <div className={"information sm:pl-4 pl-4 lg:pl-16"}>
                 <p>PO Box 13434</p>
@@ -113,7 +96,6 @@ export default function Footer() {
                   <strong>Terms of Service</strong>
                 </Link>
               </div>
->>>>>>> f95e1ae (Update links and realign columns on the footer)
             </div>
           </div>
         </div>
