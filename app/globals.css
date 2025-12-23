@@ -99,6 +99,31 @@ h4 {
 
 ul {
   list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+.list-disc p {
+  margin-bottom: 0;
+}
+
+/* Nested list indentation */
+ul.list-disc ul.list-disc,
+ul.list-disc ol.list-decimal,
+ol.list-decimal ul.list-disc,
+ol.list-decimal ol.list-decimal {
+  margin-left: 3rem;
+}
+
+/* Third level nesting */
+ul.list-disc ul.list-disc ul.list-disc,
+ul.list-disc ul.list-disc ol.list-decimal,
+ul.list-disc ol.list-decimal ul.list-disc,
+ul.list-disc ol.list-decimal ol.list-decimal,
+ol.list-decimal ul.list-disc ul.list-disc,
+ol.list-decimal ul.list-disc ol.list-decimal,
+ol.list-decimal ol.list-decimal ul.list-disc,
+ol.list-decimal ol.list-decimal ol.list-decimal {
+  margin-left: 4.5rem;
 }
 
 /* XS */

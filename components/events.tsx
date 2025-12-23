@@ -1,12 +1,12 @@
 "use client"
 
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Document } from "@contentful/rich-text-types";
 import React, { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ListIcon, CalendarIcon } from "lucide-react";
 import Calendar, { EventType } from "./calendar";
+import { renderDocument } from "@/lib/renderDocument";
 
 type Event = {
   sys: { id: string };
@@ -44,7 +44,7 @@ function EventsBlock({ title, description, events }: EventsBlockProps) {
     <section className="my-8 atf-container text-primary">
       <h2 className="mb-4">{title}</h2>
       {description && (
-        <div className="mb-6">{documentToReactComponents(description)}</div>
+        <div className="mb-6">{renderDocument(description)}</div>
       )}
 
       {/* View Type */}

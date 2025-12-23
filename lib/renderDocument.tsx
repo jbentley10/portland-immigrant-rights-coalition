@@ -18,14 +18,18 @@ export const renderDocument = (document: any) => {
         />
       ),
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-        <>
-          <p className={"text-left"}>{children}</p>
-          <br />
-        </>
+        <p className={"text-left mb-4"}>{children}</p>
       ),
 
-      [BLOCKS.UL_LIST]: (node: any, children: any) => <ul className="list-disc ml-6 pl-14">{children}</ul>,
-      [BLOCKS.LIST_ITEM]: (node: any, children: any) => <li>{children}</li>,
+      [BLOCKS.UL_LIST]: (node: any, children: any) => (
+        <ul className="list-disc list-outside ml-6 space-y-1 mb-4">{children}</ul>
+      ),
+      [BLOCKS.OL_LIST]: (node: any, children: any) => (
+        <ol className="list-decimal list-outside ml-6 space-y-1">{children}</ol>
+      ),
+      [BLOCKS.LIST_ITEM]: (node: any, children: any) => (
+        <li className="ml-0 pl-2">{children}</li>
+      ),
       [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
         <a
           href={node.data.uri}
