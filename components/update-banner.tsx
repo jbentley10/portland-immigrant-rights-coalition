@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import type { Document } from "@contentful/rich-text-types";
+import { renderDocument } from "@/lib/renderDocument";
 
 function UpdateBanner({ header, copy }: { header: string; copy?: Document }) {
   const [expanded, setExpanded] = useState(false);
@@ -42,7 +42,7 @@ function UpdateBanner({ header, copy }: { header: string; copy?: Document }) {
           id="update-banner-content"
           className="mt-2 text-left max-w-[50em] mx-auto"
         >
-          {documentToReactComponents(copy)}
+          {renderDocument(copy)}
         </div>
       )}
     </div>
