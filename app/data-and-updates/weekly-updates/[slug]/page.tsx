@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const metadata = await fetchMetadataBySlug(fullSlug);
 
   return {
-    title: `${metadata.title} | Portland Immigrant Rights Coalition`,
-    description: metadata.description,
+    title: `${metadata?.title || 'Weekly Update'} | Portland Immigrant Rights Coalition`,
+    description: metadata?.description || '',
   };
 }
 
