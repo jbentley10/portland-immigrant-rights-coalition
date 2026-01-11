@@ -97,6 +97,33 @@ export async function fetchBlocksBySlug(slug: string, locale: string) {
   }
 }
 
+export async function fetchChildPagesBySlug(
+  parentSlug: string,
+  locale: string = "en-US"
+) {
+  console.log(`Fetching child pages for ${parentSlug}...`);
+
+  const pages = await client.getEntries({
+    include: 2,
+    "fields.slug": parentSlug,
+    content_type: "page",
+    locale: locale,
+  });
+
+  if (!pages || pages.total <= 0) {
+    console.log(`Error finding page with slug: ${parentSlug}`);
+    notFound();
+  }
+
+  if (pages.items[0]) {
+    const childPages = pages.items[0].fields.childPages;
+    // Filter out any undefined entries that might come from unpublished/deleted references
+    return childPages?.filter((page: any) => page !== undefined) || [];
+  }
+
+  return [];
+}
+
 export async function fetchAsset(assetID: string) {
   const asset = await client.getAsset(assetID);
   if (asset) return asset;
