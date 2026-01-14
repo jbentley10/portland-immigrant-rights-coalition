@@ -21,7 +21,7 @@
     "clsx": "^2.1.1",
     "contentful": "^10.12.0",
     "lucide-react": "^0.395.0",
-    "next": "14.2.4",
+    "next": "14.2.35",
     "next-themes": "^0.3.0",
     "pswd-design-system": "^1.1.13",
     "react": "^18",
