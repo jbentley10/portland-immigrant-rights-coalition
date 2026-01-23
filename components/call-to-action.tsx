@@ -19,19 +19,21 @@ function CallToAction(props: {
         <h2 className={"text-primary pb-7"}>{props.heading}</h2>
         <p className={"text-primary mb-20"}>{props.subheading}</p>
       </div>
-      { props.isPhone ?
-        <a href={props.buttonLink}>
-          <Button size={"lg"} variant={"default"}>
-            {props.buttonText}
-          </Button>
-        </a>
-        :
-        <Link href={props.buttonLink}>
-          <Button size={"lg"} variant={"default"}>
-            {props.buttonText}
-          </Button>
-        </Link>
-      }
+      {props.buttonLink && props.buttonText && (
+        props.isPhone ? (
+          <a href={props.buttonLink}>
+            <Button size={"lg"} variant={"default"}>
+              {props.buttonText}
+            </Button>
+          </a>
+        ) : (
+          <Link href={props.buttonLink}>
+            <Button size={"lg"} variant={"default"}>
+              {props.buttonText}
+            </Button>
+          </Link>
+        )
+      )}
     </div>
   );
 }

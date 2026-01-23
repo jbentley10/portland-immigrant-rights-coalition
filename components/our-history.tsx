@@ -1,7 +1,8 @@
 import React from "react";
+import { parseMarkdownLinks } from "@/lib/parseMarkdownLinks";
 
 export interface HistoryMilestone {
-  year: number;
+  year: string;
   info: string;
 }
 
@@ -41,7 +42,7 @@ function YearBlocks(props: { milestones: HistoryMilestone[] }) {
         <div className={"mb-8 md:mb-0"} key={milestone.year}>
           <h3 className={"text-primary text-3xl mb-4"}>{milestone.year}</h3>
           <EllipseAndLine />
-          <p className={"text-primary xl:pr-40"}>{milestone.info}</p>
+          <p className={"text-primary xl:pr-40"}>{parseMarkdownLinks(milestone.info)}</p>
         </div>
       ))}
     </>

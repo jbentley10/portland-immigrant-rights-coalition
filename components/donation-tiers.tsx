@@ -1,6 +1,50 @@
 import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import {
+  DollarSign,
+  Heart,
+  Award,
+  Crown,
+  Star,
+  Gift,
+  Sparkles,
+  BadgeCheck,
+  TrendingUp,
+  Users,
+  HandHeart,
+  CircleDollarSign
+} from "lucide-react";
+import { parseMarkdownLinks } from "@/lib/parseMarkdownLinks";
+
+export type TierIconType =
+  | "DollarSign"
+  | "Heart"
+  | "Award"
+  | "Crown"
+  | "Star"
+  | "Gift"
+  | "Sparkles"
+  | "BadgeCheck"
+  | "TrendingUp"
+  | "Users"
+  | "HandHeart"
+  | "CircleDollarSign";
+
+const iconMap = {
+  DollarSign,
+  Heart,
+  Award,
+  Crown,
+  Star,
+  Gift,
+  Sparkles,
+  BadgeCheck,
+  TrendingUp,
+  Users,
+  HandHeart,
+  CircleDollarSign
+};
 
 interface DonationTiersContent {
   heading: string;
@@ -11,14 +55,14 @@ interface DonationTiersContent {
 }
 
 export interface Tier {
-  index: number;
+  icon: TierIconType;
   heading: string;
   subheading: string;
 }
 
 function Tier(tier: Tier) {
-  let { index, heading, subheading } = tier;
-  let dollar: string = index == 0 ? "$" : index == 1 ? "$$" : "$$$";
+  let { icon, heading, subheading } = tier;
+  const Icon = iconMap[icon] || DollarSign; // Fallback to DollarSign if icon not found
 
   return (
     <div
@@ -26,15 +70,15 @@ function Tier(tier: Tier) {
         "flex flex-col items-center md:items-start mb-12 md:mr-12 md:mb-0"
       }
     >
-      <span
+      <div
         className={
-          "text-primary text-5xl md:text-7xl font-extrabold text-center pb-6 xl:pb-8 xl:pt-16"
+          "text-primary text-center pb-6 xl:pb-8 xl:pt-16"
         }
       >
-        {dollar}
-      </span>
+        <Icon className="w-20 h-20 md:w-28 md:h-28" strokeWidth={1.5} />
+      </div>
       <h3 className={"text-2xl xl:text-3xl text-primary pb-2"}>{heading}</h3>
-      <p className={"text-primary text-center md:text-left"}>{subheading}</p>
+      <p className={"text-primary text-center md:text-left"}>{parseMarkdownLinks(subheading)}</p>
     </div>
   );
 }
@@ -49,22 +93,24 @@ function DonationTiers(props: DonationTiersContent) {
         <p className={"text-primary"}>{subheading}</p>
       </div>
       <div className={"flex flex-col md:flex-row justify-center mt-14"}>
-        {tiers.map((tier) => (
+        {tiers.map((tier, index) => (
           <Tier
-            index={tier.index}
-            key={tier.index}
+            key={index}
+            icon={tier.icon}
             heading={tier.heading}
             subheading={tier.subheading}
           />
         ))}
       </div>
-      <div className={"flex justify-center mt-14"}>
-        <Link href={buttonLink}>
-          <Button size={"lg"} variant={"default"}>
-            {buttonText}
-          </Button>
-        </Link>
-      </div>
+      {buttonLink && buttonText && (
+        <div className={"flex justify-center mt-14"}>
+          <Link href={buttonLink}>
+            <Button size={"lg"} variant={"default"}>
+              {buttonText}
+            </Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

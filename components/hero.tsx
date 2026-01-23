@@ -32,11 +32,13 @@ export default function Hero(props: {
           </h1>
           <p className='text-lg text-white'>{props.subheading}</p>
         </div>
-        <Button size={`lg`} className='mr-6'>
-          <Link href={props.buttonLink} prefetch={false}>
-            {props.buttonText}
-          </Link>
-        </Button>
+        {props.buttonLink && props.buttonText && (
+          <Button size={`lg`} className='mr-6'>
+            <Link href={props.buttonLink} prefetch={false}>
+              {props.buttonText}
+            </Link>
+          </Button>
+        )}
       </div>
     </section>
   );

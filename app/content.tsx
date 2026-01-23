@@ -32,6 +32,8 @@ import ImageTextBlock from "@/components/image-text-block";
 import ActBlueDonateForm from "@/components/act-blue-donate-form";
 import BilingualResourcesBlock from "@/components/bilingual-resources-block";
 import EventsBlock from "@/components/events";
+import ThreeColumnInfo, { ColumnItem } from "@/components/three-column-info";
+import FourColumnInfo from "@/components/four-column-info";
 
 const BlockByType = ({
   block,
@@ -90,26 +92,17 @@ const BlockByType = ({
 
     case "ourHistoryBlock":
       if (block.fields) {
-        let { year1, text1, year2, text2, year3, text3, year4, text4 } =
+        let { year1, text1, year2, text2, year3, text3, year4, text4, year5, text5, year6, text6 } =
           block.fields;
-        let milestones: HistoryMilestone[] = [
-          {
-            year: year1,
-            info: text1,
-          },
-          {
-            year: year2,
-            info: text2,
-          },
-          {
-            year: year3,
-            info: text3,
-          },
-          {
-            year: year4,
-            info: text4,
-          },
-        ];
+        let milestones: HistoryMilestone[] = [];
+
+        // Add milestones only if both year and text exist
+        if (year1 && text1) milestones.push({ year: year1, info: text1 });
+        if (year2 && text2) milestones.push({ year: year2, info: text2 });
+        if (year3 && text3) milestones.push({ year: year3, info: text3 });
+        if (year4 && text4) milestones.push({ year: year4, info: text4 });
+        if (year5 && text5) milestones.push({ year: year5, info: text5 });
+        if (year6 && text6) milestones.push({ year: year6, info: text6 });
 
         return (
           <OurHistory
@@ -124,19 +117,19 @@ const BlockByType = ({
       if (block.fields) {
         let tiers: Tier[] = [
           {
+            icon: block.fields.tier1Icon,
             heading: block.fields.tier1Heading,
             subheading: block.fields.tier1Subheading,
-            index: 0,
           },
           {
+            icon: block.fields.tier2Icon,
             heading: block.fields.tier2Heading,
             subheading: block.fields.tier2Subheading,
-            index: 1,
           },
           {
+            icon: block.fields.tier3Icon,
             heading: block.fields.tier3Heading,
             subheading: block.fields.tier3Subheading,
-            index: 2,
           },
         ];
 
@@ -296,6 +289,69 @@ const BlockByType = ({
           events={block.fields.events}
         />
       );
+
+    case "threeColumnInfoBlock":
+      if (block.fields) {
+        const column1: ColumnItem = {
+          icon: block.fields.column1Icon,
+          heading: block.fields.column1Heading,
+          body: block.fields.column1Body,
+        };
+        const column2: ColumnItem = {
+          icon: block.fields.column2Icon,
+          heading: block.fields.column2Heading,
+          body: block.fields.column2Body,
+        };
+        const column3: ColumnItem = {
+          icon: block.fields.column3Icon,
+          heading: block.fields.column3Heading,
+          body: block.fields.column3Body,
+        };
+
+        return (
+          <ThreeColumnInfo
+            column1={column1}
+            column2={column2}
+            column3={column3}
+          />
+        );
+      }
+      return null;
+
+    case "fourColumnInfoBlock":
+      if (block.fields) {
+        const column1: ColumnItem = {
+          icon: block.fields.column1Icon,
+          heading: block.fields.column1Heading,
+          body: block.fields.column1Body,
+        };
+        const column2: ColumnItem = {
+          icon: block.fields.column2Icon,
+          heading: block.fields.column2Heading,
+          body: block.fields.column2Body,
+        };
+        const column3: ColumnItem = {
+          icon: block.fields.column3Icon,
+          heading: block.fields.column3Heading,
+          body: block.fields.column3Body,
+        };
+        const column4: ColumnItem = {
+          icon: block.fields.column4Icon,
+          heading: block.fields.column4Heading,
+          body: block.fields.column4Body,
+        };
+
+        return (
+          <FourColumnInfo
+            heading={block.fields.heading}
+            column1={column1}
+            column2={column2}
+            column3={column3}
+            column4={column4}
+          />
+        );
+      }
+      return null;
 
     default:
       return null;

@@ -46,11 +46,13 @@ function ImageSlide(props: { slide: SlideFields }) {
         <p className='text-primary-foreground mb-12 md:mb-16'>
           {props.slide.subheading}
         </p>
-        <Link href={props.slide.link}>
-          <Button size={"lg"} variant={"secondary"}>
-            Read More
-          </Button>
-        </Link>
+        {props.slide.link && (
+          <Link href={props.slide.link}>
+            <Button size={"lg"} variant={"secondary"}>
+              Read More
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );
