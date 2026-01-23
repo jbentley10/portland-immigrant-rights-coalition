@@ -365,8 +365,8 @@ interface ContentProps {
 
 // Component recieves a single array of block objects
 export default function Content({
-  englishBlocks,
-  spanishBlocks,
+  englishBlocks = [],
+  spanishBlocks = [],
 }: ContentProps) {
   const isEnglish = useContext(LocaleContext);
   const [translatedBlocks, setTranslatedBlocks] = useState(englishBlocks);

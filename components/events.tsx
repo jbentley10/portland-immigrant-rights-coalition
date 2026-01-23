@@ -32,13 +32,13 @@ function EventsBlock({ title, description, events }: EventsBlockProps) {
   };
 
   // Transform events for Calendar if needed, but EventType matches roughly what we expect now
-  const calendarEvents: EventType[] = events.map(e => ({
+  const calendarEvents: EventType[] = events?.map(e => ({
     id: e.sys.id,
     name: e.fields.title,
     link: e.fields.link,
     description: e.fields.description,
     dateAndTime: e.fields.dateAndTime
-  }));
+  })) || [];
 
   return (
     <section className="my-8 atf-container text-primary">
@@ -69,7 +69,7 @@ function EventsBlock({ title, description, events }: EventsBlockProps) {
 
       {view === 'list' ? (
         <ul className="p-0 m-0 ml-4 space-y-3">
-          {events.map(({ sys, fields }) => (
+          {events?.map(({ sys, fields }) => (
             <li key={sys.id} className="p-0 m-0">
               <a
                 href={fields.link}
