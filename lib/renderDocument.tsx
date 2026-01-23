@@ -7,6 +7,11 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 
 export const renderDocument = (document: any) => {
+  // Safety check: if document is undefined, null, or doesn't have content
+  if (!document || !document.content) {
+    return null;
+  }
+
   const options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => (

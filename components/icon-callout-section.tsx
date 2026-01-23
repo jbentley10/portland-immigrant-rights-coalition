@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { FacebookIcon, TwitterIcon, InstagramIcon, DollarSign, Mail, Share2 } from "lucide-react";
+import { parseMarkdownLinks } from "@/lib/parseMarkdownLinks";
 
 interface IconCalloutSectionProps {
   heading: string;
@@ -53,7 +54,7 @@ function CalloutCard({
         <IconComponent className="w-16 h-16 md:w-20 md:h-20" />
       </div>
       <h3 className={"text-2xl xl:text-3xl text-primary pb-2"}>{heading}</h3>
-      <p className={"text-primary text-center md:text-left"}>{body}</p>
+      <p className={"text-primary text-center md:text-left"}>{parseMarkdownLinks(body)}</p>
       {buttonText && buttonLink && (
         <div className="mt-4">
           <Link target="_blank" href={buttonLink}>

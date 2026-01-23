@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
+import { renderDocument } from "@/lib/renderDocument";
 
-function ActBlueDonateForm(props: { heading: string; body: string }) {
+function ActBlueDonateForm(props: { heading: string; body: any }) {
   return (
     <div
       className={
@@ -11,7 +12,7 @@ function ActBlueDonateForm(props: { heading: string; body: string }) {
     >
       <div className={"copy w-full md:w-1/2 text-primary pb-8 md:pb-0"}>
         <h2 className='pb-8'>{props.heading}</h2>
-        <p>{props.body}</p>
+        <div>{renderDocument(props.body)}</div>
       </div>
       <div
         data-ab-form

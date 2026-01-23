@@ -20,6 +20,10 @@ let linkList = [
         name: "Resource Center",
         url: "/about/resource-center",
       },
+      {
+        name: "What To Do If You See ICE",
+        url: "/about/what-to-do-if-you-see-ice",
+      },
     ],
   },
   {
