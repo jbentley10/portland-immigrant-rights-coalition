@@ -14,7 +14,7 @@ import { Analytics } from "@vercel/analytics/react";
 // Import components and utils
 import FloatingActionButton from "../components/floating-action-button";
 import { LocaleContext } from "./locale-provider";
-import { Navigation } from "@/components/navigation";
+import NavigationWrapper from "@/components/navigation-wrapper";
 import Footer from "@/components/footer";
 import Script from "next/script";
 import { fetchSiteSettings } from "@/lib/contentfulData";
@@ -83,7 +83,7 @@ export default function RootLayout({
           {siteSettings?.banner && (
             <UpdateBanner {...siteSettings.banner.fields} />
           )}
-          <Navigation />
+          <NavigationWrapper />
           {children}
           <Footer />
           <FloatingActionButton />

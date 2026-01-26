@@ -43,7 +43,13 @@ function ImageTextBlock(props: {
 
       <div className={props.image ? "md:w-1/2" : "w-full text-center"}>
         {props.heading && <h2 className={"pb-12"}>{props.heading}</h2>}
-        <div>{renderDocument(props.subtext)}</div>
+        <div>
+          {typeof props.subtext === 'string' ? (
+            <p>{props.subtext}</p>
+          ) : (
+            renderDocument(props.subtext)
+          )}
+        </div>
         {props && props.linkHref && props.linkText && (
           <Link target="blank" href={props.linkHref}>
             <Button>{props.linkText}</Button>

@@ -34,6 +34,7 @@ import BilingualResourcesBlock from "@/components/bilingual-resources-block";
 import EventsBlock from "@/components/events";
 import ThreeColumnInfo, { ColumnItem } from "@/components/three-column-info";
 import FourColumnInfo from "@/components/four-column-info";
+import LargeButtonBlock from "@/components/large-button-block";
 
 const BlockByType = ({
   block,
@@ -268,6 +269,7 @@ const BlockByType = ({
         <ActBlueDonateForm
           heading={block.fields.heading}
           body={block.fields.body}
+          vimeoUrl={block.fields.vimeoUrl}
         />
       );
 
@@ -353,14 +355,22 @@ const BlockByType = ({
       }
       return null;
 
+    case "largeButtonBlock":
+      return (
+        <LargeButtonBlock
+          buttonText={block.fields.buttonText}
+          buttonLink={block.fields.buttonLink}
+        />
+      );
+
     default:
       return null;
   }
 };
 
 interface ContentProps {
-  englishBlocks: [];
-  spanishBlocks: [];
+  englishBlocks: any[];
+  spanishBlocks: any[];
 }
 
 // Component recieves a single array of block objects

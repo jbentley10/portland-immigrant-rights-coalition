@@ -50,7 +50,7 @@ export default function Footer() {
                 <li>
                   <p>Volunteer Inquiries:{" "}
                     <Link href="mailto:volunteers@pircoregon.org">
-                      volunteers@pircoregon.org
+                      admin@pircoregon.org
                     </Link></p>
                 </li>
                 <li>
