@@ -1,76 +1,46 @@
 /**
  * @file layout.tsx
+ * Server Component - fetches site settings at build time with ISR
  */
-"use client";
-
 // Import styles
 import "./globals.css";
 
 // Import dependencies
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Antonio, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import Script from "next/script";
 
 // Import components and utils
-import FloatingActionButton from "../components/floating-action-button";
-import { LocaleContext } from "./locale-provider";
-import NavigationWrapper from "@/components/navigation-wrapper";
-import Footer from "@/components/footer";
-import Script from "next/script";
-import { fetchSiteSettings } from "@/lib/contentfulData";
-import UpdateBanner from "@/components/update-banner";
+import LayoutClient from "@/components/layout-client";
+import { fetchSiteSettings, REVALIDATE_TIME } from "@/lib/contentfulData";
 
-export function useSiteSettings(locale: "en-US" | "es" = "en-US") {
-  const [siteSettings, setSiteSettings] = useState<Awaited<
-    ReturnType<typeof fetchSiteSettings>
-  > | null>(null);
+// Enable ISR - revalidate every hour (3600 seconds)
+export const revalidate = REVALIDATE_TIME;
 
-  useEffect(() => {
-    async function loadSiteSettings() {
-      const settings = await fetchSiteSettings(locale);
-      setSiteSettings(settings);
-    }
-    loadSiteSettings();
-  }, [locale]);
+// Declare fonts with CSS variables
+const antonio = Antonio({
+  subsets: ["latin"],
+  variable: '--font-antonio'
+});
+const inter = Inter({
+  subsets: ["latin"],
+  variable: '--font-inter'
+});
 
-  return siteSettings;
-}
-
-// Declare fonts
-const antonio = Antonio({ subsets: ["latin"] });
-const inter = Inter({ subsets: ["latin"] });
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isEnglish, setIsEnglish] = useState(true);
-  const siteSettings = useSiteSettings(isEnglish ? "en-US" : "es");
+  // Fetch site settings for both locales at build time (with ISR)
+  const [englishSettings, spanishSettings] = await Promise.all([
+    fetchSiteSettings("en-US"),
+    fetchSiteSettings("es"),
+  ]);
 
   return (
-    <html lang="en">
-      <style jsx global>{`
-        h1,
-        h2,
-        h3,
-        h4,
-        button,
-        span,
-        .antonio {
-          font-family: ${antonio.style.fontFamily};
-        }
-
-        button > a {
-          font-family: ${antonio.style.fontFamily};
-        }
-
-        p,
-        strong,
-        a {
-          font-family: ${inter.style.fontFamily};
-        }
-      `}</style>
+    <html lang="en" className={`${antonio.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta
@@ -79,15 +49,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
-          {siteSettings?.banner && (
-            <UpdateBanner {...siteSettings.banner.fields} />
-          )}
-          <NavigationWrapper />
+        <LayoutClient
+          siteSettings={{ englishSettings, spanishSettings }}
+        >
           {children}
-          <Footer />
-          <FloatingActionButton />
-        </LocaleContext.Provider>
+        </LayoutClient>
         <Analytics />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-E3RS2WG2NW"

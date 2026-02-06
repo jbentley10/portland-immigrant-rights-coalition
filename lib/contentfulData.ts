@@ -3,15 +3,19 @@ import { notFound } from "next/navigation";
 import type { Document } from "@contentful/rich-text-types";
 import { EntrySkeletonType } from "contentful";
 
-const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
-const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
-const environment = process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT;
+// Use server-only env vars (fall back to NEXT_PUBLIC_ for backwards compatibility)
+const space = process.env.CONTENTFUL_SPACE_ID || process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
+const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN || process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
+const environment = process.env.CONTENTFUL_ENVIRONMENT || process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT;
 
 const client = require("contentful").createClient({
   space: space,
   accessToken: accessToken,
   environment: environment,
 });
+
+// Revalidation time in seconds (1 hour = 3600 seconds)
+export const REVALIDATE_TIME = 3600;
 
 export async function fetchPage(id: string, locale: string) {
   const entry = await client.getEntry(id, { locale });

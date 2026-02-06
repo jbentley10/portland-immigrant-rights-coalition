@@ -2,9 +2,12 @@
  * @file page.tsx
  * Index page listing all weekly updates
  */
-import { fetchChildPagesBySlug } from "@/lib/contentfulData";
+import { fetchChildPagesBySlug, REVALIDATE_TIME } from "@/lib/contentfulData";
 import Link from "next/link";
 import Heading from "@/components/heading";
+
+// Enable ISR - revalidate every hour
+export const revalidate = REVALIDATE_TIME;
 
 // Set metadata
 export const metadata = {

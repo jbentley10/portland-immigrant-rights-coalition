@@ -5,7 +5,10 @@
 import Content from "../../content";
 import Script from "next/script";
 import DonationModal from "@/components/donation-modal";
-import { fetchAsset } from "@/lib/contentfulData";
+import { fetchAsset, REVALIDATE_TIME } from "@/lib/contentfulData";
+
+// Enable ISR - revalidate every hour
+export const revalidate = REVALIDATE_TIME;
 
 // Set metadata
 export const metadata = {

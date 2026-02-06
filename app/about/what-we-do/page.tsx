@@ -2,8 +2,11 @@
  * @file page.tsx
  */
 // Import components and utils
-import { fetchBlocksBySlug } from "@/lib/contentfulData";
+import { fetchBlocksBySlug, REVALIDATE_TIME } from "@/lib/contentfulData";
 import Content from "@/app/content";
+
+// Enable ISR - revalidate every hour
+export const revalidate = REVALIDATE_TIME;
 
 // Set metadata
 export const metadata = {

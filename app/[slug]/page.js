@@ -6,10 +6,14 @@
 import {
   fetchBlocksBySlug,
   fetchMetadataBySlug,
+  REVALIDATE_TIME,
 } from "../../lib/contentfulData";
 
 // Import components
 import Content from "../content";
+
+// Enable ISR - revalidate every hour
+export const revalidate = REVALIDATE_TIME;
 
 export async function generateMetadata({ params }) {
   const metadata = await fetchMetadataBySlug(params.slug);

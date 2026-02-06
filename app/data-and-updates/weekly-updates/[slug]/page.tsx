@@ -6,9 +6,13 @@
 import {
   fetchBlocksBySlug,
   fetchMetadataBySlug,
+  REVALIDATE_TIME,
 } from "@/lib/contentfulData";
 import Content from "@/app/content";
 import Heading from "@/components/heading";
+
+// Enable ISR - revalidate every hour
+export const revalidate = REVALIDATE_TIME;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const fullSlug = `data-and-updates/weekly-updates/${params.slug}`;
