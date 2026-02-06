@@ -29,7 +29,7 @@ function ActBlueDonateForm(props: {
 
         {/* Vimeo Video Embed */}
         {vimeoId && (
-          <div className="relative w-full mb-8" style={{ paddingBottom: '56.25%' }}>
+          <div className="relative w-full mb-8" style={{ paddingBottom: '160%' }}>
             <iframe
               src={`https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479`}
               style={{ border: 0 }}
@@ -42,7 +42,7 @@ function ActBlueDonateForm(props: {
 
         {/* Body Text */}
         {props.body && (
-          <div>
+          <div className="component-container">
             {typeof props.body === 'string' ? (
               <p className="text-lg">{props.body}</p>
             ) : (
@@ -56,6 +56,7 @@ function ActBlueDonateForm(props: {
         data-ab-token="fQK9Xh3Faz9cA2XBqfBLKMaF"
         data-ab-height="auto"
         className={"w-full md:w-1/2"}
+        id="ab-form-container"
       >
         <Link
           target="_blank"

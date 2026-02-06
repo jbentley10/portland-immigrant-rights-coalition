@@ -39,7 +39,7 @@ async function getEnglishBlocks() {
       },
       fields: {
         buttonText: "Donate Now",
-        buttonLink: "#donate",
+        buttonLink: "#ab-form-container",
       },
     },
     {
@@ -146,7 +146,7 @@ export default async function Donations2026() {
   const spanishBlocks = await getSpanishBlocks();
 
   return (
-    <main>
+    <main id="donations-2026-page">
       <Script
         src='https://secure.actblue.com/cf/assets/actblue.js'
         async

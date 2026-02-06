@@ -61,7 +61,7 @@ function ImageTextBlock(props: {
 
         {/* Vimeo Video Embed */}
         {vimeoId && (
-          <div className="relative w-full mb-8" style={{ paddingBottom: '56.25%' }}>
+          <div className="relative w-full mb-8" style={{ paddingBottom: '160%' }}>
             <iframe
               src={`https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479`}
               style={{ border: 0 }}

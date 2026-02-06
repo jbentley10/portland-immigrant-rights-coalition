@@ -18,7 +18,7 @@ interface DonationModalProps {
 
 export default function DonationModal({
   delaySeconds = 45,
-  donateUrl = "#donate"
+  donateUrl = "#ab-form-container"
 }: DonationModalProps) {
   const [isOpen, setIsOpen] = useState(false);
 
