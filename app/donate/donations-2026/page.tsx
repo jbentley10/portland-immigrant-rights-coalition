@@ -155,7 +155,7 @@ export default async function Donations2026() {
         englishBlocks={englishBlocks}
         spanishBlocks={spanishBlocks}
       />
-      <DonationModal delaySeconds={2} />
+      <DonationModal delaySeconds={30} />
     </main>
   );
 }
