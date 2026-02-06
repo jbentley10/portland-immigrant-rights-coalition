@@ -245,6 +245,7 @@ const BlockByType = ({
           imageOnLeft={block.fields.imageOnLeft}
           linkHref={block.fields.linkHref}
           linkText={block.fields.linkText}
+          vimeoUrl={block.fields.vimeoUrl}
         />
       );
 

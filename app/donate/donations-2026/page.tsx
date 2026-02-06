@@ -17,6 +17,7 @@ export const metadata = {
 async function getEnglishBlocks() {
   // Fetch the Contentful asset
   const chartImage = await fetchAsset("1OzUKmmaGUX6Imk32WnHhO");
+  const heatmapImage = await fetchAsset("58aWEx94WNhLduR3zHEI0l");
 
   return [
     {
@@ -46,7 +47,7 @@ async function getEnglishBlocks() {
       fields: {
         heading: null,
         body: "The PIRC line rings hundreds of times a day, and is answered by only a few staff members. We connect callers to critical services like legal help and keeping in touch with family members in detention. Please help us grow to meet the overwhelming need immigrant communities are experiencing.",
-        vimeoUrl: "https://vimeo.com/988646039",
+        vimeoUrl: "https://vimeo.com/1158529302",
       },
     },
     {
@@ -58,7 +59,30 @@ async function getEnglishBlocks() {
         heading: "We connect families dealing with ICE with critical services",
         descriptionRich: "Legal Services, Finding loved ones within detention system, what to do if ICE is knocking on their door, social services and assistance, DV support.",
         imageOnLeft: true,
-        image: chartImage?.fields,
+        image: chartImage,
+      },
+    },
+    {
+      sys: {
+        id: "heatmap-image-block",
+        contentType: { sys: { id: "imageAndTextBlock" } },
+      },
+      fields: {
+        heading: "Detentions in Portland",
+        descriptionRich: "",
+        imageOnLeft: false,
+        image: heatmapImage,
+        vimeoUrl: "https://vimeo.com/1158553782",
+      },
+    },
+    {
+      sys: {
+        id: "actblue-form-2",
+        contentType: { sys: { id: "actBlueDonateForm" } },
+      },
+      fields: {
+        heading: "Please donate now",
+        body: "",
       },
     },
   ];
@@ -108,7 +132,7 @@ async function getSpanishBlocks() {
         heading: "Conectamos a familias que enfrentan ICE con servicios críticos",
         descriptionRich: "Servicios legales, encontrar seres queridos dentro del sistema de detención, qué hacer si ICE está tocando su puerta, servicios sociales y asistencia, apoyo para violencia doméstica.",
         imageOnLeft: true,
-        image: chartImage?.fields,
+        image: chartImage,
       },
     },
   ];

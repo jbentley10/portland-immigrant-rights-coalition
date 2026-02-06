@@ -18,7 +18,15 @@ function ImageTextBlock(props: {
   linkHref?: string;
   linkText?: string;
   imageOnLeft: boolean;
+  vimeoUrl?: string;
 }) {
+  // Extract Vimeo video ID from URL
+  const getVimeoId = (url: string) => {
+    const match = url.match(/vimeo\.com\/(\d+)/);
+    return match ? match[1] : null;
+  };
+
+  const vimeoId = props.vimeoUrl ? getVimeoId(props.vimeoUrl) : null;
   return (
     <section
       className={`component-container component-spacer flex ${
@@ -43,13 +51,27 @@ function ImageTextBlock(props: {
 
       <div className={props.image ? "md:w-1/2" : "w-full text-center"}>
         {props.heading && <h2 className={"pb-12"}>{props.heading}</h2>}
-        <div>
+        <div className={vimeoId ? "pb-8" : ""}>
           {typeof props.subtext === 'string' ? (
             <p>{props.subtext}</p>
           ) : (
             renderDocument(props.subtext)
           )}
         </div>
+
+        {/* Vimeo Video Embed */}
+        {vimeoId && (
+          <div className="relative w-full mb-8" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              src={`https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479`}
+              style={{ border: 0 }}
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+              className="absolute top-0 left-0 w-full h-full"
+              title="Vimeo video"
+            ></iframe>
+          </div>
+        )}
+
         {props && props.linkHref && props.linkText && (
           <Link target="blank" href={props.linkHref}>
             <Button>{props.linkText}</Button>
