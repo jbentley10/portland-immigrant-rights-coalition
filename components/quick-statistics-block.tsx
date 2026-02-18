@@ -17,9 +17,9 @@ function StatisticBlock(props: { block: StatBlock }) {
 function QuickStatisticsBlock(props: { heading: string; blocks: StatBlock[] }) {
   return (
     <section className='component-container component-spacer flex flex-col md:flex-row items-start text-primary'>
-      <h1 className={"w-1/2 text-6xl font-bold"}>{props.heading}</h1>
+      <h1 className={"w-full md:w-1/2 text-6xl font-bold"}>{props.heading}</h1>
 
-      <div className={"w-1/2 flex flex-row"}>
+      <div className={"pt-8 md:pt-0 w-full md:w-1/2 flex flex-row"}>
         {props.blocks.map((block: StatBlock, index) => (
           <StatisticBlock key={index} block={block} />
         ))}
