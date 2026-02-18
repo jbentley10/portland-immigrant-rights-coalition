@@ -4,23 +4,22 @@
  */
 
 import {
-  fetchBlocksBySlug,
-  fetchMetadataBySlug,
+  fetchPageBySlug,
   REVALIDATE_TIME,
 } from "@/lib/contentfulData";
 import Content from "@/app/content";
 import Heading from "@/components/heading";
 
-// Enable ISR - revalidate every hour
+// Enable ISR
 export const revalidate = REVALIDATE_TIME;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const fullSlug = `data-and-updates/weekly-updates/${params.slug}`;
-  const metadata = await fetchMetadataBySlug(fullSlug);
+  const page = await fetchPageBySlug(fullSlug, "en-US");
 
   return {
-    title: `${metadata?.title || 'Weekly Update'} | Portland Immigrant Rights Coalition`,
-    description: metadata?.description || '',
+    title: `${page?.englishTitle || 'Weekly Update'} | Portland Immigrant Rights Coalition`,
+    description: page?.description || '',
   };
 }
 
@@ -38,8 +37,13 @@ export default async function WeeklyUpdatePage({ params }: { params: { slug: str
   const fullSlug = `data-and-updates/weekly-updates/${params.slug}`;
   const formattedDate = formatDateFromSlug(params.slug);
 
-  const blocksEnglish = await fetchBlocksBySlug(fullSlug, "en-US");
-  const blocksSpanish = await fetchBlocksBySlug(fullSlug, "es");
+  const [pageEn, pageEs] = await Promise.all([
+    fetchPageBySlug(fullSlug, "en-US"),
+    fetchPageBySlug(fullSlug, "es"),
+  ]);
+
+  const blocksEnglish = pageEn?.blocks?.filter((b: any) => b !== undefined) || [];
+  const blocksSpanish = pageEs?.blocks?.filter((b: any) => b !== undefined) || [];
 
   return (
     <main>

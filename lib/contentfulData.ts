@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { unstable_cache } from "next/cache";
 
 import type { Document } from "@contentful/rich-text-types";
 import { EntrySkeletonType } from "contentful";
@@ -14,126 +15,184 @@ const client = require("contentful").createClient({
   environment: environment,
 });
 
-// Revalidation time in seconds (1 hour = 3600 seconds)
-export const REVALIDATE_TIME = 3600;
+// Revalidation time in seconds (24 hours)
+// Content updates are handled immediately via the /api/revalidate webhook.
+// This interval is a safety net for any changes the webhook might miss.
+export const REVALIDATE_TIME = 86400;
 
-export async function fetchPage(id: string, locale: string) {
-  const entry = await client.getEntry(id, { locale });
+// ---------------------------------------------------------------------------
+// Cached data-fetching functions
+//
+// Each function is wrapped in Next.js unstable_cache so that the Contentful
+// SDK calls (which bypass the built-in fetch cache) are deduplicated across
+// pages and revalidation cycles. Cache tags allow on-demand invalidation via
+// the /api/revalidate webhook endpoint.
+// ---------------------------------------------------------------------------
 
-  if (entry.fields) return entry;
+export const fetchPage = (id: string, locale: string) =>
+  unstable_cache(
+    async () => {
+      const entry = await client.getEntry(id, { locale });
+      if (entry.fields) return entry;
+      console.log(`Error getting Entry.`);
+    },
+    [`page-${id}-${locale}`],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful", `page-${id}`] }
+  )();
 
-  console.log(`Error getting Entry.`);
-}
+export const fetchPages = () =>
+  unstable_cache(
+    async () => {
+      const entries = await client.getEntries({
+        content_type: "page",
+      });
 
-export async function fetchPages() {
-  const entries = await client.getEntries({
-    content_type: "page",
-  });
+      if (!entries || entries.total <= 0) {
+        console.log("Error finding entries with content type: page");
+      }
 
-  if (!entries || entries.total <= 0) {
-    console.log("Error finding entries with content type: page");
-  }
+      const pages = entries.items.map((entry: any) => {
+        return Object.assign({
+          id: entry.sys.id,
+          englishTitle: entry.fields.englishTitle,
+          spanishTitle: entry.fields.spanishTitle,
+          slug: entry.fields.slug,
+          order: entry.fields.order,
+          childPages: entry.fields.childPages,
+          topLevelPage: entry.fields.topLevelPage,
+        });
+      });
 
-  // Front end only needs page IDs and title, so map
-  // an array with just that
-  const pages = entries.items.map((entry: any) => {
-    return Object.assign({
-      id: entry.sys.id,
-      englishTitle: entry.fields.englishTitle,
-      spanishTitle: entry.fields.spanishTitle,
-      slug: entry.fields.slug,
-      order: entry.fields.order,
-      childPages: entry.fields.childPages,
-      topLevelPage: entry.fields.topLevelPage,
-    });
-  });
+      return pages;
+    },
+    ["all-pages"],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful"] }
+  )();
 
-  return pages;
-}
+/**
+ * Fetch a full page entry by slug and locale. Used by dynamic routes to get
+ * both metadata and blocks from a single cached Contentful call.
+ */
+export const fetchPageBySlug = (slug: string, locale: string) =>
+  unstable_cache(
+    async () => {
+      const pages = await client.getEntries({
+        include: 2,
+        "fields.slug": slug,
+        content_type: "page",
+        locale: locale,
+      });
 
-export async function fetchMetadataBySlug(slug: string) {
-  console.log(`Fetching metadata for slug ${slug}...`);
+      if (!pages || pages.total <= 0) {
+        console.log(`Error finding page with slug: ${slug}`);
+        notFound();
+      }
 
-  const pages = await client.getEntries({
-    include: 2,
-    "fields.slug": slug,
-    content_type: "page",
-  });
+      if (pages.items[0]) {
+        return pages.items[0].fields;
+      }
+    },
+    [`full-page-${slug}-${locale}`],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful", `page-${slug}`] }
+  )();
 
-  if (!pages || pages.total <= 0) {
-    console.log(`Error finding metadata with slug: ${slug}`);
-    notFound();
-  }
+export const fetchMetadataBySlug = (slug: string) =>
+  unstable_cache(
+    async () => {
+      console.log(`Fetching metadata for slug ${slug}...`);
 
-  // Pickup the blocks from the first result
-  // There will only be one that matches the slug
-  if (pages.items[0]) {
-    const metadataTitle = pages.items[0].fields.englishTitle;
-    const metadataDescription = pages.items[0].fields.description;
+      const pages = await client.getEntries({
+        include: 0,
+        "fields.slug": slug,
+        content_type: "page",
+        select: "fields.englishTitle,fields.description",
+      });
 
-    return {
-      title: metadataTitle,
-      description: metadataDescription,
-    };
-  }
-}
+      if (!pages || pages.total <= 0) {
+        console.log(`Error finding metadata with slug: ${slug}`);
+        notFound();
+      }
 
-export async function fetchBlocksBySlug(slug: string, locale: string) {
-  console.log(`Fetching blocks from ${slug}...`);
-  const pages = await client.getEntries({
-    include: 2,
-    "fields.slug": slug,
-    content_type: "page",
-    locale: locale,
-  });
+      if (pages.items[0]) {
+        const metadataTitle = pages.items[0].fields.englishTitle;
+        const metadataDescription = pages.items[0].fields.description;
 
-  if (!pages || pages.total <= 0) {
-    console.log(`Error finding pages with slug: ${slug}`);
-    notFound();
-  }
+        return {
+          title: metadataTitle,
+          description: metadataDescription,
+        };
+      }
+    },
+    [`metadata-${slug}`],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful", `page-${slug}`] }
+  )();
 
-  // Pickup the blocks from the first result
-  // There will only be one that matches the slug
-  if (pages.items[0]) {
-    const blocks = pages.items[0].fields.blocks;
-    // Filter out any undefined entries that might come from unpublished/deleted references
-    return blocks?.filter((block: any) => block !== undefined) || [];
-  }
-}
+export const fetchBlocksBySlug = (slug: string, locale: string) =>
+  unstable_cache(
+    async () => {
+      console.log(`Fetching blocks from ${slug}...`);
+      const pages = await client.getEntries({
+        include: 2,
+        "fields.slug": slug,
+        content_type: "page",
+        locale: locale,
+      });
 
-export async function fetchChildPagesBySlug(
+      if (!pages || pages.total <= 0) {
+        console.log(`Error finding pages with slug: ${slug}`);
+        notFound();
+      }
+
+      if (pages.items[0]) {
+        const blocks = pages.items[0].fields.blocks;
+        return blocks?.filter((block: any) => block !== undefined) || [];
+      }
+    },
+    [`blocks-${slug}-${locale}`],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful", `page-${slug}`] }
+  )();
+
+export const fetchChildPagesBySlug = (
   parentSlug: string,
   locale: string = "en-US"
-) {
-  console.log(`Fetching child pages for ${parentSlug}...`);
+) =>
+  unstable_cache(
+    async () => {
+      console.log(`Fetching child pages for ${parentSlug}...`);
 
-  const pages = await client.getEntries({
-    include: 2,
-    "fields.slug": parentSlug,
-    content_type: "page",
-    locale: locale,
-  });
+      const pages = await client.getEntries({
+        include: 2,
+        "fields.slug": parentSlug,
+        content_type: "page",
+        locale: locale,
+      });
 
-  if (!pages || pages.total <= 0) {
-    console.log(`Error finding page with slug: ${parentSlug}`);
-    notFound();
-  }
+      if (!pages || pages.total <= 0) {
+        console.log(`Error finding page with slug: ${parentSlug}`);
+        notFound();
+      }
 
-  if (pages.items[0]) {
-    const childPages = pages.items[0].fields.childPages;
-    // Filter out any undefined entries that might come from unpublished/deleted references
-    return childPages?.filter((page: any) => page !== undefined) || [];
-  }
+      if (pages.items[0]) {
+        const childPages = pages.items[0].fields.childPages;
+        return childPages?.filter((page: any) => page !== undefined) || [];
+      }
 
-  return [];
-}
+      return [];
+    },
+    [`children-${parentSlug}-${locale}`],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful", `page-${parentSlug}`] }
+  )();
 
-export async function fetchAsset(assetID: string) {
-  const asset = await client.getAsset(assetID);
-  if (asset) return asset;
-
-  console.log("Error getting asset.");
-}
+export const fetchAsset = (assetID: string) =>
+  unstable_cache(
+    async () => {
+      const asset = await client.getAsset(assetID);
+      if (asset) return asset;
+      console.log("Error getting asset.");
+    },
+    [`asset-${assetID}`],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful", "assets"] }
+  )();
 
 type UpdateBanner = EntrySkeletonType<
   { header: string; copy?: Document },
@@ -144,16 +203,21 @@ type SiteSettings = {
   banner: UpdateBanner | null;
 };
 
-export async function fetchSiteSettings(
+export const fetchSiteSettings = (
   locale: "en-US" | "es" = "en-US"
-): Promise<SiteSettings | null> {
-  const res = await client.getEntries({
-    content_type: "siteSettings", // ID of your content type
-    limit: 1,
-    locale,
-  });
+): Promise<SiteSettings | null> =>
+  unstable_cache(
+    async () => {
+      const res = await client.getEntries({
+        content_type: "siteSettings",
+        limit: 1,
+        locale,
+      });
 
-  if (!res.items.length) return null;
+      if (!res.items.length) return null;
 
-  return res.items[0].fields as SiteSettings;
-}
+      return res.items[0].fields as SiteSettings;
+    },
+    [`site-settings-${locale}`],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful", "site-settings"] }
+  )();

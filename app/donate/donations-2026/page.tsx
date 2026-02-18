@@ -7,7 +7,7 @@ import Script from "next/script";
 import DonationModal from "@/components/donation-modal";
 import { fetchAsset, REVALIDATE_TIME } from "@/lib/contentfulData";
 
-// Enable ISR - revalidate every hour
+// Enable ISR
 export const revalidate = REVALIDATE_TIME;
 
 // Set metadata
@@ -17,11 +17,7 @@ export const metadata = {
     "Support the Portland Immigrant Rights Coalition (PIRC) in defending immigrant rights. Your donation helps us provide legal defense, maintain our community hotline, employ dedicated staff, and advocate for immigration justice in Portland.",
 };
 
-async function getEnglishBlocks() {
-  // Fetch the Contentful asset
-  const chartImage = await fetchAsset("1OzUKmmaGUX6Imk32WnHhO");
-  const heatmapImage = await fetchAsset("58aWEx94WNhLduR3zHEI0l");
-
+function getEnglishBlocks(chartImage: any, heatmapImage: any) {
   return [
     {
       sys: {
@@ -91,10 +87,7 @@ async function getEnglishBlocks() {
   ];
 }
 
-async function getSpanishBlocks() {
-  // Fetch the Contentful asset
-  const chartImage = await fetchAsset("1OzUKmmaGUX6Imk32WnHhO");
-
+function getSpanishBlocks(chartImage: any) {
   return [
     {
       sys: {
@@ -142,8 +135,13 @@ async function getSpanishBlocks() {
 }
 
 export default async function Donations2026() {
-  const englishBlocks = await getEnglishBlocks();
-  const spanishBlocks = await getSpanishBlocks();
+  const [chartImage, heatmapImage] = await Promise.all([
+    fetchAsset("1OzUKmmaGUX6Imk32WnHhO"),
+    fetchAsset("58aWEx94WNhLduR3zHEI0l"),
+  ]);
+
+  const englishBlocks = getEnglishBlocks(chartImage, heatmapImage);
+  const spanishBlocks = getSpanishBlocks(chartImage);
 
   return (
     <main id="donations-2026-page">
