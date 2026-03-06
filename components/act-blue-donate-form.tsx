@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
@@ -15,6 +17,12 @@ function ActBlueDonateForm(props: {
   };
 
   const vimeoId = props.vimeoUrl ? getVimeoId(props.vimeoUrl) : null;
+
+  const handleDonateClick = () => {
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Donate');
+    }
+  };
 
   return (
     <div
@@ -62,7 +70,7 @@ function ActBlueDonateForm(props: {
           target="_blank"
           href="https://secure.actblue.com/donate/donate-for-santuary"
         >
-          <Button>Donate</Button>
+          <Button onClick={handleDonateClick}>Donate</Button>
         </Link>
       </div>
     </div>
