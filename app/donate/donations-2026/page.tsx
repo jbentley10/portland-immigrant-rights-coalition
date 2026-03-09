@@ -17,6 +17,18 @@ export const metadata = {
     "Support the Portland Immigrant Rights Coalition (PIRC) in defending immigrant rights. Your donation helps us provide legal defense, maintain our community hotline, employ dedicated staff, and advocate for immigration justice in Portland.",
 };
 
+function makeRichText(paragraphs: string[]) {
+  return {
+    nodeType: "document",
+    data: {},
+    content: paragraphs.map((text) => ({
+      nodeType: "paragraph",
+      data: {},
+      content: [{ nodeType: "text", value: text, marks: [], data: {} }],
+    })),
+  };
+}
+
 function getEnglishBlocks(chartImage: any, heatmapImage: any) {
   return [
     {
@@ -25,7 +37,7 @@ function getEnglishBlocks(chartImage: any, heatmapImage: any) {
         contentType: { sys: { id: "heading" } },
       },
       fields: {
-        headingText: "Help Us Answer The Calls"
+        headingText: "Help Us Answer the Calls",
       },
     },
     {
@@ -44,8 +56,12 @@ function getEnglishBlocks(chartImage: any, heatmapImage: any) {
         contentType: { sys: { id: "actBlueDonateForm" } },
       },
       fields: {
-        heading: null,
-        body: "The PIRC line rings hundreds of times a day, and is answered by only a few staff members. We connect callers to critical services like legal help and keeping in touch with family members in detention. Please help us grow to meet the overwhelming need immigrant communities are experiencing.",
+        heading: "400 calls a day. 4 staff members.",
+        body: makeRichText([
+          "To be frank, we can't keep up. That's why we need your help.",
+          "From legal help to contacting family members in detention, callers depend on us to connect them to critical services",
+          "Your donation allows us to meet the increased demand for critical services so that no call goes unanswered.",
+        ]),
         vimeoUrl: "https://vimeo.com/1158529302",
       },
     },
@@ -55,10 +71,23 @@ function getEnglishBlocks(chartImage: any, heatmapImage: any) {
         contentType: { sys: { id: "imageAndTextBlock" } },
       },
       fields: {
-        heading: "We connect families dealing with ICE with critical services",
-        descriptionRich: "Legal Services, Finding loved ones within detention system, what to do if ICE is knocking on their door, social services and assistance, DV support.",
+        heading: "When ICE is near, we're here to help",
+        descriptionRich: makeRichText([
+          "Through PIRC, families get help with legal services, social services, DV support, finding loved ones in detention centers, and even what to do if ICE is knocking on their door.",
+          "Our goal is to have enough staff to meet the demand for immigrant services in our community.",
+        ]),
         imageOnLeft: true,
         image: chartImage,
+      },
+    },
+    {
+      sys: {
+        id: "donate-now-button",
+        contentType: { sys: { id: "largeButtonBlock" } },
+      },
+      fields: {
+        buttonText: "Donate Now",
+        buttonLink: "#ab-form-container",
       },
     },
     {
@@ -67,11 +96,15 @@ function getEnglishBlocks(chartImage: any, heatmapImage: any) {
         contentType: { sys: { id: "imageAndTextBlock" } },
       },
       fields: {
-        heading: "Detentions in Portland",
-        descriptionRich: "",
+        heading: "Where ICE is most active",
+        descriptionRich: makeRichText([
+          "Gresham, Hillsboro, Woodburn, and more—communities across Oregon are experiencing increased detentions. We receive 2,000 calls a week asking us to help locate where loved ones are being held.",
+        ]),
         imageOnLeft: false,
         image: heatmapImage,
         vimeoUrl: "https://vimeo.com/1158553782",
+        linkText: "SEE THE LATEST NUMBERS",
+        linkHref: "https://pirc-links.vercel.app/all_time_heatmap.html",
       },
     },
     {
@@ -80,8 +113,11 @@ function getEnglishBlocks(chartImage: any, heatmapImage: any) {
         contentType: { sys: { id: "actBlueDonateForm" } },
       },
       fields: {
-        heading: "Please donate now",
-        body: "",
+        heading: null,
+        body: makeRichText([
+          "Your donation helps us locate and assist detainees being held by ICE.",
+          "Our ultimate goal is to reunite them with their family members.",
+        ]),
       },
     },
   ];
