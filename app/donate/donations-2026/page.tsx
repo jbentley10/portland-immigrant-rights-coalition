@@ -179,6 +179,12 @@ export default async function Donations2026() {
   const englishBlocks = getEnglishBlocks(chartImage, heatmapImage);
   const spanishBlocks = getSpanishBlocks(chartImage);
 
+  // Separate header from content
+  const englishHeader = [englishBlocks[0]];
+  const englishContent = englishBlocks.slice(1);
+  const spanishHeader = [spanishBlocks[0]];
+  const spanishContent = spanishBlocks.slice(1);
+
   return (
     <main id="donations-2026-page">
       <Script
@@ -213,9 +219,16 @@ export default async function Donations2026() {
       {/* End Meta Pixel Code */}
       <Content
         key={Math.random()}
-        englishBlocks={englishBlocks}
-        spanishBlocks={spanishBlocks}
+        englishBlocks={englishHeader}
+        spanishBlocks={spanishHeader}
       />
+      <div style={{ marginLeft: '2rem', marginRight: '2rem' }}>
+        <Content
+          key={Math.random()}
+          englishBlocks={englishContent}
+          spanishBlocks={spanishContent}
+        />
+      </div>
       <DonationModal delaySeconds={30} />
     </main>
   );
