@@ -11,16 +11,12 @@ export default function Footer() {
       }
     >
       <div className={"flex flex-col sm:flex-row"}>
-        <div
-          className={
-            "pl-4 sm:pl-0 sm:w-1/2 pt-8 md:pt-14 pb-2 md:pb-10"
-          }
-        >
+        <div className={"pl-4 sm:pl-0 sm:w-1/2 pt-8 md:pt-14 pb-2 md:pb-10"}>
           <Image
-            src="/logo.svg"
-            width="200"
-            height="195"
-            alt="The logo for PIRC"
+            src='/logo.svg'
+            width='200'
+            height='195'
+            alt='The logo for PIRC'
           />
         </div>
         <div className={`sm:w-1/2 pt-14`}>
@@ -31,48 +27,54 @@ export default function Footer() {
               }
             >
               <Links
-                orientation="vertical"
+                orientation='vertical'
                 size={"large"}
                 showChildPages={false}
               />
             </div>
 
             <div className={"information sm:pl-4 pl-4 lg:pl-16"}>
-              <strong className="serif">Contact Us</strong>
+              <strong className='serif'>Contact Us</strong>
               <br />
-              <ul className="ml-4">
+              <ul className='ml-4'>
                 <li>
                   <p>
                     General Email:{" "}
-                    <Link href="mailto:pircpdx@gmail.com">pircpdx@gmail.com</Link>
+                    <Link href='mailto:pircpdx@gmail.com'>
+                      pircpdx@gmail.com
+                    </Link>
                   </p>
                 </li>
                 <li>
-                  <p>Volunteer Inquiries:{" "}
-                    <Link href="mailto:volunteers@pircoregon.org">
-                      admin@pircoregon.org
-                    </Link></p>
+                  <p>
+                    Volunteer Inquiries:{" "}
+                    <Link href='mailto:volunteers@pircoregon.org'>
+                      volunteers@pircoregon.org
+                    </Link>
+                  </p>
                 </li>
                 <li>
-                  <p>Press Inquiries:{" "}
-                    <Link href="mailto:press@pircoregon.org">
+                  <p>
+                    Press Inquiries:{" "}
+                    <Link href='mailto:press@pircoregon.org'>
                       press@pircoregon.org
-                    </Link></p>
+                    </Link>
+                  </p>
                 </li>
               </ul>
               <br />
               <p>
                 Non-emergency voicemail line:{" "}
-                <Link href="tel:971-940-9053">971-940-9053</Link>
+                <Link href='tel:971-940-9053'>971-940-9053</Link>
               </p>
               <br />
-              <div className="flex row space-x-4">
-                <Link target="_blank" href="https://instagram.com/pirc_oregon">
+              <div className='flex row space-x-4'>
+                <Link target='_blank' href='https://instagram.com/pirc_oregon'>
                   <Instagram />
                 </Link>
                 <Link
-                  target="_blank"
-                  href="https://facebook.com/pdximmigrantrights"
+                  target='_blank'
+                  href='https://facebook.com/pdximmigrantrights'
                 >
                   <Facebook />
                 </Link>
@@ -88,11 +90,11 @@ export default function Footer() {
                 <br />
                 <p>PIRC Tax ID 83-3179589</p>
                 <br />
-                <Link href="/privacy-policy">
+                <Link href='/privacy-policy'>
                   <strong>Privacy Policy</strong>
                 </Link>
                 <br />
-                <Link href="/terms-of-service">
+                <Link href='/terms-of-service'>
                   <strong>Terms of Service</strong>
                 </Link>
               </div>
@@ -104,12 +106,12 @@ export default function Footer() {
         &copy;{`${new Date().getFullYear()}`}{" "}
         <Link
           className={"font-bold"}
-          href="https://palmspringswebdesign.net"
-          target="_blank"
+          href='https://palmspringswebdesign.net'
+          target='_blank'
         >
           Palm Springs Web Design
         </Link>
       </p>
-    </footer >
+    </footer>
   );
 }
