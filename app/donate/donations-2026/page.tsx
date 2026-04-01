@@ -131,7 +131,7 @@ function getSpanishBlocks(chartImage: any) {
         contentType: { sys: { id: "heading" } },
       },
       fields: {
-        headingText: "Ayúdanos a Responder las Llamadas"
+        headingText: "Ayúdanos a Responder las Llamadas",
       },
     },
     {
@@ -161,8 +161,10 @@ function getSpanishBlocks(chartImage: any) {
         contentType: { sys: { id: "imageAndTextBlock" } },
       },
       fields: {
-        heading: "Conectamos a familias que enfrentan ICE con servicios críticos",
-        descriptionRich: "Servicios legales, encontrar seres queridos dentro del sistema de detención, qué hacer si ICE está tocando su puerta, servicios sociales y asistencia, apoyo para violencia doméstica.",
+        heading:
+          "Conectamos a familias que enfrentan ICE con servicios críticos",
+        descriptionRich:
+          "Servicios legales, encontrar seres queridos dentro del sistema de detención, qué hacer si ICE está tocando su puerta, servicios sociales y asistencia, apoyo para violencia doméstica.",
         imageOnLeft: true,
         image: chartImage,
       },
@@ -186,15 +188,27 @@ export default async function Donations2026() {
   const spanishContent = spanishBlocks.slice(1);
 
   return (
-    <main id="donations-2026-page">
+    <main id='donations-2026-page'>
       <Script
         src='https://secure.actblue.com/cf/assets/actblue.js'
         async
         data-ab-source='snippet-20240903'
       />
-      <Script id={"actblue-config"}>window.actblueConfig = {};</Script>
+      <Script id={"actblue-config"} strategy='afterInteractive'>
+        {`window.actblueConfig = {};
+        window.addEventListener('message', function(event) {
+          if (event.origin.includes('actblue.com')) {
+            try {
+              var data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+              if (data && data.action === 'submitSuccess' && typeof fbq !== 'undefined') {
+                fbq('track', 'Donate', { currency: 'USD', value: data.contribution && data.contribution.amount ? data.contribution.amount / 100 : 0 });
+              }
+            } catch(e) {}
+          }
+        });`}
+      </Script>
       {/* Meta Pixel Code */}
-      <Script id="facebook-pixel" strategy="afterInteractive">
+      <Script id='facebook-pixel' strategy='afterInteractive'>
         {`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -204,16 +218,16 @@ export default async function Donations2026() {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1495620619240202');
+          fbq('init', '1293944558257558');
           fbq('track', 'PageView');
         `}
       </Script>
       <noscript>
         <img
-          height="1"
-          width="1"
-          style={{display: 'none'}}
-          src="https://www.facebook.com/tr?id=1495620619240202&ev=PageView&noscript=1"
+          height='1'
+          width='1'
+          style={{ display: "none" }}
+          src='https://www.facebook.com/tr?id=1495620619240202&ev=PageView&noscript=1'
         />
       </noscript>
       {/* End Meta Pixel Code */}
@@ -222,7 +236,7 @@ export default async function Donations2026() {
         englishBlocks={englishHeader}
         spanishBlocks={spanishHeader}
       />
-      <div style={{ marginLeft: '2rem', marginRight: '2rem' }}>
+      <div style={{ marginLeft: "2rem", marginRight: "2rem" }}>
         <Content
           key={Math.random()}
           englishBlocks={englishContent}
