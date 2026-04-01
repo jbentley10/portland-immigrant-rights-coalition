@@ -192,7 +192,15 @@ export default async function Donations2026() {
         async
         data-ab-source='snippet-20240903'
       />
-      <Script id={"actblue-config"}>window.actblueConfig = {};</Script>
+      <Script id={"actblue-config"} strategy="afterInteractive">
+        {`window.actblueConfig = {
+          onSuccess: function() {
+            if (typeof fbq !== 'undefined') {
+              fbq('track', 'Donate');
+            }
+          }
+        };`}
+      </Script>
       {/* Meta Pixel Code */}
       <Script id="facebook-pixel" strategy="afterInteractive">
         {`
