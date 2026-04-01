@@ -16,8 +16,8 @@ export const metadata = {
 };
 
 export default async function Resources() {
-  const blocksEnglish = await fetchBlocksBySlug("about/resource-center", "en-US");
-  const blocksSpanish = await fetchBlocksBySlug("about/resource-center", "es");
+  const blocksEnglish = await fetchBlocksBySlug("resources", "en-US");
+  const blocksSpanish = await fetchBlocksBySlug("resources", "es");
 
   return (
     <main>
