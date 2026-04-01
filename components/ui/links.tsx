@@ -17,8 +17,8 @@ let linkList = [
         url: "/about/what-we-do",
       },
       {
-        name: "Resource Center",
-        url: "/about/resource-center",
+        name: "Resources",
+        url: "/about/resources",
       },
       {
         name: "What To Do If You See ICE",
