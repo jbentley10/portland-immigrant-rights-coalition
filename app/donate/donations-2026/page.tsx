@@ -198,7 +198,12 @@ export default async function Donations2026() {
         {`window.actblueConfig = {};
         window.addEventListener('message', function(event) {
           if (event.origin.includes('actblue.com')) {
-            console.log('[ActBlue postMessage] origin:', event.origin, '| data:', JSON.stringify(event.data));
+            try {
+              var data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+              if (data && data.action === 'submitSuccess' && typeof fbq !== 'undefined') {
+                fbq('track', 'Donate', { currency: 'USD', value: data.contribution && data.contribution.amount ? data.contribution.amount / 100 : 0 });
+              }
+            } catch(e) {}
           }
         });`}
       </Script>
