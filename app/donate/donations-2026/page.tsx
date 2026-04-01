@@ -197,8 +197,8 @@ export default async function Donations2026() {
       <Script id={"actblue-config"} strategy='afterInteractive'>
         {`window.actblueConfig = {};
         window.addEventListener('message', function(event) {
-          if (event.origin === 'https://secure.actblue.com') {
-            console.log('[ActBlue postMessage]', JSON.stringify(event.data));
+          if (event.origin.includes('actblue.com')) {
+            console.log('[ActBlue postMessage] origin:', event.origin, '| data:', JSON.stringify(event.data));
           }
         });`}
       </Script>
