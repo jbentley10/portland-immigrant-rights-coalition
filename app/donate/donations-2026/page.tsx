@@ -195,13 +195,12 @@ export default async function Donations2026() {
         data-ab-source='snippet-20240903'
       />
       <Script id={"actblue-config"} strategy='afterInteractive'>
-        {`window.actblueConfig = {
-          onSuccess: function() {
-            if (typeof fbq !== 'undefined') {
-              fbq('track', 'Donate');
-            }
+        {`window.actblueConfig = {};
+        window.addEventListener('message', function(event) {
+          if (event.origin === 'https://secure.actblue.com') {
+            console.log('[ActBlue postMessage]', JSON.stringify(event.data));
           }
-        };`}
+        });`}
       </Script>
       {/* Meta Pixel Code */}
       <Script id='facebook-pixel' strategy='afterInteractive'>
