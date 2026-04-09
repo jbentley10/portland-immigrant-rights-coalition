@@ -44,6 +44,10 @@ let linkList = [
         name: "Events",
         url: "/get-involved/events",
       },
+      {
+        name: "Host a Fundraiser",
+        url: "https://docs.google.com/document/d/15WSmZjGuyETdqQxQFdK7ql6W2nxZtQ719Z57pneRw30/edit?tab=t.0",
+      },
     ],
   },
   {
@@ -54,7 +58,7 @@ let linkList = [
   {
     name: "Donate",
     url: "/donate",
-  }
+  },
 ];
 
 export const Links = (props: {
@@ -115,7 +119,7 @@ export const Links = (props: {
             }
             className={linkClassName}
           />
-        )
+        ),
       )}
       <a
         className={`
