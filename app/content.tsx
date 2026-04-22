@@ -30,6 +30,7 @@ import QuickStatisticsBlock, {
 } from "@/components/quick-statistics-block";
 import ImageTextBlock from "@/components/image-text-block";
 import ActBlueDonateForm from "@/components/act-blue-donate-form";
+import MultilingualResourcesBlock from "@/components/multilingual-resources-block";
 import BilingualResourcesBlock from "@/components/bilingual-resources-block";
 import EventsBlock from "@/components/events";
 import ThreeColumnInfo, { ColumnItem } from "@/components/three-column-info";
@@ -41,11 +42,13 @@ const BlockByType = ({
   index,
   englishBlocks,
   spanishBlocks,
+  resourceFiles,
 }: {
   block: any;
   index: number;
   englishBlocks: any[];
   spanishBlocks: any[];
+  resourceFiles?: any[];
 }) => {
   // Safety check: if block is undefined, skip it
   if (!block || !block.sys || !block.sys.contentType) {
@@ -250,18 +253,27 @@ const BlockByType = ({
       );
 
     case "resourcesBlock":
-      // Get both English and Spanish versions of the block
-      const englishBlock = englishBlocks[index];
-      const spanishBlock = spanishBlocks[index];
-
+      // Blocks with resourceBlocks entries use the original bilingual layout.
+      // Blocks without them use the new multilingual dropdown.
+      if (block.fields.resourceBlocks?.length) {
+        const englishBlock = englishBlocks[index];
+        const spanishBlock = spanishBlocks[index];
+        return (
+          <BilingualResourcesBlock
+            englishHeading={englishBlock.fields.heading}
+            englishSubheading={englishBlock.fields.subheading}
+            englishResourceBlocks={englishBlock.fields.resourceBlocks}
+            spanishHeading={spanishBlock.fields.heading}
+            spanishSubheading={spanishBlock.fields.subheading}
+            spanishResourceBlocks={spanishBlock.fields.resourceBlocks}
+          />
+        );
+      }
       return (
-        <BilingualResourcesBlock
-          englishHeading={englishBlock.fields.heading}
-          englishSubheading={englishBlock.fields.subheading}
-          englishResourceBlocks={englishBlock.fields.resourceBlocks}
-          spanishHeading={spanishBlock.fields.heading}
-          spanishSubheading={spanishBlock.fields.subheading}
-          spanishResourceBlocks={spanishBlock.fields.resourceBlocks}
+        <MultilingualResourcesBlock
+          heading={block.fields.heading}
+          subheading={block.fields.subheading}
+          rawAssets={resourceFiles ?? []}
         />
       );
 
@@ -372,12 +384,14 @@ const BlockByType = ({
 interface ContentProps {
   englishBlocks: any[];
   spanishBlocks: any[];
+  resourceFiles?: any[];
 }
 
 // Component recieves a single array of block objects
 export default function Content({
   englishBlocks = [],
   spanishBlocks = [],
+  resourceFiles,
 }: ContentProps) {
   const isEnglish = useContext(LocaleContext);
   const [translatedBlocks, setTranslatedBlocks] = useState(englishBlocks);
@@ -398,6 +412,7 @@ export default function Content({
           index={index}
           englishBlocks={englishBlocks}
           spanishBlocks={spanishBlocks}
+          resourceFiles={resourceFiles}
         />
       );
     })

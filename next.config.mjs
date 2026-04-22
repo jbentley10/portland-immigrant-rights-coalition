@@ -5,8 +5,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "images.ctfassets.net",
-        port: "",
-        pathname: `/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}/**`,
+      },
+      {
+        protocol: "https",
+        hostname: "assets.ctfassets.net",
       },
     ],
   },

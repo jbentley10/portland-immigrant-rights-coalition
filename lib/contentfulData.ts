@@ -183,6 +183,18 @@ export const fetchChildPagesBySlug = (
     { revalidate: REVALIDATE_TIME, tags: ["contentful", `page-${parentSlug}`] }
   )();
 
+export const fetchResourceFiles = () =>
+  unstable_cache(
+    async () => {
+      const assets = await client.getAssets({ limit: 200 });
+      return assets.items.filter((a: any) =>
+        a.fields?.file?.fileName?.includes("--")
+      );
+    },
+    ["resource-files"],
+    { revalidate: REVALIDATE_TIME, tags: ["contentful", "assets"] }
+  )();
+
 export const fetchAsset = (assetID: string) =>
   unstable_cache(
     async () => {

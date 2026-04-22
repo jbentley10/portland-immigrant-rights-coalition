@@ -1,14 +1,11 @@
 /**
  * @file page.tsx
  */
-// Import components and utils
-import { fetchBlocksBySlug, REVALIDATE_TIME } from "@/lib/contentfulData";
+import { fetchBlocksBySlug, fetchResourceFiles, REVALIDATE_TIME } from "@/lib/contentfulData";
 import Content from "@/app/content";
 
-// Enable ISR - revalidate every hour
 export const revalidate = REVALIDATE_TIME;
 
-// Set metadata
 export const metadata = {
   title: "Resources | Portland Immigrant Rights Coalition",
   description:
@@ -18,6 +15,7 @@ export const metadata = {
 export default async function Resources() {
   const blocksEnglish = await fetchBlocksBySlug("about/resources", "en-US");
   const blocksSpanish = await fetchBlocksBySlug("about/resources", "es");
+  const resourceFiles = await fetchResourceFiles();
 
   return (
     <main>
@@ -25,6 +23,7 @@ export default async function Resources() {
         key={Math.random()}
         englishBlocks={blocksEnglish}
         spanishBlocks={blocksSpanish}
+        resourceFiles={resourceFiles}
       />
     </main>
   );
