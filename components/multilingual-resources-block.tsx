@@ -25,19 +25,20 @@ function parseResourceFiles(rawAssets: any[]): ResourcesByLanguage {
 
   for (const asset of rawAssets) {
     const rawFileName: string = asset.fields?.file?.fileName ?? "";
+    const title: string = asset.fields?.title ?? "";
     const url: string = asset.fields?.file?.url ?? "";
 
     // Strip folder path if present (e.g. "folder/file.pdf" → "file.pdf")
     const fileName = rawFileName.split("/").pop() ?? rawFileName;
 
-    if (!fileName.includes("--")) continue;
+    // Use filename if it has a language suffix, otherwise fall back to title
+    const source = fileName.includes("--") ? fileName.replace(/\.[^.]+$/, "") : title;
 
-    const withoutExt = fileName.replace(/\.[^.]+$/, "");
-    const dashIndex = withoutExt.lastIndexOf("--");
-    if (dashIndex === -1) continue;
+    if (!source.includes("--")) continue;
 
-    const fileBase = withoutExt.slice(0, dashIndex);
-    const langCode = withoutExt.slice(dashIndex + 2);
+    const dashIndex = source.lastIndexOf("--");
+    const fileBase = source.slice(0, dashIndex);
+    const langCode = source.slice(dashIndex + 2);
     if (!langCode) continue;
 
     if (!result[langCode]) result[langCode] = [];

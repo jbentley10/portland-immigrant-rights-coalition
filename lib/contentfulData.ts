@@ -188,7 +188,8 @@ export const fetchResourceFiles = () =>
     async () => {
       const assets = await client.getAssets({ limit: 200 });
       return assets.items.filter((a: any) =>
-        a.fields?.file?.fileName?.includes("--")
+        a.fields?.file?.fileName?.includes("--") ||
+        a.fields?.title?.includes("--")
       );
     },
     ["resource-files"],
