@@ -48,6 +48,10 @@ let linkList = [
         name: "Host a Fundraiser",
         url: "https://docs.google.com/document/d/15WSmZjGuyETdqQxQFdK7ql6W2nxZtQ719Z57pneRw30/edit?tab=t.0",
       },
+      {
+        name: "Career Openings",
+        url: "/get-involved#TDbVAQra19HHlAxfpRWua",
+      },
     ],
   },
   {

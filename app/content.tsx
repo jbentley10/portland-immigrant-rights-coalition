@@ -406,14 +406,15 @@ export default function Content({
     translatedBlocks &&
     translatedBlocks.map((block: any, index: number) => {
       return (
-        <BlockByType
-          key={block?.sys?.id || index}
-          block={block}
-          index={index}
-          englishBlocks={englishBlocks}
-          spanishBlocks={spanishBlocks}
-          resourceFiles={resourceFiles}
-        />
+        <div key={block?.sys?.id || index} id={block?.sys?.id}>
+          <BlockByType
+            block={block}
+            index={index}
+            englishBlocks={englishBlocks}
+            spanishBlocks={spanishBlocks}
+            resourceFiles={resourceFiles}
+          />
+        </div>
       );
     })
   );
