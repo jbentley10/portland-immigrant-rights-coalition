@@ -29,9 +29,22 @@ interface WeeklyUpdateInput {
 // Validation
 // ---------------------------------------------------------------------------
 
+function isRealCalendarDate(date: string): boolean {
+  const [year, month, day] = date.split("-").map(Number);
+  const parsed = new Date(year, month - 1, day, 12);
+  return (
+    parsed.getFullYear() === year &&
+    parsed.getMonth() === month - 1 &&
+    parsed.getDate() === day
+  );
+}
+
 function validateInput(input: WeeklyUpdateInput) {
   if (!input.date || !/^\d{4}-\d{2}-\d{2}$/.test(input.date)) {
     throw new Error('Input "date" must be in YYYY-MM-DD format.');
+  }
+  if (!isRealCalendarDate(input.date)) {
+    throw new Error('Input "date" must be a real calendar date.');
   }
   if (!Array.isArray(input.blocks) || input.blocks.length === 0) {
     throw new Error('Input "blocks" must be a non-empty array.');
@@ -117,27 +130,41 @@ async function main() {
     process.exit(0);
   }
 
-  // Initialize Management API client
-  const client = createClient({ accessToken: CONTENTFUL_MANAGEMENT_TOKEN });
-  const space = await client.getSpace(CONTENTFUL_SPACE_ID);
-  const env = await space.getEnvironment(CONTENTFUL_ENVIRONMENT);
+  // Plain client API, scoped to this space/environment by default so calls
+  // below don't need to repeat spaceId/environmentId.
+  const client = createClient(
+    { accessToken: CONTENTFUL_MANAGEMENT_TOKEN },
+    {
+      type: "plain",
+      defaults: {
+        spaceId: CONTENTFUL_SPACE_ID,
+        environmentId: CONTENTFUL_ENVIRONMENT,
+      },
+    }
+  );
 
-  // Idempotency guard — abort if page already exists for this date
-  const existingPages = await env.getEntries({
-    content_type: "page",
-    "fields.slug": slug,
-    limit: 1,
-  });
-  if (existingPages.items.length > 0) {
-    console.log(`\nA page already exists for slug "${slug}". Exiting without changes.`);
-    process.exit(0);
-  }
+  // Deterministic entry IDs (derived from the date) make this script
+  // resumable: a rerun after a partial failure reuses already-created
+  // entries instead of creating duplicates / orphans.
+  const pageEntryId = `weekly-update-${input.date}`;
+  const blockEntryIds = input.blocks.map(
+    (_, i) => `weekly-update-${input.date}-block-${i + 1}`
+  );
 
-  // Create imageAndTextBlock entries
-  const blockIds: string[] = [];
-
+  // Create (or reuse) imageAndTextBlock entries
   for (let i = 0; i < input.blocks.length; i++) {
     const block = input.blocks[i];
+    const entryId = blockEntryIds[i];
+
+    const existingBlock = await client.entry
+      .get({ entryId })
+      .catch(() => null);
+
+    if (existingBlock) {
+      console.log(`Block ${i + 1} of ${input.blocks.length} already exists: ${entryId} (reusing)`);
+      continue;
+    }
+
     console.log(`Creating block ${i + 1} of ${input.blocks.length}...`);
 
     const richTextEn = stringsToRichText(block.description.en);
@@ -176,44 +203,58 @@ async function main() {
       fields.linkHref = { "en-US": block.linkHref };
     }
 
-    const blockEntry = await env.createEntry("imageAndTextBlock", { fields });
-    await blockEntry.publish();
-    blockIds.push(blockEntry.sys.id);
-    console.log(`  ✓ Block ${i + 1} created: ${blockEntry.sys.id}`);
+    const blockEntry = await client.entry.createWithId(
+      { entryId, contentTypeId: "imageAndTextBlock" },
+      { fields }
+    );
+    await client.entry.publish({ entryId }, blockEntry);
+    console.log(`  ✓ Block ${i + 1} created: ${entryId}`);
   }
 
-  // Create the page entry
-  console.log("\nCreating weekly update page...");
+  // Create (or reuse) the page entry
+  let pageEntry = await client.entry.get({ entryId: pageEntryId }).catch(() => null);
 
-  // Use date-based order so entries sort chronologically (e.g. 20260107)
-  const order = parseInt(input.date.replace(/-/g, ""), 10);
+  if (pageEntry) {
+    console.log(`\nPage already exists for slug "${slug}": ${pageEntryId} (reusing)`);
+  } else {
+    console.log("\nCreating weekly update page...");
 
-  const pageEntry = await env.createEntry("page", {
-    fields: {
-      englishTitle: { "en-US": enTitle },
-      spanishTitle: { "en-US": esTitle },
-      slug: { "en-US": slug },
-      topLevelPage: { "en-US": false },
-      order: { "en-US": order },
-      blocks: {
-        "en-US": blockIds.map((id) => ({
-          sys: { type: "Link", linkType: "Entry", id },
-        })),
-      },
-      childPages: { "en-US": [] },
-    },
-  });
+    // Use date-based order so entries sort chronologically (e.g. 20260107)
+    const order = parseInt(input.date.replace(/-/g, ""), 10);
 
-  await pageEntry.publish();
-  console.log(`  ✓ Page created: ${pageEntry.sys.id}`);
+    pageEntry = await client.entry.createWithId(
+      { entryId: pageEntryId, contentTypeId: "page" },
+      {
+        fields: {
+          englishTitle: { "en-US": enTitle },
+          spanishTitle: { "en-US": esTitle },
+          slug: { "en-US": slug },
+          topLevelPage: { "en-US": false },
+          order: { "en-US": order },
+          blocks: {
+            "en-US": blockEntryIds.map((id) => ({
+              sys: { type: "Link", linkType: "Entry", id },
+            })),
+          },
+          childPages: { "en-US": [] },
+        },
+      }
+    );
+    await client.entry.publish({ entryId: pageEntryId }, pageEntry);
+    console.log(`  ✓ Page created: ${pageEntryId}`);
+  }
 
-  // Append new page to parent's childPages
+  // Append new page to parent's childPages (idempotent — only adds the link
+  // if it isn't already present, so reruns safely repair a failed prior
+  // attempt without creating duplicate links).
   console.log("\nLinking to weekly updates index page...");
 
-  const parentResults = await env.getEntries({
-    content_type: "page",
-    "fields.slug": "data-and-updates/weekly-updates",
-    limit: 1,
+  const parentResults = await client.entry.getMany({
+    query: {
+      content_type: "page",
+      "fields.slug": "data-and-updates/weekly-updates",
+      limit: 1,
+    },
   });
 
   if (parentResults.items.length === 0) {
@@ -223,21 +264,32 @@ async function main() {
   }
 
   const parentEntry = parentResults.items[0];
-  const existingChildren: unknown[] =
-    (parentEntry.fields.childPages as Record<string, unknown[]> | undefined)?.[
+  const existingChildren: { sys: { id: string } }[] =
+    (parentEntry.fields.childPages as Record<string, { sys: { id: string } }[]> | undefined)?.[
       "en-US"
     ] ?? [];
 
-  (parentEntry.fields as Record<string, unknown>).childPages = {
-    "en-US": [
-      ...existingChildren,
-      { sys: { type: "Link", linkType: "Entry", id: pageEntry.sys.id } },
-    ],
-  };
+  const alreadyLinked = existingChildren.some(
+    (child) => child.sys.id === pageEntryId
+  );
 
-  const updatedParent = await parentEntry.update();
-  await updatedParent.publish();
-  console.log("  ✓ Parent page updated");
+  if (alreadyLinked) {
+    console.log("  ✓ Parent page already linked, nothing to do");
+  } else {
+    (parentEntry.fields as Record<string, unknown>).childPages = {
+      "en-US": [
+        ...existingChildren,
+        { sys: { type: "Link", linkType: "Entry", id: pageEntryId } },
+      ],
+    };
+
+    const updatedParent = await client.entry.update(
+      { entryId: parentEntry.sys.id },
+      parentEntry
+    );
+    await client.entry.publish({ entryId: parentEntry.sys.id }, updatedParent);
+    console.log("  ✓ Parent page updated");
+  }
 
   console.log(`
 ✓ Done! Weekly update published successfully.

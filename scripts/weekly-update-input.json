@@ -1,31 +1,4 @@
 {
-  "date": "2026-01-07",
-  "blocks": [
-    {
-      "heading": {
-        "en": "Section Heading (optional — delete this field if not needed)",
-        "es": "Encabezado de sección (opcional — elimine este campo si no es necesario)"
-      },
-      "description": {
-        "en": [
-          "First paragraph in English.",
-          "Second paragraph in English (add more strings for more paragraphs, or use just one)."
-        ],
-        "es": [
-          "Primer párrafo en español.",
-          "Segundo párrafo en español (agregue más cadenas para más párrafos, o use solo una)."
-        ]
-      },
-      "imageAssetId": "REPLACE_WITH_CONTENTFUL_ASSET_ID_OR_DELETE",
-      "imageOnLeft": true,
-      "linkText": "Learn More",
-      "linkHref": "https://example.com"
-    },
-    {
-      "description": {
-        "en": ["A block with just text — no heading, no image, no link."],
-        "es": ["Un bloque solo con texto — sin encabezado, sin imagen, sin enlace."]
-      }
-    }
-  ]
+  "date": "REPLACE-WITH-YYYY-MM-DD",
+  "blocks": []
 }
