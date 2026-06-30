@@ -1,4 +1,83 @@
 {
-  "date": "REPLACE-WITH-YYYY-MM-DD",
-  "blocks": []
+  "date": "2026-06-26",
+  "blocks": [
+    {
+      "description": {
+        "en": [
+          "22 detentions reported to the hotline June 19–June 25",
+          "Counties in Oregon where detentions occurred: Hood River, Jackson, Josephine, Multnomah, Clackamas, Wasco, Clatsop, Marion, Polk, with additional reports in Washington",
+          "64 total detentions reported to PIRC in June 2026"
+        ],
+        "es": [
+          "22 detenciones reportadas a la línea de PIRC entre el 19 y el 25 de junio",
+          "Condados de Oregón donde ocurrieron las detenciones: Hood River, Jackson, Josephine, Multnomah, Clackamas, Wasco, Clatsop, Marion, Polk; con reportes adicionales en Washington",
+          "Total de 64 detenciones reportadas a PIRC en junio de 2026"
+        ]
+      }
+    },
+    {
+      "heading": {
+        "en": "Trends we are noticing from detentions reported to PIRC:",
+        "es": "Patrones observadas en las detenciones reportadas a PIRC:"
+      },
+      "description": {
+        "en": [
+          "Over 25% this week occurred in Southern Oregon",
+          "Over 80% occurred when people were out in community (often driving)",
+          "1 in 4 detentions in the last 2 weeks occurred during the weekend"
+        ],
+        "es": [
+          "Más del 25 % de las detenciones de esta semana ocurrieron en el sur de Oregón.",
+          "Más del 80 % ocurrieron mientras las personas se encontraban en la comunidad (por ejemplo, conduciendo).",
+          "1 de cada 4 en las últimas dos semanas pasaron durante los fines de semana."
+        ]
+      }
+    },
+    {
+      "description": {
+        "en": [
+          "Our hearts are heavy this week with news of the massive earthquakes in Venezuela and the Supreme Court rulings ending TPS protections and allowing the administration to turn away asylum seekers at the border. See the next slide for different actions to take in response.",
+          "We stand in grief and solidarity with the people of Venezuela, many of whom became our neighbors here in Oregon over the past few years as they have sought asylum. It is particularly devastating to know that in this moment of catastrophe, tens of billions of dollars are being invested in ICE that could feed, house, welcome and provide aid to people in the US and abroad. The suffering and cruelty continues, but so does our resolve to stand together no matter what."
+        ],
+        "es": [
+          "Esta semana nos entristece profundamente la noticia de los devastadores terremotos en Venezuela y los fallos de la Corte Suprema que ponen fin a las protecciones del TPS y permiten al gobierno rechazar a los solicitantes de asilo en la frontera. Consulte la siguiente diapositiva para ver las diferentes medidas que puede tomar en respuesta.",
+          "Estamos en gran solidaridad y compartimos el dolor del pueblo venezolano; muchas de estas personas se han convertido en nuestros vecinos aquí en Oregón en los últimos años mientras buscaban asilo. Resulta especialmente devastador saber que, en este momento de catástrofe, se están invirtiendo decenas de miles de millones de dólares en el ICE, fondos que podrían destinarse a alimentar, alojar, recibir y brindar ayuda a personas tanto en Estados Unidos como afuera. El sufrimiento y la crueldad continúan, pero también nuestra determinación de seguir unidos, pase lo que pase."
+        ]
+      }
+    },
+    {
+      "heading": {
+        "en": "What can I do this week?",
+        "es": "¿Qué puedo hacer esta semana?"
+      },
+      "description": {
+        "en": [
+          "Venezuela Mutual Aid: Please follow our friends at the Asylum Seeker Solidarity Collective (@asylumsolidaritypdx) and check out their linktree, where they will be sharing a list of GoFundMe's being organized by Oregonians whose families have been impacted by the earthquakes, and GoFundMe's for families whose loved ones have been detained over the past year. Multiple local organizations are coordinating mutual aid donations to be sent to Venezuela this weekend."
+        ],
+        "es": [
+          "Ayuda mutua para Venezuela: Por favor, sigan a nuestros amigos del Asylum Seeker Solidarity Collective (@asylumsolidaritypdx) y consulten su Linktree; allí compartirán una lista de campañas de GoFundMe organizadas por residentes de Oregón con familiares afectados por los terremotos, y campañas para familias con seres queridos que han sido detenidos durante el último año. Varias organizaciones locales están coordinando donaciones de ayuda mutua que se enviarán a Venezuela este fin de semana."
+        ]
+      }
+    },
+    {
+      "heading": {
+        "en": "What can I do, continued",
+        "es": "¿Qué puedo hacer? (continuación)"
+      },
+      "description": {
+        "en": [
+          "Federal action: Call your US House and Senate representatives (202) 224-3121 and demand two things:",
+          "Venezuela earthquake: \"Pressure the White House to provide immediate, massive humanitarian assistance with no strings attached; end sanctions; use stolen Venezuelan oil money for Venezuelan recovery.\"",
+          "TPS: \"The House and Senate must urgently pass comprehensive protections for all TPS holders, including those from Haiti, Syria, and Venezuela.\"",
+          "Local pressure: Call or write your local elected representatives (City, County, Governor, Legislature) and tell them to make public statements supporting the safety of TPS families and opposing ICE action against them."
+        ],
+        "es": [
+          "Acción a nivel federal: Llame a sus representantes en la Cámara de Representantes y en el Senado de EE. UU. al (202) 224-3121 y exija dos cosas:",
+          "Terremoto en Venezuela: «Presionen a la Casa Blanca para que proporcione asistencia humanitaria inmediata y masiva sin condiciones; pongan fin a las sanciones; y utilicen el dinero del petróleo venezolano confiscado para la recuperación de Venezuela».",
+          "TPS: «La Cámara y el Senado deben aprobar con urgencia protecciones integrales para todos los beneficiarios del TPS, incluidos los de Haití, Siria y Venezuela».",
+          "Presión a nivel local: Llame o escriba a sus representantes locales (municipio, condado, gobernador, legislatura) y pídales que hagan declaraciones públicas apoyando la seguridad de las familias con TPS y en contra de las acciones del ICE."
+        ]
+      }
+    }
+  ]
 }
