@@ -49,7 +49,7 @@ function ImageTextBlock(props: {
         />
       )}
 
-      <div className={`min-w-0 ${props.image ? "md:w-1/2" : "w-full text-center"}`}>
+      <div className={`min-w-0 w-full ${props.image ? "md:w-1/2" : "text-center"}`}>
         {props.heading && <h2 className={"pb-12"}>{props.heading}</h2>}
         <div className={vimeoId ? "pb-8" : ""}>
           {typeof props.subtext === 'string' ? (
