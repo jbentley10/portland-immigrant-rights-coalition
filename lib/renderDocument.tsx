@@ -23,7 +23,7 @@ export const renderDocument = (document: any) => {
         />
       ),
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-        <p className={"text-left mb-4"}>{children}</p>
+        <p className={"text-left mb-4 break-words"}>{children}</p>
       ),
 
       [BLOCKS.UL_LIST]: (node: any, children: any) => (
@@ -33,12 +33,12 @@ export const renderDocument = (document: any) => {
         <ol className="list-decimal list-outside ml-6 space-y-1">{children}</ol>
       ),
       [BLOCKS.LIST_ITEM]: (node: any, children: any) => (
-        <li className="ml-0 pl-2">{children}</li>
+        <li className="ml-0 pl-2 break-words">{children}</li>
       ),
       [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
         <a
           href={node.data.uri}
-          className="font-bold text-primary text-sky-400 hover:text-primary/80 transition-colors"
+          className="font-bold text-primary text-sky-400 hover:text-primary/80 transition-colors break-words"
           target="_blank"
           rel="noopener noreferrer"
         >

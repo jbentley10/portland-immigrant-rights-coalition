@@ -49,11 +49,11 @@ function ImageTextBlock(props: {
         />
       )}
 
-      <div className={props.image ? "md:w-1/2" : "w-full text-center"}>
+      <div className={`min-w-0 ${props.image ? "md:w-1/2" : "w-full text-center"}`}>
         {props.heading && <h2 className={"pb-12"}>{props.heading}</h2>}
         <div className={vimeoId ? "pb-8" : ""}>
           {typeof props.subtext === 'string' ? (
-            <p>{props.subtext}</p>
+            <p className="break-words">{props.subtext}</p>
           ) : (
             renderDocument(props.subtext)
           )}
