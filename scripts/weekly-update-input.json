@@ -1,134 +1,116 @@
 {
-  "date": "2026-07-03",
+  "date": "2026-07-24",
   "blocks": [
     {
       "description": {
         "en": [
-          "21 detentions reported to the hotline June 26 - July 2",
-          "Counties in Oregon where detentions occurred: Jackson, Multnomah, Clackamas, Columbia, Marion, Lane, Benton",
-          "84 total detentions reported to PIRC in June 2026",
-          "See next slides for a review of data from calls to PIRC April-June so far this year. Please note that this is all self-reported data, and while likely not a complete picture of all detentions, provides a snapshot in time of what Oregonians have shared they are experiencing."
+          "12 detentions reported to the PIRC hotline July 17 - July 23",
+          "Counties in Oregon where detentions occurred: Yamhill, Washington, Jackson, Multnomah, Deschutes, Lane, Benton, Wasco, Jefferson, Lincoln",
+          "Of note: 12 detentions in 10 separate counties",
+          "54 detentions reported July 1-July 23"
         ],
         "es": [
-          "21 detenciones notificadas a la línea de PIRC entre el 26 de junio y el 2 de julio",
-          "Condados de Oregón donde reportaron las detenciones: Jackson, Multnomah, Clackamas, Columbia, Marion, Lane y Benton",
-          "Total de 84 detenciones reportadas a PIRC en junio de 2026",
-          "Consulte las siguientes diapositivas para revisar datos de las llamadas recibidas por PIRC entre abril y junio de este año. Tenga en cuenta que estos datos son comunicados voluntariamente; es probable que no reflejen la totalidad de las detenciones, pero ofrecen una idea del momento y de las experiencias que gente en Oregón han compartido los últimos 3 meses."
+          "12 detenciones reportadas a la línea de PIRC entre el 17 y el 23 de julio",
+          "Condados de Oregón donde ocurrieron las detenciones: Yamhill, Washington, Jackson, Multnomah, Deschutes, Lane, Benton, Wasco, Jefferson, Lincoln",
+          "Datos destacados: 12 detenciones en 10 condados distintos",
+          "54 detenciones reportadas del 1 al 23 de julio"
         ]
       }
     },
     {
-      "heading": {
-        "en": "Maps of Detentions",
-        "es": "Mapas de las detenciones"
+      "description": {
+        "en": [
+          "At the end of this week, disturbing news emerged of individuals impersonating ICE to detain and assault an immigrant community member in Clackamas County. The hotline received a call about this event the day it happened but was not aware until news broke on July 24 that the actions had been carried about by impersonators and not by ICE themselves.",
+          "This reveals the truth immigrant communities and advocates have long known: there is very little visible difference between ICE kidnapping someone and armed criminals kidnapping someone. This is yet another reason why ICE should not be operating in Oregon - they are causing public safety problems with their reckless tactics."
+        ],
+        "es": [
+          "A finales de esta semana, surgieron noticias inquietantes sobre individuos que se hicieron pasar por agentes del ICE para detener y agredir a un miembro de la comunidad inmigrante en el condado de Clackamas. La línea directa recibió una llamada sobre este incidente el mismo día en que ocurrió, pero no supo hasta que la noticia salió a la luz el 24 de julio que los hechos habían sido perpetrados por impostores y no por el propio ICE.",
+          "Esto revela una verdad que las comunidades inmigrantes y sus defensores conocen desde hace mucho tiempo: hay muy poca diferencia visible entre el secuestro de una persona por parte del ICE y el secuestro de una persona por parte de delincuentes armados. Esta es otra razón más por la que el ICE no debería operar en Oregón: están causando problemas de seguridad pública con sus tácticas imprudentes."
+        ]
+      }
+    },
+    {
+      "description": {
+        "en": [
+          "We are also concerned about some of the guidance given by Oregon State Police in the aftermath of the event. In their press release, OSP suggests individuals “try to stop in a well-lit, crowded area,” “lock your doors,” and “look for a uniform.”",
+          "These suggestions show a remarkable lack of awareness of ICE’s common tactics of forcibly stopping people wherever they want, threatening to break people’s windows if they do not immediately exit their vehicles, and failing to wear uniforms or identify themselves at all.",
+          "In fact, we know that some of the most heinous violence ICE has carried out, including assaulting, shooting, and killing immigrant community members, has been because people took some of these measures which ICE construed as “resisting arrest” or “threatening agents.”"
+        ],
+        "es": [
+          "También nos preocupan algunas de las recomendaciones de la Policía Estatal de Oregón (OSP) tras el incidente. En su comunicado de prensa, la OSP sugiere a las personas que \"intenten detenerse en una zona bien iluminada y concurrida\", “cierran las puertas\" y \"busquen un uniforme\".",
+          "Estas sugerencias demuestran un desconocimiento alarmante de las tácticas habituales del ICE, que incluyen detener a la fuerza a las personas dondequiera que deseen, amenazar con romper las ventanillas de los vehículos si los ocupantes no salen de inmediato, y no utilizar uniformes ni identificarse en absoluto.",
+          "De hecho, sabemos que algunos de los actos de violencia más horribles perpetrados por ICE —incluidas agresión, disparos y asesinatos de miembros de la comunidad inmigrante— pasaron precisamente porque las personas adoptaron algunas de estas medidas, las cuales el ICE interpretó como \"resistencia al arresto\" o \"amenaza a los agentes\"."
+        ]
+      }
+    },
+    {
+      "description": {
+        "en": [
+          "Our state must do better. ICE and armed vigilantes are both deliberately exploiting a legal gray zone where people aren’t sure if they can call 911 to report violent traffic assaults from unmarked people acting like police. We know local police have refused to respond to 911 calls relating to ICE activity and have in fact collaborated in pulling over or otherwise stopping individuals who are lawfully tracking ICE activity.",
+          "Instead of placing the onus on individuals to keep themselves safe with advice that will actually potentially place them in harm’s way, we call on state leadership and OSP to hear directly from impacted community and come up with a tangible, community-driven plan for addressing future incidents of this nature. Our state must do everything in its power to keep its residents safe, and that includes calling for the abolition of ICE."
+        ],
+        "es": [
+          "Tanto el ICE como los grupos de autodefensa armados están explotando deliberadamente una zona gris legal donde la gente no está segura de si puede llamar al 911 para denunciar agresiones violentas de tránsito por parte de personas sin identificación que se hacen pasar por policías. Sabemos que la policía local se ha negado a responder a llamadas al 911 relacionadas con la actividad del ICE y, de hecho, ha colaborado deteniendo a personas que están siguiendo legalmente la actividad del ICE.",
+          "En lugar de responsabilizar a las personas de su propia seguridad con consejos que podrían ponerlas en peligro, hacemos un llamado a los líderes estatales y a la OSP para que escuchen directamente a la comunidad afectada y elaboren un plan tangible, impulsado por la comunidad, para abordar futuros incidentes de esta naturaleza. Nuestro estado debe hacer todo lo posible para mantener seguros a sus residentes."
+        ]
+      }
+    },
+    {
+      "description": {
+        "en": [
+          "Temporary Protected Status (TPS) update.",
+          "PIRC shares our community’s alarm about the Trump administration threatening to end TPS designations for an estimated 5,000 Oregonians, and 1.3 million US residents.",
+          "Thanks to another recent partisan SCOTUS ruling, this reckless, racist MAGA decision could move forward as soon as Monday, July 27. However, as this article points out, impacted people should remain calm and adapt as best they can. ICE wants us to live in fear, but there are far more of us than low-morale ICE can handle, and there are ways to defend ourselves."
+        ],
+        "es": [
+          "Actualización sobre el Estatus de Protección Temporal (TPS).",
+          "PIRC comparte la alarma de nuestra comunidad ante las amenazas de la administración Trump de poner fin a las designaciones de TPS para aproximadamente 5,000 habitantes de Oregón y 1.3 millones de residentes en EE. UU.",
+          "Debido a otro fallo reciente y partidista de la Corte Suprema, esta decisión temeraria y racista del movimiento MAGA podría seguir adelante tan pronto como el lunes 27 de julio. Sin embargo, las personas afectadas deben mantener la calma y prepararse lo mejor posible. El ICE quiere que vivamos con miedo, pero somos muchos más de los que el ICE —con su baja moral— puede manejar, y hay formas de defendernos."
+        ]
+      }
+    },
+    {
+      "description": {
+        "en": [
+          "Family member losing TPS? Prepare.",
+          "As always, PIRC encourages all people to Know Your Rights, have the PIRC number saved with a plan to use it, follow PIRC’s weekly updates to track how ICE is operating. Impacted people should connect with their lawyer or enroll in Equity Corps Oregon for free, detention-related legal services. Years of valuable resources for vulnerable families in Oregon can be found at the link below."
+        ],
+        "es": [
+          "¿Un familiar está perdiendo el TPS? Prepárese.",
+          "Como siempre, PIRC anima a todos a conocer sus derechos, guardar el número de PIRC y tener un plan, incluyendo seguir estas actualizaciones semanales de PIRC para monitorear las operaciones de ICE. Las personas afectadas deben contactar a su abogado o inscribirse en Equity Corps Oregon para recibir servicios legales gratuitos relacionados con la detención. En el enlace a continuación, encontrará años de recursos para familias en Oregón."
+        ]
       },
-      "description": {
-        "en": [
-          "Above: detentions reported to PIRC June 2026: 84 (3 without names)",
-          "Above: detentions reported to PIRC having occurred April-June 2026: 162",
-          "Total detentions reported to PIRC January-June 2026: 272"
-        ],
-        "es": [
-          "Arriba: detenciones reportadas a PIRC junio 2026: 84 (3 sin nombres)",
-          "Arriba: detenciones reportadas a la PIRC entre abril y junio de 2026: 162",
-          "Total de detenciones reportadas al PIRC enero-junio de 2026: 272"
-        ]
-      }
+      "linkText": "Legal Resources",
+      "linkHref": "https://linktr.ee/asylumsolidaritypdx"
     },
     {
-      "heading": {
-        "en": "Detentions by Month",
-        "es": "Detenciones por mes"
+      "description": {
+        "en": [
+          "PIRC stands with our neighbors, most notably Haitian Oregonians, who have been speaking out as they face losing Work Authorizations, and face threats of arrest, detention, and deportation back to Haiti, a country currently in incredible turmoil.",
+          "Congress does have a bill - the Dream and Promise Act - that would end all of this fear, but DC Republicans are blocking it. Show your support for Dreamers and TPS recipients via the ACLU’s new action tool."
+        ],
+        "es": [
+          "PIRC apoya a nuestros vecinos —especialmente a los haitianos aquí en Oregón—, quienes han alzado la voz ante la posible pérdida de sus permisos de trabajo y las amenazas de arresto, detención y deportación a Haití, un país que atraviesa una situación de inestabilidad extrema.",
+          "Hay un proyecto de ley —la Ley Dream and Promise— en el Congreso que pondría fin a toda esta incertidumbre, pero los republicanos en Washington D. C. lo están bloqueando. Muestre su apoyo a los Dreamers y a los beneficiarios del TPS a través de la nueva herramienta de acción de la ACLU."
+        ]
       },
-      "description": {
-        "en": [
-          "April: 20",
-          "May: 47",
-          "June: 84",
-          "For comparison: January: 79, February: 16, March: 15"
-        ],
-        "es": [
-          "Abril: 20",
-          "Mayo: 47",
-          "Junio: 84",
-          "A modo de comparación: enero: 79, febrero: 16, marzo: 15"
-        ]
-      }
-    },
-    {
-      "heading": {
-        "en": "Counties Where Detentions Were Reported",
-        "es": "Condados donde se reportaron detenciones"
-      },
-      "description": {
-        "en": [
-          "April-June saw an increase in detentions reported in a diversity of counties; Jackson, Clackamas, and out-of-state detentions of Oregonians saw particularly steep increases since January-March reporting"
-        ],
-        "es": [
-          "Entre abril y junio se registró un aumento en las detenciones en varios condados; los condados de Jackson y Clackamas, así como las detenciones de residentes de Oregón fuera del estado, experimentaron incrementos profundos en comparación con las cifras del periodo de enero a marzo."
-        ]
-      }
-    },
-    {
-      "heading": {
-        "en": "Time of Day",
-        "es": "Hora del día"
-      },
-      "description": {
-        "en": [
-          "Note: an additional 51 detentions occurred at \"unknown\" times of day and are not reflected in this graph for easier visibility; over half of those 51 were described as \"in the morning\""
-        ],
-        "es": [
-          "Nota: hubo 51 detenciones adicionales reportadas a horas «desconocidos» que no se reflejan en este gráfico para facilitar su visualización; más de la mitad de esas 51 se describieron «por la mañana»."
-        ]
-      }
-    },
-    {
-      "heading": {
-        "en": "Nationalities",
-        "es": "Nacionalidades"
-      },
-      "description": {
-        "en": [
-          "Nationalities most impacted:",
-          "Mexico (60.5%, up from 42.7% January-March quarter)",
-          "Guatemala (8%, down from 15.5% January-March quarter)",
-          "Venezuela (7.4%, down from 12.7% from January-March quarter)",
-          "Laos (4.9%, down from 9.1% from January-March quarter)"
-        ],
-        "es": [
-          "Nacionalidades más afectadas:",
-          "México (60,5 %; frente al 42,7 % en enero a marzo)",
-          "Guatemala (8 %; frente al 15,5 % en enero a marzo)",
-          "Venezuela (7,4 %; frente al 12,7 % en enero a marzo)",
-          "Laos (4,9 %; frente al 9,1 % en enero a marzo)"
-        ]
-      }
-    },
-    {
-      "heading": {
-        "en": "Where Detentions Are Occurring",
-        "es": "¿Dónde están ocurriendo las detenciones?"
-      },
-      "description": {
-        "en": [
-          "Note: \"In community\" may mean shopping, dining, walking on the street, driving/commuting, or simply unknown"
-        ],
-        "es": [
-          "Nota: «En la comunidad» quiere decir cuando la persona salio a hacer compras, comer, caminar por la calle, manejar, o simplemente a una situación desconocida."
-        ]
-      }
+      "linkText": "ACLU Action Tool",
+      "linkHref": "https://action.aclu.org/send-message/pathway-citizenship-now"
     },
     {
       "description": {
         "en": [
-          "It has been 1 year since PIRC began to formally track detentions reported in Oregon. From July 1, 2025 to today, PIRC has received reports of 1,340 of our neighbors who have been snatched from their communities.",
-          "We know that this is an undercount because these are self-reported numbers. PIRC remains committed to making sure folks in Oregon know to call us ASAP if their loved one is detained by ICE. Calling immediately can make a big difference. As soon as PIRC receives a call, we can connect the impacted folks with support: rapid response legal support, community-based partners providing critical support work in their region, and spaces for healing and community."
+          "PIRC Friend of the Week:",
+          "PIRC is blown away by the work of our ally Aden, who spent the past 6 months creating the event “PDX for PIRC” and gave everything she had to make this event a success. Over 60 local businesses and individuals donated time, food, their venue, their labor, or gift packages. This past week, PDX for PIRC’s auction and program were hosted at The Old Church in downtown Portland. PIRC’s Board President spoke, and attendees were incredibly generous with donations and bids. Aden, everyone around PIRC has been amazed by your efforts - thank you!",
+          "PDX for PIRC is just one of hundreds of creative events you all have been putting on to throw everything we have at ICE’s horrible actions.",
+          "Keep it up! We keep us safe! Abolish ICE!"
         ],
         "es": [
-          "Ha pasado un año desde que PIRC comenzó a documentar información las detenciones reportadas en Oregón más formalmente. Desde el 1 de julio de 2025 hasta la fecha, PIRC ha recibido informes sobre 1.340 vecinos que han sido desaparecidos por ICE en sus comunidades.",
-          "Sabemos que estos datos son menos que la realidad, ya que se basa nuestra información en datos reportados voluntariamente. PIRC mantiene su compromiso de asegurar que las personas en Oregón sepan que deben llamarnos de inmediato si un ser querido es detenido por ICE, porque llamar inmediatamente puede resultar en una gran diferencia. Tan pronto como PIRC recibe una llamada, podemos conectar a las personas afectadas con recursos de apoyo: asistencia legal de respuesta rápida, organizaciones comunitarios que brindan ayuda esencial en su región, y espacios para la sanación y el fortalecimiento de la comunidad.",
-          "Es imposible cuantificar la cantidad del profundo dolor pasando aquí en Oregón por las acciones de ICE; sin embargo, también hemos sido testigos del impacto positivo que genera en las familias saber que no están solas al enfrentar las consecuencias emocionales, económicas, y a largo plazo de ver a un ser querido desaparecer a manos de ICE."
+          "Amiga de la semana de PIRC:",
+          "En PIRC estamos maravillados con la labor de nuestra aliada Aden, quien dedicó los últimos seis meses a organizar el evento \"PDX for PIRC\"; ella dio un esfuerzo increíble para asegurar su éxito. Más de 60 empresas y personas de la localidad donaron tiempo, alimentos, sus instalaciones, mano de obra o paquetes de regalo. La semana pasada, el programa y la subasta de \"PDX for PIRC\" se celebraron en The Old Church, en el centro de Portland. La presidenta de la mesa directiva de PIRC habló, y los asistentes se mostraron increíblemente generosos tanto con sus donaciones.",
+          "Aden, todos en PIRC estamos impresionados por tu esfuerzo: ¡gracias!",
+          "\"PDX for PIRC\" es solo uno de los cientos de eventos creativos que han organizado la comunidad para combatir con todas nuestras fuerzas las terribles acciones del ICE.",
+          "¡Adelante! ¡Nos protegemos entre nosotros! ¡Abolición del ICE!"
         ]
       }
     }
