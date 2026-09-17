@@ -23,7 +23,12 @@ export default async function Alert() {
   const [english, spanish] = await Promise.all([blocksEnglish, blocksSpanish]);
 
   return (
-    <main>
+    <main id='alert-page'>
+      <div className='pb-12'>
+        <em className='text-primary'>
+          888-622-1510 is the PIRC Hotline Number
+        </em>
+      </div>
       <Content
         key={Math.random()}
         englishBlocks={english}
