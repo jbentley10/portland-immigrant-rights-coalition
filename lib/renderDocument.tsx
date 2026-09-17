@@ -30,7 +30,12 @@ export const renderDocument = (document: any) => {
         <ul className="list-disc list-outside ml-6 space-y-1 mb-4">{children}</ul>
       ),
       [BLOCKS.OL_LIST]: (node: any, children: any) => (
-        <ol className="list-decimal list-outside ml-6 space-y-1">{children}</ol>
+        <ol
+          className="list-decimal list-outside ml-6 space-y-1"
+          style={{ listStyleType: "decimal" }}
+        >
+          {children}
+        </ol>
       ),
       [BLOCKS.LIST_ITEM]: (node: any, children: any) => (
         <li className="ml-0 pl-2 break-words">{children}</li>
