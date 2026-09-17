@@ -5,6 +5,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import FloatingActionButton from "./floating-action-button";
 import { LocaleContext } from "@/app/locale-provider";
 import NavigationWrapper from "@/components/navigation-wrapper";
@@ -29,6 +30,7 @@ export default function LayoutClient({
   siteSettings: SiteSettingsProps;
 }) {
   const [isEnglish, setIsEnglish] = useState(true);
+  const pathname = usePathname();
 
   // Get the correct banner based on locale
   const currentSettings = isEnglish
@@ -37,7 +39,7 @@ export default function LayoutClient({
 
   return (
     <LocaleContext.Provider value={{ isEnglish, setIsEnglish }}>
-      {currentSettings?.banner && (
+      {currentSettings?.banner && pathname !== "/alert" && (
         <UpdateBanner {...currentSettings.banner.fields} />
       )}
       <NavigationWrapper />
