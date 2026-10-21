@@ -40,8 +40,8 @@ export default function Footer() {
                 <li>
                   <p>
                     General Email:{" "}
-                    <Link href='mailto:pircpdx@gmail.com'>
-                      pircpdx@gmail.com
+                    <Link href='mailto:info@pircoregon.org'>
+                      info@pircoregon.org
                     </Link>
                   </p>
                 </li>
