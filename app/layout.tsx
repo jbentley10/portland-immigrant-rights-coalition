@@ -13,10 +13,11 @@ import Script from "next/script";
 
 // Import components and utils
 import LayoutClient from "@/components/layout-client";
-import { fetchSiteSettings, REVALIDATE_TIME } from "@/lib/contentfulData";
+import { fetchSiteSettings } from "@/lib/contentfulData";
 
 // Enable ISR - revalidate every hour (3600 seconds)
-export const revalidate = REVALIDATE_TIME;
+// Must be a literal: Next.js statically analyzes this export (same value as REVALIDATE_TIME)
+export const revalidate = 86400;
 
 // Declare fonts with CSS variables
 const antonio = Antonio({

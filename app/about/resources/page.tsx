@@ -1,10 +1,11 @@
 /**
  * @file page.tsx
  */
-import { fetchBlocksBySlug, fetchResourceFiles, REVALIDATE_TIME } from "@/lib/contentfulData";
+import { fetchBlocksBySlug, fetchResourceFiles } from "@/lib/contentfulData";
 import Content from "@/app/content";
 
-export const revalidate = REVALIDATE_TIME;
+// Must be a literal: Next.js statically analyzes this export (same value as REVALIDATE_TIME)
+export const revalidate = 86400;
 
 export const metadata = {
   title: "Resources | Portland Immigrant Rights Coalition",

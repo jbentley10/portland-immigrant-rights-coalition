@@ -1,7 +1,14 @@
 import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { FacebookIcon, TwitterIcon, InstagramIcon, DollarSign, Mail, Share2 } from "lucide-react";
+import {
+  FacebookIcon,
+  TwitterIcon,
+  InstagramIcon,
+  DollarSign,
+  Mail,
+  Share2,
+} from "lucide-react";
 import { parseMarkdownLinks } from "@/lib/parseMarkdownLinks";
 
 interface IconCalloutSectionProps {
@@ -28,7 +35,7 @@ const iconMap = {
   Instagram: InstagramIcon,
   DollarSign: DollarSign,
   Mail: Mail,
-  Share2: Share2
+  Share2: Share2,
 };
 
 function CalloutCard({
@@ -51,14 +58,16 @@ function CalloutCard({
           "text-primary text-5xl md:text-7xl font-extrabold text-center pb-6 xl:pb-8 xl:pt-16"
         }
       >
-        <IconComponent className="w-16 h-16 md:w-20 md:h-20" />
+        <IconComponent className='w-16 h-16 md:w-20 md:h-20' />
       </div>
       <h3 className={"text-2xl xl:text-3xl text-primary pb-2"}>{heading}</h3>
-      <p className={"text-primary text-center md:text-left"}>{parseMarkdownLinks(body)}</p>
+      <p className={"text-primary text-center md:text-left"}>
+        {parseMarkdownLinks(body)}
+      </p>
       {buttonText && buttonLink && (
-        <div className="mt-4">
-          <Link target="_blank" href={buttonLink}>
-            <Button size="sm" variant="outline">
+        <div className='mt-4'>
+          <Link href={buttonLink}>
+            <Button size='sm' variant='outline'>
               {buttonText}
             </Button>
           </Link>
@@ -91,7 +100,7 @@ function IconCalloutSection(props: IconCalloutSectionProps) {
       </div>
       {buttonText && buttonLink && (
         <div className={"flex justify-center mt-14"}>
-          <Link target="_blank" href={buttonLink}>
+          <Link target='_blank' href={buttonLink}>
             <Button size={"lg"} variant={"default"}>
               {buttonText}
             </Button>
