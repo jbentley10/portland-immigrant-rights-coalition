@@ -2,12 +2,13 @@
  * @file page.tsx
  */
 // Import components and utils
-import { fetchBlocksBySlug, REVALIDATE_TIME } from "../../lib/contentfulData";
+import { fetchBlocksBySlug } from "../../lib/contentfulData";
 import Content from "../content";
 import Script from "next/script";
 
 // Enable ISR - revalidate every hour
-export const revalidate = REVALIDATE_TIME;
+// Must be a literal: Next.js statically analyzes this export (same value as REVALIDATE_TIME)
+export const revalidate = 86400;
 
 // Set metadata
 export const metadata = {

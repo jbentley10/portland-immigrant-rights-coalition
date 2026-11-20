@@ -19,7 +19,7 @@ export default function Footer() {
             alt='The logo for PIRC'
           />
         </div>
-        <div className={`sm:w-1/2 pt-14`}>
+        <div className={`sm:w-3/4 pt-14`}>
           <div className={"flex flex-col lg:flex-row"}>
             <div
               className={

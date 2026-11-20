@@ -5,16 +5,17 @@
 
 import {
   fetchPageBySlug,
-  REVALIDATE_TIME,
 } from "@/lib/contentfulData";
 import Content from "@/app/content";
 import Heading from "@/components/heading";
 
 // Enable ISR
-export const revalidate = REVALIDATE_TIME;
+// Must be a literal: Next.js statically analyzes this export (same value as REVALIDATE_TIME)
+export const revalidate = 86400;
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const fullSlug = `data-and-updates/weekly-updates/${params.slug}`;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const fullSlug = `data-and-updates/weekly-updates/${slug}`;
   const page = await fetchPageBySlug(fullSlug, "en-US");
 
   return {
@@ -33,9 +34,10 @@ function formatDateFromSlug(slug: string): string {
   });
 }
 
-export default async function WeeklyUpdatePage({ params }: { params: { slug: string } }) {
-  const fullSlug = `data-and-updates/weekly-updates/${params.slug}`;
-  const formattedDate = formatDateFromSlug(params.slug);
+export default async function WeeklyUpdatePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const fullSlug = `data-and-updates/weekly-updates/${slug}`;
+  const formattedDate = formatDateFromSlug(slug);
 
   const [pageEn, pageEs] = await Promise.all([
     fetchPageBySlug(fullSlug, "en-US"),

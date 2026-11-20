@@ -2,12 +2,13 @@
  * @file page.tsx
  * Index page listing all weekly updates
  */
-import { fetchChildPagesBySlug, REVALIDATE_TIME } from "@/lib/contentfulData";
+import { fetchChildPagesBySlug } from "@/lib/contentfulData";
 import Link from "next/link";
 import Heading from "@/components/heading";
 
 // Enable ISR - revalidate every hour
-export const revalidate = REVALIDATE_TIME;
+// Must be a literal: Next.js statically analyzes this export (same value as REVALIDATE_TIME)
+export const revalidate = 86400;
 
 // Set metadata
 export const metadata = {

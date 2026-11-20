@@ -5,10 +5,11 @@
 import Content from "../../content";
 import Script from "next/script";
 import DonationModal from "@/components/donation-modal";
-import { fetchAsset, REVALIDATE_TIME } from "@/lib/contentfulData";
+import { fetchAsset } from "@/lib/contentfulData";
 
 // Enable ISR
-export const revalidate = REVALIDATE_TIME;
+// Must be a literal: Next.js statically analyzes this export (same value as REVALIDATE_TIME)
+export const revalidate = 86400;
 
 // Set metadata
 export const metadata = {
